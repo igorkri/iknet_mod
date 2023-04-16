@@ -8,13 +8,24 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'language' => 'uk-UA',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module'
+            // enter optional module parameters below - only if you need to
+            // use your own export download action or custom translation
+            // message source
+            // 'downloadAction' => 'gridview/export/download',
+            // 'i18n' => []
+        ]
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+                        'baseUrl' => '/admin',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -37,21 +48,32 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-//        'view' => [
-//            'theme' => [
-//                'pathMap' => [
-//                    '@app/views' => '@vendor/hail812/yii2-adminlte3/src/views'
-//                ],
-//            ],
-//        ],
-        /*
+        'assetManager' => [
+            'bundles' => [
+                'kartik\form\ActiveFormAsset' => [
+                    'bsDependencyEnabled' => false // do not load bootstrap assets for a specific asset bundle
+                ],
+            ],
+        ],
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+    ],
+    'controllerMap' => [
+        'elfinder' => [
+            'class' => 'mihaildev\elfinder\PathController',
+            'access' => ['@'],
+            'root' => [
+//                'baseUrl'=>'@web',
+//                'basePath'=>'@frontendWeb',
+                'path' => '/img/posts',
+                'name' => 'Files'
+            ],
+        ]
     ],
     'params' => $params,
 ];

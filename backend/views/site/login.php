@@ -1,30 +1,36 @@
 <?php
+
+use kartik\form\ActiveForm;
 use yii\helpers\Html;
+use yii\web\View;
+
 ?>
+
 <div class="card">
     <div class="card-body login-card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Увійдіть, щоб почати сеанс</p>
 
-        <?php $form = \yii\bootstrap4\ActiveForm::begin(['id' => 'login-form']) ?>
+        <?php $form = ActiveForm::begin(['id' => 'login-form']) ?>
 
         <?= $form->field($model,'username', [
             'options' => ['class' => 'form-group has-feedback'],
-            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-envelope"></span></div></div>',
+//            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-envelope"></span></div></div>',
             'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
+//            'wrapperOptions' => ['class' => 'input-group mb-3']
         ])
             ->label(false)
-            ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
-
-        <?= $form->field($model, 'password', [
-            'options' => ['class' => 'form-group has-feedback'],
-            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-lock"></span></div></div>',
-            'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
-        ])
-            ->label(false)
-            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
-
+            ->textInput(['placeholder' => 'Введіть Ім\'я']) ?>
+        <div class="password-container">
+            <?= $form->field($model, 'password', [
+                'options' => ['class' => 'form-group has-feedback'],
+                //            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-lock"></span></div></div>',
+                'template' => '{beginWrapper}{input}{error}{endWrapper}',
+                //            'wrapperOptions' => ['class' => 'input-group mb-3']
+            ])
+                ->label(false)
+                ->passwordInput(['placeholder' => 'Введіть пароль']) ?>
+            <i class="fas fa-eye" id="eye"></i>
+        </div>
         <div class="row">
             <div class="col-8">
                 <?= $form->field($model, 'rememberMe')->checkbox([
@@ -33,32 +39,52 @@ use yii\helpers\Html;
                         'class' => ''
                     ],
                     'uncheck' => null
-                ]) ?>
+                ])->label(' Запам\'ятати мене') ?>
             </div>
             <div class="col-4">
-                <?= Html::submitButton('Sign In', ['class' => 'btn btn-primary btn-block']) ?>
+                <?= Html::submitButton('Вхід', ['class' => 'btn btn-primary btn-block']) ?>
             </div>
         </div>
 
-        <?php \yii\bootstrap4\ActiveForm::end(); ?>
+        <?php ActiveForm::end(); ?>
 
-        <div class="social-auth-links text-center mb-3">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-primary">
-                <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-            </a>
-            <a href="#" class="btn btn-block btn-danger">
-                <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-            </a>
-        </div>
-        <!-- /.social-auth-links -->
-
-        <p class="mb-1">
-            <a href="forgot-password.html">I forgot my password</a>
-        </p>
-        <p class="mb-0">
-            <a href="register.html" class="text-center">Register a new membership</a>
-        </p>
     </div>
     <!-- /.login-card-body -->
 </div>
+<style>
+    .password-container{
+        /*width: 400px;*/
+        position: relative;
+    }
+    .password-container input[type="password"],
+    .password-container input[type="text"]{
+        width: 100%;
+        padding: 12px 36px 12px 12px;
+        box-sizing: border-box;
+    }
+    .fa-eye{
+        position: absolute;
+        top: 28%;
+        right: 4%;
+        cursor: pointer;
+        color: lightgray;
+    }
+</style>
+<?php
+$js = <<<JS
+$( document ).ready(function() {
+
+      const passwordInput = document.querySelector("#loginform-password");
+      const eye = document.querySelector("#eye");
+      eye.addEventListener("click", function(){
+          //fa-eye-slash
+          this.classList.toggle("fa-eye-slash");
+          const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+          passwordInput.setAttribute("type", type)
+      })
+});
+
+JS;
+$this->registerJs($js);
+?>
+
