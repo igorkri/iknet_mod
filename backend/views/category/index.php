@@ -1,24 +1,22 @@
 <?php
 
 use common\models\Category;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
-use yii\grid\GridView;
 
 /** @var yii\web\View $this */
 /** @var common\models\search\CategorySearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Categories';
+$this->title = 'Категории';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="category-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container category-index">
 
     <p>
-        <?= Html::a('Create Category', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Cоздать категорию', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'title_uk',
             'title_en',
             'title_ru',
@@ -45,10 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
             //'seo_keywords_en',
             //'seo_keywords_ru',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::class,
+                'contentOptions' => ['style' => 'width: 130px;', 'class' => 'text-center'],
                 'urlCreator' => function ($action, Category $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                },
+                'template' => '{view} {update} {delete}',
             ],
         ],
     ]); ?>

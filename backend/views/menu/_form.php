@@ -1,5 +1,7 @@
 <?php
 
+use common\models\Category;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -8,9 +10,29 @@ use yii\widgets\ActiveForm;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="menu-form">
+<div class="container menu-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="row">
+<!--        <div class="col-4">-->
+            <?php // $form->field($model, 'parent_id')->dropDownList(ArrayHelper::map(Category::find()->with(['parent', 'parents'])
+//                ->asArray()->all(),
+//                'id', 'title_uk', 'parent.title_uk'),
+//                ['prompt'=>'Не обовʼязково...']
+//            )?>
+<!--        </div>-->
+        <div class="col-6">
+            <?= $form->field($model, 'published')->dropDownList(
+                [
+                    1 => 'Так',
+                    0 => 'Ні'
+                ]
+            ) ?>
+        </div>
+        <div class="col-6">
+            <?= $form->field($model, 'slug')->textInput(['maxlength' => true, 'readonly'=> true]) ?>
+        </div>
+    </div>
 
     <?= $form->field($model, 'title_uk')->textInput(['maxlength' => true]) ?>
 
@@ -18,16 +40,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title_ru')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'parent_id')->textInput() ?>
 
-    <?= $form->field($model, 'order')->textInput() ?>
+    <?php //$form->field($model, 'order')->textInput() ?>
 
-    <?= $form->field($model, 'published')->textInput() ?>
-
+    <hr>
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

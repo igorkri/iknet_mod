@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4846423536be04931290f9d4f60ad14f",
+    "content-hash": "1d6376ce614c2bb9f8d0d9d5aaf2d11a",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -54,7 +54,7 @@
             "version": "v5.2.3",
             "source": {
                 "type": "git",
-                "url": "git@github.com:twbs/bootstrap.git",
+                "url": "https://github.com/twbs/bootstrap.git",
                 "reference": "cb021439c683d9805e2864c58095b92d405e9b11"
             },
             "dist": {
@@ -225,51 +225,52 @@
             "time": "2018-03-26T11:24:36+00:00"
         },
         {
-            "name": "ckeditor/ckeditor",
-            "version": "4.7.3",
+            "name": "codemix/yii2-localeurls",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ckeditor/ckeditor-releases.git",
-                "reference": "97b8f412f6b36985c734daf0717e81009a885dba"
+                "url": "https://github.com/codemix/yii2-localeurls.git",
+                "reference": "afa019668ccd63b73dcd3cd27e74f5fd92d43c79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/97b8f412f6b36985c734daf0717e81009a885dba",
-                "reference": "97b8f412f6b36985c734daf0717e81009a885dba",
+                "url": "https://api.github.com/repos/codemix/yii2-localeurls/zipball/afa019668ccd63b73dcd3cd27e74f5fd92d43c79",
+                "reference": "afa019668ccd63b73dcd3cd27e74f5fd92d43c79",
                 "shasum": ""
             },
-            "type": "library",
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">4.0 <8"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "codemix\\localeurls\\": ""
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-2.0+",
-                "LGPL-2.1+",
-                "MPL-1.1+"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "CKSource",
-                    "homepage": "http://cksource.com"
+                    "name": "Michael Härtl",
+                    "email": "haertl.mike@gmail.com"
                 }
             ],
-            "description": "JavaScript WYSIWYG web text editor.",
-            "homepage": "http://ckeditor.com",
+            "description": "Automatic locale/language management for URLs.",
             "keywords": [
-                "CKEditor",
-                "editor",
-                "fckeditor",
-                "html",
-                "javascript",
-                "richtext",
-                "text",
-                "wysiwyg"
+                "i18n",
+                "locale",
+                "yii2"
             ],
             "support": {
-                "forum": "http://ckeditor.com/forums",
-                "issues": "http://dev.ckeditor.com",
-                "source": "http://github.com/ckeditor/ckeditor-dev",
-                "wiki": "http://docs.ckeditor.com"
+                "issues": "https://github.com/codemix/yii2-localeurls/issues",
+                "source": "https://github.com/codemix/yii2-localeurls/tree/1.8.0"
             },
-            "time": "2017-09-13T13:09:47+00:00"
+            "time": "2022-05-04T06:51:52+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -569,53 +570,6 @@
                 "source": "https://github.com/hail812/yii2-adminlte3/tree/v1.1.8"
             },
             "time": "2022-04-16T06:46:23+00:00"
-        },
-        {
-            "name": "itstructure/yii2-ckeditor",
-            "version": "1.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/itstructure/yii2-ckeditor.git",
-                "reference": "ebf7da4d4cd51fcaeea49397601af34f0cdd6fcb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/itstructure/yii2-ckeditor/zipball/ebf7da4d4cd51fcaeea49397601af34f0cdd6fcb",
-                "reference": "ebf7da4d4cd51fcaeea49397601af34f0cdd6fcb",
-                "shasum": ""
-            },
-            "require": {
-                "ckeditor/ckeditor": "~4.7.1",
-                "php": ">=7.1.0",
-                "yiisoft/yii2": "2.*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "Itstructure\\CKEditor\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andrey Girnik",
-                    "email": "girnikandrey@gmail.com"
-                }
-            ],
-            "description": "CKEditor widget for Yii2 Framework",
-            "keywords": [
-                "CKEditor",
-                "yii 2",
-                "yii2"
-            ],
-            "support": {
-                "issues": "https://github.com/itstructure/yii2-ckeditor/issues",
-                "source": "https://github.com/itstructure/yii2-ckeditor/tree/1.1.6"
-            },
-            "time": "2023-01-22T08:46:50+00:00"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
@@ -1161,6 +1115,57 @@
             "time": "2022-06-03T07:35:37+00:00"
         },
         {
+            "name": "kotchuprik/yii2-sortable-widgets",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kotchuprik/yii2-sortable-widgets.git",
+                "reference": "89b79d16a1d8722c679cbb69b29d61ae1644051a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kotchuprik/yii2-sortable-widgets/zipball/89b79d16a1d8722c679cbb69b29d61ae1644051a",
+                "reference": "89b79d16a1d8722c679cbb69b29d61ae1644051a",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kotchuprik\\sortable\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Constantine Chuprik",
+                    "email": "constantinchuprik@gmail.com"
+                }
+            ],
+            "description": "Implementation Rubaxa/Sortable for Yii2. Sortable grid view inside.",
+            "homepage": "http://github.com/kotchuprik/yii2-sortable-widgets",
+            "keywords": [
+                "dnd",
+                "grid",
+                "gridview",
+                "jQueryUI",
+                "rubaxa",
+                "sortable",
+                "sorting",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/kotchuprik/yii2-sortable-widgets/issues",
+                "source": "https://github.com/kotchuprik/yii2-sortable-widgets/tree/v2.2.0"
+            },
+            "time": "2022-07-13T23:10:38+00:00"
+        },
+        {
             "name": "mihaildev/yii2-ckeditor",
             "version": "1.0.1",
             "source": {
@@ -1485,6 +1490,47 @@
                 "source": "https://github.com/php-fig/log/tree/2.0.0"
             },
             "time": "2021-07-14T16:41:46+00:00"
+        },
+        {
+            "name": "stkevich/yii2-ckeditor5",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stkevich/yii2-ckeditor5.git",
+                "reference": "f76ed47af0aed24e898fa1614ee823941b985569"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stkevich/yii2-ckeditor5/zipball/f76ed47af0aed24e898fa1614ee823941b985569",
+                "reference": "f76ed47af0aed24e898fa1614ee823941b985569",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "default-branch": true,
+            "type": "extension",
+            "autoload": {
+                "psr-4": {
+                    "stkevich\\ckeditor5\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stas Kevich",
+                    "email": "st.kevich@gmail.com"
+                }
+            ],
+            "description": "ckeditor 5 widget for yii2 framework",
+            "support": {
+                "issues": "https://github.com/stkevich/yii2-ckeditor5/issues",
+                "source": "https://github.com/stkevich/yii2-ckeditor5/tree/master"
+            },
+            "time": "2019-09-19T17:11:32+00:00"
         },
         {
             "name": "studio-42/elfinder",
@@ -3674,22 +3720,22 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.4.4",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "3cf1b6d4f0c820a2cf8bcaec39fc698f3443b5cf"
+                "reference": "b635f279edd83fc275f822a1188157ffea568ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/3cf1b6d4f0c820a2cf8bcaec39fc698f3443b5cf",
-                "reference": "3cf1b6d4f0c820a2cf8bcaec39fc698f3443b5cf",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/b635f279edd83fc275f822a1188157ffea568ff6",
+                "reference": "b635f279edd83fc275f822a1188157ffea568ff6",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-factory": "^1.0",
-                "psr/http-message": "^1.0",
+                "psr/http-message": "^1.1 || ^2.0",
                 "ralouphie/getallheaders": "^3.0"
             },
             "provide": {
@@ -3709,9 +3755,6 @@
                 "bamarni-bin": {
                     "bin-links": true,
                     "forward-command": false
-                },
-                "branch-alias": {
-                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -3773,7 +3816,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.4.4"
+                "source": "https://github.com/guzzle/psr7/tree/2.5.0"
             },
             "funding": [
                 {
@@ -3789,7 +3832,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-09T13:19:02+00:00"
+            "time": "2023-04-17T16:11:26+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -4535,16 +4578,16 @@
         },
         {
             "name": "psr/http-message",
-            "version": "1.1",
+            "version": "2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
-                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba"
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
-                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71",
                 "shasum": ""
             },
             "require": {
@@ -4553,7 +4596,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -4568,7 +4611,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for HTTP messages",
@@ -4582,9 +4625,9 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-message/tree/1.1"
+                "source": "https://github.com/php-fig/http-message/tree/2.0"
             },
-            "time": "2023-04-04T09:50:52+00:00"
+            "time": "2023-04-04T09:54:51+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -6681,7 +6724,8 @@
         "kartik-v/yii2-bootstrap4-dropdown": 20,
         "kartik-v/yii2-editors": 20,
         "kartik-v/yii2-widget-activeform": 20,
-        "kartik-v/yii2-widget-fileinput": 20
+        "kartik-v/yii2-widget-fileinput": 20,
+        "stkevich/yii2-ckeditor5": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

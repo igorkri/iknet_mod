@@ -83,10 +83,12 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'image',
             //'image_og',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::class,
+                'contentOptions' => ['style' => 'width: 130px;', 'class' => 'text-center'],
                 'urlCreator' => function ($action, Pages $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                },
+                'template' => '{view} {update} {delete}',
             ],
         ],
     ]); ?>

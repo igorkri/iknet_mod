@@ -68,8 +68,8 @@ return [
             'class' => 'mihaildev\elfinder\PathController',
             'access' => ['@'],
             'root' => [
-//                'baseUrl'=>'@web',
-//                'basePath'=>'@frontendWeb',
+                'baseUrl'=>'@web',
+                'basePath'=>'@frontendWeb',
                 'path' => '/img/posts',
                 'name' => 'Files'
             ],

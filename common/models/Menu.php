@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "menu".
@@ -26,6 +28,28 @@ class Menu extends \yii\db\ActiveRecord
         return 'menu';
     }
 
+    public function behaviors()
+    {
+        return [
+            'sortable' => [
+                'class' => \kotchuprik\sortable\behaviors\Sortable::class,
+                'query' => self::find(),
+            ],
+            [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'title_uk',
+                'slugAttribute' => 'slug',
+            ],
+//            'timestamp' => [
+//                'class' => 'yii\behaviors\TimestampBehavior',
+//                'attributes' => [
+//                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at'],
+//                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+//                ],
+//            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -46,13 +70,39 @@ class Menu extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title_uk' => 'Title Uk',
-            'title_en' => 'Title En',
-            'title_ru' => 'Title Ru',
-            'slug' => 'Slug',
-            'parent_id' => 'Parent ID',
-            'order' => 'Order',
-            'published' => 'Published',
+            'title_uk' => 'Назва UK',
+            'title_en' => 'Name EN',
+            'title_ru' => 'Название RU',
+            'slug' => 'SLUG',
+            'parent_id' => 'Категория',
+            'order' => 'Сортировка',
+            'published' => 'Отображать (Да | Нет)',
         ];
     }
+
+    public static function getList()
+    {
+        $list = self::find()->where(['parent_id' => null])->andWhere(['published' => 1])->orderBy('order')->all();
+        return $list ?? [];
+    }
+
+    public function getChildren()
+    {
+        return self::find()->where(['parent_id' => $this->id])->orderBy('order')->all();
+    }
+
+    public function getTitleText($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->title_ru;
+        }elseif($lang == 'en'){
+            return $res->title_en;
+        }else{
+            return $res->title_uk;
+        }
+    }
+
+
 }

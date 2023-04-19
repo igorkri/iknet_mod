@@ -92,4 +92,37 @@ class Pages extends \yii\db\ActiveRecord
         return $this->hasOne(Category::class, ['id' => 'category_id']);
     }
 
+   public function getTitle($id, $lang){
+        $post = Pages::find()->where(['id' => $id])->one();
+        if($lang == 'en'){
+            return $post->title_en;
+        }elseif($lang == 'ru'){
+           return $post->title_ru;
+       }else{
+           return $post->title_uk;
+       }
+   }
+
+   public function getPreview($id, $lang){
+        $post = Pages::find()->where(['id' => $id])->one();
+        if($lang == 'en'){
+            return substr($post->text_en, 200);
+        }elseif($lang == 'ru'){
+           return substr($post->text_ru, 200);
+       }else{
+           return substr($post->text_uk, 200);
+       }
+   }
+
+   public function getText($id, $lang){
+        $post = Pages::find()->where(['id' => $id])->one();
+        if($lang == 'en'){
+            return $post->text_en;
+        }elseif($lang == 'ru'){
+           return $post->text_ru;
+       }else{
+           return $post->text_uk;
+       }
+   }
+
 }

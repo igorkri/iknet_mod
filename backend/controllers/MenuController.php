@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Menu;
 use common\models\search\MenuSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -30,6 +31,16 @@ class MenuController extends Controller
             ]
         );
     }
+
+//    public function actions()
+//    {
+//        return [
+//            'sorting' => [
+//                'class' => \kotchuprik\sortable\actions\Sorting::className(),
+//                'query' => Menu::find(),
+//            ],
+//        ];
+//    }
 
     /**
      * Lists all Menu models.
@@ -93,7 +104,7 @@ class MenuController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save(false)) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -130,5 +141,22 @@ class MenuController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionSorting(){
+        Yii::$app->cache->flush();
+        $post_sort_arrs = Yii::$app->request->post('sorting');
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        foreach ($post_sort_arrs as $key_sort => $id){
+            $menu = Menu::find()->where(['id' => $id])->one();
+            $menu->order = $key_sort;
+            if($menu->save()){
+
+            }else{
+                print_r($menu->errors);
+                die;
+            }
+        }
+        return true;
     }
 }

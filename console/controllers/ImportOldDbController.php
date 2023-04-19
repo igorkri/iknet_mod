@@ -6,6 +6,7 @@ namespace console\controllers;
 use common\models\Category;
 use common\models\Menu;
 use common\models\Pages;
+use common\models\System;
 use Yii;
 use yii\base\BaseObject;
 use yii\console\Controller;
@@ -104,7 +105,7 @@ $i = 1;
             }else{
                 $n_menu->title_ru = isset($categories_translate[0]['value']) ? $categories_translate[0]['value'] : '-';
             }
-            if($n_menu->save()){
+            if($n_menu->save(false)){
                 echo "\n" . $i . " Saved " . $n_menu->title_uk;
                 $i++;
             }else{
@@ -166,7 +167,7 @@ $i = 1;
             $n_menu->image = $menu['image'] ?? '-';
             $n_menu->image_og = $menu['og_image'] ?? '-';
 
-            if($n_menu->save()){
+            if($n_menu->save(false)){
                 echo "\n" . $i . " Saved " . $n_menu->title_uk;
                 $i++;
             }else{
@@ -179,5 +180,48 @@ $i = 1;
 
 
     }
+
+    public function actionSystem(){
+        $Query = new Query();
+        $original_db = Yii::$app->dbOriginal;
+
+        $systems = $original_db->createCommand(
+            $Query->select('*')
+                ->from('{{%system}}')
+                ->createCommand()
+                ->getRawSql()
+        )->queryAll();
+
+        foreach ($systems as $system){
+            $system_translate = $original_db->createCommand(
+                $Query->select('*')
+                    ->from('{{%system_translate}}')
+                    ->where(['system_id' => $system['id']])
+                    ->createCommand()
+                    ->getRawSql()
+            )->queryAll();
+            $n = new System();
+            $n->title_uk = $system['value'];
+            $n->key = $system['key'];
+            if(isset($system_translate[0]['language_id']) == 2){
+                $n->title_en = $system_translate[0]['value'];
+            }else{
+                $n->title_en = isset($system_translate[1]['value']) ? $system_translate[1]['value'] : '-';
+            }
+            if(isset($system_translate[1]['language_id']) == 3){
+                $n->title_ru = $system_translate[1]['value'];
+            }else{
+                $n->title_ru = isset($system_translate[0]['value']) ? $system_translate[0]['value'] : '-';
+            }
+            if($n->save()){
+                echo "\n Saved " . $n->title_uk;
+            }else{
+                print_r($n->errors);
+            }
+
+        }
+
+    }
+
 
 }

@@ -4,9 +4,12 @@ namespace backend\controllers;
 
 use common\models\Category;
 use common\models\search\CategorySearch;
+use Yii;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
@@ -68,10 +71,19 @@ class CategoryController extends Controller
     public function actionCreate()
     {
         $model = new Category();
+        $dir = Yii::getAlias('@frontend/web/uploads');
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                if($_FILES and $_FILES['Category']['size'] > 0) {
+                    $file = UploadedFile::getInstance($model, 'image');
+                    $imageName = uniqid();
+                    $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                    $model->image = '/uploads/' . $imageName . '.' . $file->extension;
+                }
+                if($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -92,9 +104,17 @@ class CategoryController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $dir = Yii::getAlias('@frontend/web/uploads');
+        if ($this->request->post()) {
+            if ($_FILES and $_FILES['Category']['size']['image'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image = '/uploads/' . $imageName . '.' . $file->extension;
+            }
+            if($model->save(false)) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [

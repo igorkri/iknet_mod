@@ -44,8 +44,14 @@
                     ['label' => 'Цены и тарифы', 'url' => ['price/index'], 'icon' => 'barcode'],
                     ['label' => 'Страницы', 'url' => ['page/index'], 'icon' => 'file-alt'],
                     ['label' => 'Подарки енергетикам', 'url' => ['presents-energy-list/index'], 'icon' => 'gift'],
-                    ['label' => 'Вакансии', 'url' => ['career/index'], 'icon' => 'chart-line'],
-                    ['label' => 'Производители', 'url' => ['price/index'], 'icon' => 'copyright'],
+                    [
+                        'label' => 'Вакансии', 'icon' => 'chart-line',
+                        'items' => [
+                            ['label' => 'Ред. страницы', 'url' => ['career/index'],'icon' => 'edit'],
+                            ['label' => 'Список вакансий', 'url' => ['career/index'],'icon' => 'list']
+                        ]
+                    ],
+                    ['label' => 'Клиенты', 'url' => ['clients-brand/index'], 'icon' => 'copyright'],
 //                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
 //                    ['label' => 'Level1'],
 //                    [

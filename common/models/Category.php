@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the model class for table "category".
@@ -31,6 +32,24 @@ class Category extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'category';
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'title_uk',
+                'slugAttribute' => 'slug',
+            ],
+//            'timestamp' => [
+//                'class' => 'yii\behaviors\TimestampBehavior',
+//                'attributes' => [
+//                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at'],
+//                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+//                ],
+//            ],
+        ];
     }
 
     /**
@@ -81,6 +100,9 @@ class Category extends \yii\db\ActiveRecord
         return $this->hasOne(Category::class, ['id' => 'parent_id']);
     }
     public function getParents(){
+        return $this->hasMany(Category::class, ['parent_id' => 'id']);
+    }
+    public function getParents2(){
         return $this->hasMany(Category::class, ['id' => 'parent_id']);
     }
 }

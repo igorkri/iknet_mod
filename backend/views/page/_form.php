@@ -76,7 +76,7 @@ mihaildev\elfinder\Assets::noConflict($this);
 
             <?= $form->field($model, 'title_uk')->textInput(['maxlength' => true])->label('Назва UK') ?>
 
-            <?=$form->field($model, 'text_uk')->widget(CKEditor::class, [
+            <?= $form->field($model, 'text_uk')->widget(CKEditor::class, [
                 'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
                     'language' => 'uk',
 //                    'width' => '500',

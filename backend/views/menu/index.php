@@ -1,24 +1,23 @@
 <?php
 
 use common\models\Menu;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
-use yii\grid\GridView;
+
 
 /** @var yii\web\View $this */
 /** @var common\models\search\MenuSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Menus';
+$this->title = 'Меню';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="menu-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container menu-index">
 
     <p>
-        <?= Html::a('Create Menu', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить меню', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,23 +25,37 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions' => function ($model, $key, $index, $grid) {
+            return ['data-sortable-id' => $model->id];
+        },
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            [
+                'class' => \kotchuprik\sortable\grid\Column::className(),
+            ],
+//            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
+//            'order',
             'title_uk',
             'title_en',
             'title_ru',
             'slug',
             //'parent_id',
-            //'order',
             //'published',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::class,
+                'contentOptions' => ['style' => 'width: 130px;', 'class' => 'text-center'],
                 'urlCreator' => function ($action, Menu $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                 },
+                'template' => '{view} {update} {delete}',
             ],
+        ],
+        'options' => [
+            'data' => [
+                'sortable-widget' => 1,
+                'sortable-url' => Url::to(['sorting']),
+            ]
         ],
     ]); ?>
 
