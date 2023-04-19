@@ -5,6 +5,7 @@ namespace backend\controllers;
 use common\models\Pages;
 use common\models\search\PagesSearch;
 use Yii;
+use yii\base\BaseObject;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

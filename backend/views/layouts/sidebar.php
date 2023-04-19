@@ -39,8 +39,15 @@
 
                     ['label' => 'Меню', 'url' => ['menu/index'], 'icon' => 'ellipsis-v'],
                     ['label' => 'Категории', 'url' => ['category/index'], 'icon' => 'bars'],
-                    ['label' => 'Новости', 'url' => ['news/index'], 'icon' => 'newspaper'],
-                    ['label' => 'Проекти', 'url' => ['project/index'], 'icon' => 'project-diagram'],
+//                    ['label' => 'Новости', 'url' => ['news/index'], 'icon' => 'newspaper'],
+//                    ['label' => 'Проекти', 'url' => ['page/project'], 'icon' => 'project-diagram'],
+//                    [
+//                        'label' => 'Проекти', 'icon' => 'project-diagram',
+//                        'items' => [
+//                            ['label' => 'Проекты на продаж', 'url' => ['page/index', 'category_id' => 12],'icon' => 'edit'],
+//                            ['label' => 'Проекты компании', 'url' => ['page/index', 'category_id' => 13],'icon' => 'list']
+//                        ]
+//                    ],
                     ['label' => 'Цены и тарифы', 'url' => ['price/index'], 'icon' => 'barcode'],
                     ['label' => 'Страницы', 'url' => ['page/index'], 'icon' => 'file-alt'],
                     ['label' => 'Подарки енергетикам', 'url' => ['presents-energy-list/index'], 'icon' => 'gift'],

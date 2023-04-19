@@ -18,6 +18,7 @@ class PagesSearch extends Pages
     {
         return [
             [['id', 'created_at', 'updated_at', 'category_id', 'menu_id', 'published'], 'integer'],
+            [['category_id',], 'safe'],
             [['slug', 'title_uk', 'text_uk', 'seo_title_uk', 'seo_description_uk', 'seo_keywords_uk', 'title_en', 'text_en', 'seo_title_en', 'seo_description_en', 'seo_keywords_en', 'title_ru', 'text_ru', 'seo_title_ru', 'seo_description_ru', 'seo_keywords_ru', 'image', 'image_og'], 'safe'],
         ];
     }
@@ -65,6 +66,11 @@ class PagesSearch extends Pages
             'menu_id' => $this->menu_id,
             'published' => $this->published,
         ]);
+
+//        $query->andFilterWhere([
+//            'category_id' => 'in', 'category_id', $this->category_id,
+//        ]);
+
 
         $query->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'title_uk', $this->title_uk])
