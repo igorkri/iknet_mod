@@ -47,8 +47,8 @@
                     [
                         'label' => 'Вакансии', 'icon' => 'chart-line',
                         'items' => [
-                            ['label' => 'Ред. страницы', 'url' => ['career/index'],'icon' => 'edit'],
-                            ['label' => 'Список вакансий', 'url' => ['career/index'],'icon' => 'list']
+                            ['label' => 'Ред. страницы', 'url' => ['page-career/index'],'icon' => 'edit'],
+                            ['label' => 'Список вакансий', 'url' => ['vcancies/index'],'icon' => 'list']
                         ]
                     ],
                     ['label' => 'Клиенты', 'url' => ['clients-brand/index'], 'icon' => 'copyright'],
