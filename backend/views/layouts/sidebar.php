@@ -50,7 +50,16 @@
 //                    ],
                     ['label' => 'Цены и тарифы', 'url' => ['price/index'], 'icon' => 'barcode'],
                     ['label' => 'Страницы', 'url' => ['page/index'], 'icon' => 'file-alt'],
-                    ['label' => 'Подарки енергетикам', 'url' => ['presents-energy-list/index'], 'icon' => 'gift'],
+//                    ['label' => 'Подарки енергетикам', 'url' => ['presents-energy-list/index'], 'icon' => 'gift'],
+                    ['label' => 'Проекти', 'url' => ['page/project'], 'icon' => 'project-diagram'],
+                    [
+                        'label' => 'Подарки енергетикам', 'icon' => 'gift',
+                        'items' => [
+                            ['label' => 'Ред. страницы', 'url' => ['presents-energy/index', 'category_id' => 13],'icon' => 'edit'],
+                            ['label' => 'Подарки', 'url' => ['presents-energy-list/index'],'icon' => 'list']
+                        ]
+                    ],
+
                     [
                         'label' => 'Вакансии', 'icon' => 'chart-line',
                         'items' => [
