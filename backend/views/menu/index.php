@@ -41,7 +41,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'title_ru',
             'slug',
             //'parent_id',
-            //'published',
+            [
+                'attribute' => 'published',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->published == 1 ? '<span class="badge badge-success">Так</span>' : '<span class="badge badge-danger">Ні</span>';
+                },
+                'filter' => [
+                        1 => "Так",
+                        0 => "Ні",
+                ],
+                'width' => '50px',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
             [
                 'class' => ActionColumn::class,
                 'contentOptions' => ['style' => 'width: 130px;', 'class' => 'text-center'],
