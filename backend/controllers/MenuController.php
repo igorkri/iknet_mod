@@ -144,7 +144,7 @@ class MenuController extends Controller
     }
 
     public function actionSorting(){
-        Yii::$app->cache->flush();
+//        Yii::$app->cache->flush();
         $post_sort_arrs = Yii::$app->request->post('sorting');
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         foreach ($post_sort_arrs as $key_sort => $id){

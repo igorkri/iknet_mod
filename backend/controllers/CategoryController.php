@@ -103,9 +103,11 @@ class CategoryController extends Controller
      */
     public function actionUpdate($id)
     {
+        Yii::$app->cache->flush();
         $model = $this->findModel($id);
         $dir = Yii::getAlias('@frontend/web/uploads');
-        if ($this->request->post()) {
+        if ($model->load($this->request->post())) {
+
             if ($_FILES and $_FILES['Category']['size']['image'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image');
                 $imageName = uniqid();
@@ -114,6 +116,8 @@ class CategoryController extends Controller
             }
             if($model->save(false)) {
                 return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                print_r($model->errors);
             }
         }
 
