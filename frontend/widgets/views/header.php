@@ -56,6 +56,7 @@
                 <a href="https://iknet.com.ua/en/innovations" class="">EN</a>
                 <a href="https://iknet.com.ua/ru/innovations" class="">RU</a>
             </div>
+            <!----- Menu ---------->
             <div class="links_drop">
                 <div class="menu-main-menu-container">
                     <div class="links">
@@ -116,6 +117,7 @@
                     </div>
                 </div>
             </div>
+            <!----- Menu /end ----->
             <div class="burger">
                 <img src="img/burger.svg" alt="">
             </div>
