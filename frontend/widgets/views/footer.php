@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <footer>
     <h2>Прості рішення складних завдань</h2>
     <div class="animation">
@@ -33,7 +38,7 @@
         <div class="footer_block">
             <div class="part">
                 <h4>Карта сайту</h4>
-                <a href="#">Про компанію</a>
+                <a href="<?= Url::to(['/about/view']) ?>">Про компанію</a>
                 <a href="#">Управління</a>
                 <a href="#">Приєднання</a>
                 <a href="#">Бізнес в енергетиці</a>
