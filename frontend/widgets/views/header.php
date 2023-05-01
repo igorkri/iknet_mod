@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <header id="new_header" class="new_header">
     <div class="block">
         <div class="logo">
@@ -60,7 +65,7 @@
             <div class="links_drop">
                 <div class="menu-main-menu-container">
                     <div class="links">
-                        <a class="vulg" href="about.html">
+                        <a class="vulg" href="<?= Url::to(['/about/view']) ?>">
                             Про компанію </a>
                         <div class="developable">
 
@@ -86,9 +91,9 @@
                                     Подарунки енергетикам </a>
                             </div>
                         </div>
-                        <a class="vulg" href="news.html">
+                        <a class="vulg" href="<?= Url::to(['/news/view']) ?>">
                             Новини </a>
-                        <a class="vulg" href="career.html">
+                        <a class="vulg" href="<?= Url::to(['/career/view']) ?>">
                             Кар'єра </a>
                         <div class="developable">
                             <div class="name">
@@ -109,7 +114,7 @@
                                     Проєкти Компанії </a>
                             </div>
                         </div>
-                        <a class="vulg" href="contacts.html">
+                        <a class="vulg" href="<?= Url::to(['/contacts/view']) ?>">
                             Контакти </a>
                     </div>
                 </div>

@@ -10,6 +10,6 @@ class GiftsController extends Controller
 {
     public function actionView()
     {
-        $this->render('view');
+      return  $this->render('view');
     }
 }

@@ -5,11 +5,10 @@ namespace frontend\controllers;
 
 use \yii\web\Controller;
 
-
-class ContactsController extends Controller
+class NewsController extends Controller
 {
     public function actionView()
     {
-      return  $this->render('view');
+        return $this->render('view');
     }
 }
