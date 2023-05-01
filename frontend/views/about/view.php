@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <!----- about ----->
 <section class="about">
     <div class="block">
@@ -16,7 +21,7 @@
             <div class="item">
                 <h5><?= $review->title_uk ?></h5>
                 <p><?= $review->description_uk ?></p>
-                <a href="#">Докладніше →</a>
+                <a href="<?= Url::to(['/reviews/view']) ?>">Докладніше →</a>
                 <p><?= $review->author_uk ?></p>
             </div>
             <?php endforeach; ?>
