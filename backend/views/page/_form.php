@@ -131,6 +131,7 @@ mihaildev\elfinder\Assets::noConflict($this);
         <div class="row">
             <div class="col-6">
                 <br>
+                <?php if ($model->isNewRecord): ?>
                 <?= $form->field($model, 'image')->widget(FileInput::class, [
                     'language' => 'uk',
                     'options' => ['accept' => 'image/*'],
@@ -140,8 +141,28 @@ mihaildev\elfinder\Assets::noConflict($this);
                         'showUpload' => false,
                     ],
                 ])->label('Головне зображення');?>
+
+                <?php else: ?>
+
+                    <?= $form->field($model, 'image')->widget(FileInput::class, [
+                        'language' => 'uk',
+                        'options' => ['accept' => 'image/*'],
+                        'pluginOptions' => [
+                            'maxFileCount' => 1,
+                            'showRemove' => false,
+                            'showUpload' => false,
+                            'initialPreview' => [
+                                Yii::$app->request->hostInfo . $model->image
+                            ],
+                            'initialPreviewAsData' => true,
+                        ],
+                    ])->label('Головне зображення'); ?>
+
+                <?php endif; ?>
             </div>
+
             <div class="col-6">
+                <?php if ($model->isNewRecord): ?>
                 <?= $form->field($model, 'image_og')->widget(FileInput::class, [
                     'language' => 'uk',
                     'options' => ['accept' => 'image/*'],
@@ -151,10 +172,25 @@ mihaildev\elfinder\Assets::noConflict($this);
                         'showUpload' => false,
                     ],
                 ])->label('Зображення для SEO (Якщо залишити пустим буде використовуваться головне зображення)');?>
+
+                <?php else: ?>
+
+                    <?= $form->field($model, 'image_og')->widget(FileInput::class, [
+                        'language' => 'uk',
+                        'options' => ['accept' => 'image/*'],
+                        'pluginOptions' => [
+                            'maxFileCount' => 1,
+                            'showRemove' => false,
+                            'showUpload' => false,
+                            'initialPreview' => [
+                                Yii::$app->request->hostInfo . $model->image_og
+                            ],
+                            'initialPreviewAsData' => true,
+                        ],
+                    ])->label('Зображення для SEO (Якщо залишити пустим буде використовуваться головне зображення)'); ?>
+                <?php endif; ?>
             </div>
         </div>
-
-
     </div>
 
     <?php ActiveForm::end(); ?>
