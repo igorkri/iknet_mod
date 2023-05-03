@@ -2,18 +2,22 @@
 
 use yii\helpers\Url;
 
+
+/**
+ * @var \common\models\Menu $menu
+ */
 ?>
 <header id="new_header" class="new_header">
     <div class="block">
         <div class="logo">
-            <a href="index.html" title="iknet">
+            <a href="/" title="iknet">
                 <img src="/img/logo.webp" alt="iknet" class="normal-logo">
             </a>
         </div>
         <div class="cont">
             <div class="search">
                 <img src="/img/lens.svg" alt="">
-                <input type="text" id="search-input" placeholder="Пошук">
+                <input type="text" id="search-input" placeholder="<?=$search?>">
             </div>
             <div class="social_networks">
                 <a href="https://twitter.com/iknetUA">
@@ -57,21 +61,25 @@ use yii\helpers\Url;
                 <a href="tel:+380504417020">+38 050 441 70 20</a>
             </div>
             <div class="languages">
-                <a href="<?=Url::to(['', 'language' => 'uk'])?>" class="active">UK</a>
-                <a href="<?=Url::to(['', 'language' => 'en'])?>" class="">EN</a>
-                <a href="<?=Url::to(['', 'language' => 'ru'])?>" class="">RU</a>
+                <a href="<?=Url::to(['', 'language' => 'uk'])?>" class="<?=$lang === 'uk' ? 'active' : ''?>">UK</a>
+                <a href="<?=Url::to(['', 'language' => 'en'])?>" class="<?=$lang === 'en' ? 'active' : ''?>">EN</a>
+                <a href="<?=Url::to(['', 'language' => 'ru'])?>" class="<?=$lang === 'ru' ? 'active' : ''?>">RU</a>
             </div>
             <!----- Menu ---------->
             <div class="links_drop">
                 <div class="menu-main-menu-container">
                     <div class="links">
-                        <a class="vulg" href="<?= Url::to(['/about/view']) ?>">
-                            Про компанію </a>
+                        <?php foreach ($menus as $menu): ?>
+                        <?php if(!$menu->children): ?>
+                        <a class="vulg" href="<?= Url::to(['/'.$menu->slug]) ?>">
+                            <?=$menu->getTitleText($menu->id)?>
+                        </a>
+                        <?php endif; ?>
+                        <?php if($menu->children): ?>
                         <div class="developable">
-
                             <div class="name">
                                 <a>
-                                    Послуги </a>
+                                    <?=$menu->getTitleText($menu->id)?> </a>
                                 <svg width="10" height="7" viewBox="0 0 10 7" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -80,42 +88,16 @@ use yii\helpers\Url;
                                 </svg>
                             </div>
                             <div class="drop">
-                                <a href="https://iknet.com.ua/uk/innovations#" class="back">Назад</a>
-                                <a href="https://iknet.com.ua/uk/#management">
-                                    Інжиніринг в енергетиці </a>
-                                <a href="https://iknet.com.ua/uk/#connection">
-                                    Приєднання об’єктів </a>
-                                <a href="https://iknet.com.ua/uk/#energy-efficiency">
-                                    Напрямки бізнесу </a>
-                                <a href="gifts.html">
-                                    Подарунки енергетикам </a>
+                                <?php foreach ($menu->children as $child): ?>
+<!--                                <a href="https://iknet.com.ua/uk/innovations#" class="back">Назад</a>-->
+                                <a href="<?= Url::to(['/'.$child->slug]) ?>">
+                                    <?=$child->getTitleText($child->id)?>
+                                </a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
-                        <a class="vulg" href="<?= Url::to(['/news/view']) ?>">
-                            Новини </a>
-                        <a class="vulg" href="<?= Url::to(['/career/view']) ?>">
-                            Кар'єра </a>
-                        <div class="developable">
-                            <div class="name">
-                                <a href="https://iknet.com.ua/uk/#projects">
-                                    Проєкти </a>
-                                <svg width="10" height="7" viewBox="0 0 10 7" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                            d="M1.00003 0.5C0.595567 0.5 0.230931 0.743642 0.0761497 1.11732C-0.0786313 1.49099 0.00692445 1.92111 0.292922 2.20711L4.29292 6.20711C4.68345 6.59763 5.31661 6.59763 5.70714 6.20711L9.70714 2.20711C9.99313 1.92111 10.0787 1.49099 9.92391 1.11732C9.76913 0.743642 9.40449 0.5 9.00003 0.5H1.00003Z"
-                                            fill=""></path>
-                                </svg>
-                            </div>
-                            <div class="drop">
-                                <a href="https://iknet.com.ua/uk/innovations#" class="back">Назад</a>
-                                <a href="projects_for_sale.html">
-                                    Проєкти на продаж </a>
-                                <a href="https://iknet.com.ua/uk/projects/companys-projects">
-                                    Проєкти Компанії </a>
-                            </div>
-                        </div>
-                        <a class="vulg" href="<?= Url::to(['/contacts/view']) ?>">
-                            Контакти </a>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

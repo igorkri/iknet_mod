@@ -82,14 +82,19 @@ class Menu extends \yii\db\ActiveRecord
 
     public static function getList()
     {
-        $list = self::find()->where(['parent_id' => null])->andWhere(['published' => 1])->orderBy('order')->all();
+        $list = self::find()
+            ->with('children')
+            ->where(['parent_id' => null])
+            ->andWhere(['published' => 1])
+            ->orderBy('order')
+            ->all();
         return $list ?? [];
     }
 
-    public function getChildren()
-    {
-        return self::find()->where(['parent_id' => $this->id])->orderBy('order')->all();
-    }
+//    public function getChildren($id)
+//    {
+//        return self::find()->where(['parent_id' => $id])->orderBy('order')->asArray()->all();
+//    }
 
     public function getTitleText($id)
     {
@@ -102,6 +107,14 @@ class Menu extends \yii\db\ActiveRecord
         }else{
             return $res->title_uk;
         }
+    }
+
+    public function getParent(){
+        return $this->hasOne(Menu::class, ['id' => 'parent_id']);
+    }
+
+    public function getChildren(){
+        return $this->hasMany(Menu::class, ['parent_id' => 'id']);
     }
 
 

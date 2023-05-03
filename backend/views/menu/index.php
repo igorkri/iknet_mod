@@ -36,11 +36,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
 //            'order',
+            [
+                'attribute' => 'parent_id',
+                'label' => 'Головна категорія',
+                'format' => 'raw',
+                'value' => 'parent.title_uk',
+                'filter' => false,
+                'width' => '50px',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
+
             'title_uk',
             'title_en',
             'title_ru',
             'slug',
-            //'parent_id',
             [
                 'attribute' => 'published',
                 'format' => 'raw',
