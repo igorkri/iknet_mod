@@ -121,4 +121,12 @@ class Category extends \yii\db\ActiveRecord
             return $res->title_uk;
         }
     }
+
+    static function getTab(){
+        return Category::find()
+            ->with(['parents'])
+            ->where(['id' => 1])
+//            ->asArray()
+            ->one();
+    }
 }

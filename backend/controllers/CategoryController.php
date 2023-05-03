@@ -75,7 +75,7 @@ class CategoryController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                if($_FILES and $_FILES['Category']['size'] > 0) {
+                if($_FILES and $_FILES['Category']['size']['image'] > 0) {
                     $file = UploadedFile::getInstance($model, 'image');
                     $imageName = uniqid();
                     $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);

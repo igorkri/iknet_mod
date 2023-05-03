@@ -2,6 +2,8 @@
 
 use yii\helpers\Url;
 
+$path = Yii::$app->request->pathInfo;
+$url = Yii::$app->request->get('slug');
 
 /**
  * @var \common\models\Menu $menu
@@ -61,9 +63,9 @@ use yii\helpers\Url;
                 <a href="tel:+380504417020">+38 050 441 70 20</a>
             </div>
             <div class="languages">
-                <a href="<?=Url::to(['', 'language' => 'uk'])?>" class="<?=$lang === 'uk' ? 'active' : ''?>">UK</a>
-                <a href="<?=Url::to(['', 'language' => 'en'])?>" class="<?=$lang === 'en' ? 'active' : ''?>">EN</a>
-                <a href="<?=Url::to(['', 'language' => 'ru'])?>" class="<?=$lang === 'ru' ? 'active' : ''?>">RU</a>
+                <a href="<?=Url::to(['/'. $path, 'language' => 'uk'])?>" class="<?=$lang === 'uk' ? 'active' : ''?>">UK</a>
+                <a href="<?=Url::to(['/'. $path, 'language' => 'en'])?>" class="<?=$lang === 'en' ? 'active' : ''?>">EN</a>
+                <a href="<?=Url::to(['/'. $path, 'language' => 'ru'])?>" class="<?=$lang === 'ru' ? 'active' : ''?>">RU</a>
             </div>
             <!----- Menu ---------->
             <div class="links_drop">

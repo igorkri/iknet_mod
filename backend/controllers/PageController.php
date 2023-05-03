@@ -111,7 +111,7 @@ class PageController extends Controller
         $model = $this->findModel($id);
         $dir = Yii::getAlias('@frontendWeb/img/posts');
 
-        if ($this->request->isPost){
+        if ($model->load($this->request->post())) {
 
             if($_FILES and $_FILES['Pages']['size']['image'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image');
