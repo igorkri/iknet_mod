@@ -68,6 +68,8 @@
                         ]
                     ],
                     ['label' => 'Клиенты', 'url' => ['clients-brand/index'], 'icon' => 'copyright'],
+                    ['label' => 'Отзывы', 'url' => ['reviews/index'], 'icon' => 'list'],
+                    ['label' => 'О компании', 'url' => ['about/index'], 'icon' => 'list'],
 //                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
 //                    ['label' => 'Level1'],
 //                    [

@@ -4,9 +4,11 @@ namespace backend\controllers;
 
 use common\models\About;
 use common\models\search\AboutSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * AboutController implements the CRUD actions for About model.
@@ -68,9 +70,16 @@ class AboutController extends Controller
     public function actionCreate()
     {
         $model = new About();
+        $dir = Yii::getAlias('@frontendWeb/img/about');
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if($_FILES and $_FILES['About']['size']['image'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image = '/img/about/' . $imageName . '.' . $file->extension;
+            }
+            if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -92,9 +101,20 @@ class AboutController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $dir = Yii::getAlias('@frontendWeb/img/about');
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost){
+
+            if($_FILES and $_FILES['About']['size']['image'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image = '/img/about/' . $imageName . '.' . $file->extension;
+            }
+        }
+        if ($this->request->isPost && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
+
         }
 
         return $this->render('update', [

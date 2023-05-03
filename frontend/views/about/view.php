@@ -12,7 +12,7 @@ use yii\helpers\Url;
                 <p><?= $about->description_uk ?></p>
             </div>
             <div class="img">
-                <img src="img/about.webp" alt="">
+                <img src="<?= $about->image ?>" alt="">
             </div>
         </div>
         <div class="reviews">
