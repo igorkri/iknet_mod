@@ -1697,6 +1697,7 @@ form.your_contact .right input[type=submit]:hover {
 }
 
 .news .item .text {
+
   width: calc(100% - 377px);
   padding-top: 15px;
   display: -webkit-box;
@@ -1707,6 +1708,18 @@ form.your_contact .right input[type=submit]:hover {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 20px;
+}
+
+.short_descr {
+
+  width: 100%;
+  margin-top: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+
 }
 
 .news .item .text h4 {
