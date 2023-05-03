@@ -53,4 +53,30 @@ class About extends \yii\db\ActiveRecord
             'image' => Yii::t('app', 'Картинка'),
         ];
     }
+
+    public function getTitle($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->title_ru;
+        }elseif($lang == 'en'){
+            return $res->title_en;
+        }else{
+            return $res->title_uk;
+        }
+    }
+
+    public function getText($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->description_ru;
+        }elseif($lang == 'en'){
+            return $res->description_en;
+        }else{
+            return $res->description_uk;
+        }
+    }
 }

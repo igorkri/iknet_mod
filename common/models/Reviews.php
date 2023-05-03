@@ -57,4 +57,42 @@ class Reviews extends \yii\db\ActiveRecord
             'author_ru' => Yii::t('app', 'Автор RU'),
         ];
     }
+
+    public function getTitle($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->title_ru;
+        }elseif($lang == 'en'){
+            return $res->title_en;
+        }else{
+            return $res->title_uk;
+        }
+    }
+
+    public function getText($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->description_ru;
+        }elseif($lang == 'en'){
+            return $res->description_en;
+        }else{
+            return $res->description_uk;
+        }
+    }
+    public function getAuthor($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->author_ru;
+        }elseif($lang == 'en'){
+            return $res->author_en;
+        }else{
+            return $res->author_uk;
+        }
+    }
 }

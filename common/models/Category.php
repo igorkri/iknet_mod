@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\SluggableBehavior;
+use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "category".
@@ -104,5 +105,20 @@ class Category extends \yii\db\ActiveRecord
     }
     public function getParents2(){
         return $this->hasMany(Category::class, ['id' => 'parent_id']);
+    }
+
+    public function getTitle($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+//        VarDumper::dump($res, 10, true);
+//        die;
+        if($lang == 'ru'){
+            return $res->title_ru;
+        }elseif($lang == 'en'){
+            return $res->title_en;
+        }else{
+            return $res->title_uk;
+        }
     }
 }

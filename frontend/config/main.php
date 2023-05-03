@@ -48,6 +48,8 @@ return [
                 '/' => '/site/index',
                 'about' => '/about/view',
                 'contacts' => '/contacts/view',
+                'karyera' => '/career/view',
+                'articles' => '/news/view',
 //                '/<slug:\w+>' => '/page/article',
 //                'articles/<slug:\w+>' => '/page/article',
 //                '/<lang:\w+>' => 'site/index',
