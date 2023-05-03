@@ -46,7 +46,8 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '/' => '/site/index',
-                'about' => '/site/about',
+                'about' => '/about/view',
+                'contacts' => '/contacts/view',
 //                '/<slug:\w+>' => '/page/article',
 //                'articles/<slug:\w+>' => '/page/article',
 //                '/<lang:\w+>' => 'site/index',
