@@ -14,7 +14,7 @@
         </p>
         <div class="item" data-filter="gift_1">
             <div class="img">
-                <img src="img/gift1.webp" alt="">
+                <img src="/img/gift1.webp" alt="">
             </div>
             <div class="info">
                 <div class="title">
@@ -29,7 +29,7 @@
         </div>
         <div class="item" data-filter="gift_2">
             <div class="img">
-                <img src="img/gift2.webp" alt="">
+                <img src="/img/gift2.webp" alt="">
             </div>
             <div class="info">
                 <div class="title">
@@ -56,7 +56,7 @@
         </div>
         <div class="item">
             <div class="img">
-                <img src="img/gift3.webp" alt="">
+                <img src="/img/gift3.webp" alt="">
             </div>
             <div class="info">
                 <div class="title">
@@ -75,7 +75,7 @@
         </div>
         <div class="item">
             <div class="img">
-                <img src="img/gift4.webp" alt="">
+                <img src="/img/gift4.webp" alt="">
             </div>
             <div class="info">
                 <div class="title">
@@ -96,7 +96,7 @@
         </div>
         <div class="item">
             <div class="img">
-                <img src="img/gift5.webp" alt="">
+                <img src="/img/gift5.webp" alt="">
             </div>
             <div class="info">
                 <div class="title">

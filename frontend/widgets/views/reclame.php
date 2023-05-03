@@ -1,6 +1,6 @@
 <section class="reclame" id="reclame">
     <div class="block">
-        <img src="img/IKNET.webp" alt="">
+        <img src="/img/IKNET.webp" alt="">
         <h2>Експерт в реалізації проєктів альтернативної та традиційної енергетики</h2>
         <div class="counter">
             <div class="item">

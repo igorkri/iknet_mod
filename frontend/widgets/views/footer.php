@@ -7,18 +7,18 @@ use yii\helpers\Url;
     <h2>Прості рішення складних завдань</h2>
     <div class="animation">
         <div class="footer_city">
-            <img src="img/footer_city.webp" alt="">
+            <img src="/img/footer_city.webp" alt="">
             <div class="propeller">
-                <img src="img/propeller.webp" alt="">
+                <img src="/img/propeller.webp" alt="">
             </div>
             <div class="propeller">
-                <img src="img/propeller.webp" alt="">
+                <img src="/img/propeller.webp" alt="">
             </div>
             <div class="propeller">
-                <img src="img/propeller.webp" alt="">
+                <img src="/img/propeller.webp" alt="">
             </div>
             <div class="light">
-                <img src="img/light.webp" alt="">
+                <img src="/img/light.webp" alt="">
             </div>
             <div class="light_window n1"></div>
             <div class="light_window n2"></div>

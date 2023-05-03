@@ -1,7 +1,7 @@
 <section class="algorithm">
     <div class="block">
         <h1>Алгоритм реалізації проектів альтернативної енергетики</h1>
-        <img src="img/table.webp" alt="">
+        <img src="/img/table.webp" alt="">
         <a href="#" class="uni_link">
             Скачати
             <svg width="13" height="17" viewBox="0 0 13 17" fill="none" xmlns="http://www.w3.org/2000/svg">

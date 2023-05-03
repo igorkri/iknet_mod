@@ -4,7 +4,7 @@
             <h1>Інжиніринг в енергетиці</h1>
             <div class="info">
                 <div class="part1">
-                    <img src="img/possibilities1_1.webp" alt="">
+                    <img src="/img/possibilities1_1.webp" alt="">
                     <div class="links">
                         <a href="#">СЕС →</a>
                         <a href="#">Біогазові ЕС →</a>
@@ -29,7 +29,7 @@
                         </ul>
                     </div>
                     <div class="right">
-                        <img src="img/possibilities1_2.webp" alt="">
+                        <img src="/img/possibilities1_2.webp" alt="">
                         <div class="drop">
                             <div class="head">
                                 <p>Аудит проєктів енергетики</p>
@@ -153,7 +153,7 @@
             <h1>Приєднання об’єктів</h1>
             <div class="info">
                 <div class="part1">
-                    <img src="img/possibilities2_1.webp" alt="">
+                    <img src="/img/possibilities2_1.webp" alt="">
                     <div class="links">
                         <a href="#">Стандарт →</a>
                         <a href="#">Нестандарт →</a>
@@ -179,7 +179,7 @@
                         </ul>
                     </div>
                     <div class="right">
-                        <img src="img/possibilities2_2.webp" alt="">
+                        <img src="/img/possibilities2_2.webp" alt="">
                         <div class="drop">
                             <div class="head">
                                 <p>Техніко-економічне обґрунтування приєднання</p>
@@ -251,7 +251,7 @@
             <h1>Напрямки бізнесу</h1>
             <div class="info">
                 <div class="part1">
-                    <img src="img/possibilities3_1.webp" alt="">
+                    <img src="/img/possibilities3_1.webp" alt="">
                     <div class="links">
                         <a href="#">Аудит →</a>
                         <a href="#">Концепція →</a>
@@ -270,7 +270,7 @@
                         <p>ІКНЕТ пропонує комплекс послуг в рамках реалізації проєктів energy storage.</p>
                     </div>
                     <div class="right">
-                        <img src="img/possibilities3_2.webp" alt="">
+                        <img src="/img/possibilities3_2.webp" alt="">
                         <div class="drop">
                             <div class="head">
                                 <p>Система накопичення енергії</p>

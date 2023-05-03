@@ -7,12 +7,12 @@ use yii\helpers\Url;
     <div class="block">
         <div class="logo">
             <a href="index.html" title="iknet">
-                <img src="img/logo.webp" alt="iknet" class="normal-logo">
+                <img src="/img/logo.webp" alt="iknet" class="normal-logo">
             </a>
         </div>
         <div class="cont">
             <div class="search">
-                <img src="img/lens.svg" alt="">
+                <img src="/img/lens.svg" alt="">
                 <input type="text" id="search-input" placeholder="Пошук">
             </div>
             <div class="social_networks">
@@ -57,9 +57,9 @@ use yii\helpers\Url;
                 <a href="tel:+380504417020">+38 050 441 70 20</a>
             </div>
             <div class="languages">
-                <a href="https://iknet.com.ua/uk/innovations" class="active">UK</a>
-                <a href="https://iknet.com.ua/en/innovations" class="">EN</a>
-                <a href="https://iknet.com.ua/ru/innovations" class="">RU</a>
+                <a href="<?=Url::to(['', 'language' => 'uk'])?>" class="active">UK</a>
+                <a href="<?=Url::to(['', 'language' => 'en'])?>" class="">EN</a>
+                <a href="<?=Url::to(['', 'language' => 'ru'])?>" class="">RU</a>
             </div>
             <!----- Menu ---------->
             <div class="links_drop">
@@ -121,7 +121,7 @@ use yii\helpers\Url;
             </div>
             <!----- Menu /end ----->
             <div class="burger">
-                <img src="img/burger.svg" alt="">
+                <img src="/img/burger.svg" alt="">
             </div>
         </div>
     </div>
