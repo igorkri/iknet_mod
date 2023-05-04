@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "projects".
@@ -94,7 +95,7 @@ class Projects extends \yii\db\ActiveRecord
 
    public function getTitle($id, $lang = null){
        $lang = \Yii::$app->session->get('_language');
-        $post = Pages::find()->where(['id' => $id])->one();
+        $post = Projects::find()->where(['id' => $id])->one();
         if($lang == 'en'){
             return $post->title_en;
         }elseif($lang == 'ru'){
@@ -106,7 +107,7 @@ class Projects extends \yii\db\ActiveRecord
 
    public function getText($id, $lang = null){
        $lang = \Yii::$app->session->get('_language');
-        $post = Pages::find()->where(['id' => $id])->one();
+        $post = Projects::find()->where(['id' => $id])->one();
         if($lang == 'en'){
             return $post->text_en;
         }elseif($lang == 'ru'){
@@ -114,6 +115,17 @@ class Projects extends \yii\db\ActiveRecord
        }else{
            return $post->text_uk;
        }
+   }
+
+   public function getUrlParams($cat_id){
+
+        $res = [];
+        $category = ProjectCategory::find()->with('parent')->where(['id' => $cat_id])->one();
+        $res = [
+            'c' => $category->parent->slug,
+            'a' => $category->slug
+        ];
+        return $res;
    }
 
 }

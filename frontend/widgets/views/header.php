@@ -3,8 +3,13 @@
 use yii\helpers\Url;
 
 $path = Yii::$app->request->pathInfo;
-$url = Yii::$app->request->get('slug');
+//$url = Yii::$app->request->get('slug');
 
+$url = explode('/', $path);
+
+//\yii\helpers\VarDumper::dump($path, 10, true);
+//\yii\helpers\VarDumper::dump($url, 10, true);
+//die;
 /**
  * @var \common\models\Menu $menu
  */
@@ -90,9 +95,9 @@ $url = Yii::$app->request->get('slug');
                                 </svg>
                             </div>
                             <div class="drop">
-                                <?php foreach ($menu->children as $child): ?>
+                                <?php foreach ($menu->children as $child):?>
 <!--                                <a href="https://iknet.com.ua/uk/innovations#" class="back">Назад</a>-->
-                                <a href="<?= Url::to(['/'.$child->slug]) ?>">
+                                <a href="<?= Url::to(['/'. $child->slug]) ?>">
                                     <?=$child->getTitleText($child->id)?>
                                 </a>
                                 <?php endforeach; ?>

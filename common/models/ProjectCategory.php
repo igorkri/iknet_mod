@@ -98,13 +98,13 @@ class ProjectCategory extends \yii\db\ActiveRecord
     }
 
     public function getParent(){
-        return $this->hasOne(Category::class, ['id' => 'parent_id']);
+        return $this->hasOne(ProjectCategory::class, ['id' => 'parent_id']);
     }
     public function getParents(){
-        return $this->hasMany(Category::class, ['parent_id' => 'id']);
+        return $this->hasMany(ProjectCategory::class, ['parent_id' => 'id']);
     }
     public function getParents2(){
-        return $this->hasMany(Category::class, ['id' => 'parent_id']);
+        return $this->hasMany(ProjectCategory::class, ['id' => 'parent_id']);
     }
 
     public function getTitle($id)
@@ -122,21 +122,13 @@ class ProjectCategory extends \yii\db\ActiveRecord
         }
     }
 
-    static function getTab(){
-        return Category::find()
-            ->with(['parents'])
-            ->where(['id' => 1])
-//            ->asArray()
-            ->one();
-    }
-
     static function getTabProject($slug){
-        $cat_1 = Category::find()
+        $cat_1 = ProjectCategory::find()
             ->with(['parents'])
             ->where(['slug' => $slug])
             ->one();
         if(isset($cat_1->parents) && count($cat_1->parents) <= 0){
-            $cat_2 = Category::find()
+            $cat_2 = ProjectCategory::find()
                 ->with(['parents'])
                 ->where(['id' => $cat_1->parent_id])
                 ->one();

@@ -8,7 +8,6 @@ $slug = Yii::$app->request->get('slug');
     <div class="block">
         <h2><?=$category->getTitle($category->id)?></h2>
         <nav class="bookmarks" id="bookmarks">
-            <a href="<?=Url::to(['view', 'slug' => null])?>" class="<?= $slug == null || $slug == 'articles' ? 'active' : ''?>">Всі проєкти</a>
             <?php if ($tabs): ?>
                 <?php foreach ($tabs->parents as $parent): ?>
                     <a href="<?=Url::to(['companys-projects', 'slug' => $parent->slug])?>" class="<?= $parent->slug === $slug ? 'active' : ''?>"><?=$parent->getTitle($parent->id)?></a>
@@ -16,7 +15,7 @@ $slug = Yii::$app->request->get('slug');
             <?php endif; ?>
         </nav>
         <?php foreach ($news as $new): ?>
-            <a href="<?=Url::to(['view', 'slug' => $new->slug])?>" class="item">
+            <a href="<?=Yii::$app->urlManager->createUrl(['/projects/view', 'c' => $new->getUrlParams($new->category_id)['c'], 'a' => $new->getUrlParams($new->category_id)['a'],'slug' => $new->slug])?>" class="item">
                 <div class="img">
                     <img src="<?= $new->image ?>" alt="">
                 </div>

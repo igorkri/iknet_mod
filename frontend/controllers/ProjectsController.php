@@ -5,7 +5,8 @@ namespace frontend\controllers;
 
 
 use common\models\Category;
-use common\models\Pages;
+use common\models\ProjectCategory;
+use common\models\Projects;
 use Yii;
 use yii\helpers\VarDumper;
 
@@ -13,30 +14,27 @@ class ProjectsController extends \yii\web\Controller
 {
     public function actionView($slug)
     {
-        $new = Pages::find()->where(['slug' => $slug])->one();
+        $new = Projects::find()->where(['slug' => $slug])->one();
 
         return $this->render('view',[
             'new' => $new,
         ]);
     }
 
-    public function actionCompanysProjects()
+    public function actionCompanysProjects($slug = null)
     {
-        $url = Yii::$app->request->pathInfo;
-        $slug = explode('/', $url);
-        $tabs = Category::getTabProject($slug[1]);
-        if($slug == null){
-            $category = Category::find()
-                ->with(['parents'])
-                ->where(['id' => 1])
-                ->one();
-        }else{
-            $category = Category::find()
-                ->with(['parents'])
-                ->where(['slug' => $slug[1]])
-//                ->asArray()
-                ->one();
+        if($slug === null){
+            $url = Yii::$app->request->pathInfo;
+            $slug = explode('/', $url);
+            $slug = $slug[1];
         }
+        $category = ProjectCategory::find()
+            ->with(['parents'])
+            ->where(['slug' => $slug])
+            ->one();
+
+        $tabs = ProjectCategory::getTabProject($slug);
+
         if($category->parents){
             $cat_ids = [];
             foreach ($category->parents as $parent){
@@ -45,15 +43,13 @@ class ProjectsController extends \yii\web\Controller
         }else{
             $cat_ids[] = $category->id;
         }
-        $news = Pages::find()
+
+        $news = Projects::find()
             ->where([
                 'category_id' => $cat_ids,
                 'published' => 1,
             ])
             ->all();
-
-//        VarDumper::dump($cat_ids, 10, true);
-//        die;
 
         return $this->render('projects-compani', [
             'tabs' => $tabs,
@@ -64,24 +60,19 @@ class ProjectsController extends \yii\web\Controller
 
     public function actionProjectsForSale($slug = null)
     {
-        $url = Yii::$app->request->pathInfo;
-        $slugTab = explode('/', $url);
-
-        $tabs = Category::getTabProject($slugTab[1]);
-        if($slug == null){
-            $category = Category::find()
-                ->with(['parents'])
-                ->where(['id' => 1])
-                ->one();
-        }else{
-            $category = Category::find()
-                ->with(['parents'])
-                ->where(['slug' => $slug])
-//                ->asArray()
-                ->one();
+        if($slug === null){
+            $url = Yii::$app->request->pathInfo;
+            $slug = explode('/', $url);
+            $slug = $slug[1];
         }
+        $category = ProjectCategory::find()
+            ->with(['parents'])
+            ->where(['slug' => $slug])
+            ->one();
 
-        if(isset($category->parents)){
+        $tabs = ProjectCategory::getTabProject($slug);
+
+        if($category->parents){
             $cat_ids = [];
             foreach ($category->parents as $parent){
                 $cat_ids[] = $parent->id;
@@ -89,14 +80,18 @@ class ProjectsController extends \yii\web\Controller
         }else{
             $cat_ids[] = $category->id;
         }
-        $news = Pages::find()
+        $news = Projects::find()
             ->where([
                 'category_id' => $cat_ids,
                 'published' => 1,
             ])
             ->all();
 
-        return $this->render('projects-for-sale', [
+//        VarDumper::dump($slug, 10, true);
+//        VarDumper::dump($cat_ids, 10, true);
+//        die;
+
+        return $this->render('projects-compani', [
             'tabs' => $tabs,
             'news' => $news,
             'category' => $category

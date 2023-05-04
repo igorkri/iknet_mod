@@ -49,11 +49,17 @@ return [
                 'about' => '/about/view',
                 'contacts' => '/contacts/view',
                 'karyera' => '/career/view',
-                '<slug:[\w+-]*\w+>' => '/news/view',
+
+                '<c:[\w+-]*\w+>/<a:[\w+-]*\w+>/<slug:[\w+-]*\w+>' => '/projects/view',
+
+//                '<slug:[\w+-]*\w+>' => '/news/view',
                 'articles/<slug:[\w+-]*\w+>' => '/news/item',
                 'articles' => '/news/view',
-//                'projects/<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
-//                '<slug:[\w+-]*\w+>' => '/projects/view',
+                '<slug:[\w+-]*\w+>' => '/projects/view',
+
+
+                'projects/<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
+                'projects/<slug:[\w+-]*\w+>' => '/projects/companys-projects',
 
 
 //                '<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
