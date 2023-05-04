@@ -36,6 +36,8 @@ class NewsController extends Controller
         }else{
             $cat_ids[] = $category->id;
         }
+//        VarDumper::dump($cat_ids, 10, true);
+//        die;
         $news = Pages::find()
             ->where([
                 'category_id' => $cat_ids,

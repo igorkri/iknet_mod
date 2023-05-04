@@ -52,7 +52,7 @@ return [
                 '<slug:[\w+-]*\w+>' => '/news/view',
                 'articles/<slug:[\w+-]*\w+>' => '/news/item',
                 'articles' => '/news/view',
-                'projects/<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
+//                'projects/<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
 //                '<slug:[\w+-]*\w+>' => '/projects/view',
 
 

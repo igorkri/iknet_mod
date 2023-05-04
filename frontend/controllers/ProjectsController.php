@@ -52,7 +52,7 @@ class ProjectsController extends \yii\web\Controller
             ])
             ->all();
 
-//        VarDumper::dump($tabs, 10, true);
+//        VarDumper::dump($cat_ids, 10, true);
 //        die;
 
         return $this->render('projects-compani', [
