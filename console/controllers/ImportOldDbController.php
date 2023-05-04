@@ -264,9 +264,8 @@ class ImportOldDbController extends Controller
             $model->image_og = $page['og_image'] ?? '-';
 
             if ($model->save(false)) {
-                echo "\n" . $i . " Saved " . $model->title_uk;
+                echo "\n Saved " . $model->title_uk;
                 $page->delete();
-                $i++;
             } else {
                 print_r($model->errors);
 
@@ -323,7 +322,10 @@ class ImportOldDbController extends Controller
 
     public function actionProjectCategory()
     {
-        $category = Category::find()->with('parents')->where(['id' => [10, 12, 13]])->all();
+        $category = Category::find()->with('parents')
+            ->where(['id' => [10, 12, 13]])
+//            ->asArray()
+            ->all();
         foreach ($category as $value) {
             $model = new ProjectCategory();
             $model->id = $value->id;
@@ -343,38 +345,152 @@ class ImportOldDbController extends Controller
             $model->seo_keywords_ru = $value->seo_keywords_ru;
             if ($model->save(false)) {
                 echo "Saved " . $model->title_uk . PHP_EOL;
-                if ($value->parents) {
-                    foreach ($value->parents as $parent) {
-                        $iss = ProjectCategory::find()->where(['id' => $parent->id])->one();
-                        if (!$iss) {
-
-                            $model_p = new ProjectCategory();
-                            $model_p->id = $parent->id;
-                            $model_p->title_uk = $parent->title_uk;
-                            $model_p->title_en = $parent->title_en;
-                            $model_p->title_ru = $parent->title_ru;
-                            $model_p->slug = $parent->slug;
-                            $model_p->parent_id = $parent->parent_id;
-                            $model_p->order = $parent->order;
-                            $model_p->published = $parent->published;
-                            $model_p->image = $parent->image;
-                            $model_p->seo_description_uk = $parent->seo_description_uk;
-                            $model_p->seo_description_en = $parent->seo_description_en;
-                            $model_p->seo_description_ru = $parent->seo_description_ru;
-                            $model_p->seo_keywords_uk = $parent->seo_keywords_uk;
-                            $model_p->seo_keywords_en = $parent->seo_keywords_en;
-                            $model_p->seo_keywords_ru = $parent->seo_keywords_ru;
-                            if ($model_p->save(false)) {
-                                echo "Saved " . $model_p->title_uk . PHP_EOL;
-                            }
-                        }
-                    }
-                }
-
             }
-
+        }
+        $category_p = Category::find()->with('parents')
+            ->where(['id' => [12, 13]])
+//            ->asArray()
+            ->all();
+        foreach ($category_p as $v) {
+            foreach ($v->parents as $value) {
+                $model = new ProjectCategory();
+                $model->id = $value->id;
+                $model->title_uk = $value->title_uk;
+                $model->title_en = $value->title_en;
+                $model->title_ru = $value->title_ru;
+                $model->slug = $value->slug;
+                $model->parent_id = $value->parent_id;
+                $model->order = $value->order;
+                $model->published = $value->published;
+                $model->image = $value->image;
+                $model->seo_description_uk = $value->seo_description_uk;
+                $model->seo_description_en = $value->seo_description_en;
+                $model->seo_description_ru = $value->seo_description_ru;
+                $model->seo_keywords_uk = $value->seo_keywords_uk;
+                $model->seo_keywords_en = $value->seo_keywords_en;
+                $model->seo_keywords_ru = $value->seo_keywords_ru;
+                if ($model->save(false)) {
+                    echo "Saved " . $model->title_uk . PHP_EOL;
+                }
+            }
         }
 
+        $res = ProjectCategory::find()->all();
+        foreach ($res as $re){
+            $rm = Category::find()->where(['id' => $re->id])->one();
+            $rm->delete();
+        }
+
+    }
+
+    public function actionCat(){
+        $value = Category::findOne(17);
+        $model = new ProjectCategory();
+        $model->id = $value->id;
+        $model->title_uk = $value->title_uk;
+        $model->title_en = $value->title_en;
+        $model->title_ru = $value->title_ru;
+        $model->slug = $value->slug;
+        $model->parent_id = 12;
+        $model->order = $value->order;
+        $model->published = $value->published;
+        $model->image = $value->image;
+        $model->seo_description_uk = $value->seo_description_uk;
+        $model->seo_description_en = $value->seo_description_en;
+        $model->seo_description_ru = $value->seo_description_ru;
+        $model->seo_keywords_uk = $value->seo_keywords_uk;
+        $model->seo_keywords_en = $value->seo_keywords_en;
+        $model->seo_keywords_ru = $value->seo_keywords_ru;
+        if ($model->save(false)) {
+            echo "Saved " . $model->title_uk . PHP_EOL;
+            $value->delete();
+        }
+
+        $pages = Pages::find()->where(['category_id' => 17])->all();
+        foreach ($pages as $page){
+            $model = new Projects();
+            $model->slug = $page->slug ?? '-';
+            $model->created_at = isset($page['created_at']) ? intval($page['created_at']) : 0;
+            $model->updated_at = isset($page['updated_at']) ? intval($page['updated_at']) : 0;
+            $model->category_id = isset($page['category_id']) ? intval($page['category_id']) : 0;
+            $model->menu_id = $page->menu_id;
+            $model->published = $page->published;
+
+            $model->title_uk = $page['title_uk'] ?? '-';
+            $model->text_uk = !empty($page['text_uk']) ? $page['text_uk'] : '<p></p>';
+            $model->seo_title_uk = $page['seo_title_uk'] ?? '-';
+            $model->seo_description_uk = $page['seo_description_uk'] ?? '-';
+            $model->seo_keywords_uk = $page['seo_keywords_uk'] ?? '-';
+
+            $model->title_en = $page['title_en'] ?? '-';
+            $model->text_en = $page['text_en'] ?? '-';
+            $model->seo_title_en = $page['html_title_en'] ?? '-';
+            $model->seo_description_en = $page['seo_description_en'] ?? '-';
+            $model->seo_keywords_en = $page['seo_keywords_en'] ?? '-';
+
+            $model->title_ru = $page['title_ru'] ?? '-';
+            $model->text_ru = $page['text_ru'] ?? '-';
+            $model->seo_title_ru = $page['seo_title_ru'] ?? '-';
+            $model->seo_description_ru = $page['seo_description_ru'] ?? '-';
+            $model->seo_keywords_ru = $page['seo_keywords_ru'] ?? '-';
+            $model->image = $page['image'] ?? '-';
+            $model->image_og = $page['og_image'] ?? '-';
+
+            if ($model->save(false)) {
+                echo "\n Saved " . $model->title_uk;
+                $page->delete();
+
+            } else {
+                print_r($model->errors);
+
+            }
+        }
+
+    }
+
+    public function actionPageT(){
+        $page_cat = 28;
+        $proj_cat = 30;
+
+        $pages = Pages::find()->where(['category_id' => $page_cat])->all();
+        foreach ($pages as $page){
+            $model = new Projects();
+            $model->slug = $page->slug ?? '-';
+            $model->created_at = isset($page['created_at']) ? intval($page['created_at']) : 0;
+            $model->updated_at = isset($page['updated_at']) ? intval($page['updated_at']) : 0;
+            $model->category_id = $proj_cat;
+            $model->menu_id = $page->menu_id;
+            $model->published = $page->published;
+
+            $model->title_uk = $page['title_uk'] ?? '-';
+            $model->text_uk = !empty($page['text_uk']) ? $page['text_uk'] : '<p></p>';
+            $model->seo_title_uk = $page['seo_title_uk'] ?? '-';
+            $model->seo_description_uk = $page['seo_description_uk'] ?? '-';
+            $model->seo_keywords_uk = $page['seo_keywords_uk'] ?? '-';
+
+            $model->title_en = $page['title_en'] ?? '-';
+            $model->text_en = $page['text_en'] ?? '-';
+            $model->seo_title_en = $page['html_title_en'] ?? '-';
+            $model->seo_description_en = $page['seo_description_en'] ?? '-';
+            $model->seo_keywords_en = $page['seo_keywords_en'] ?? '-';
+
+            $model->title_ru = $page['title_ru'] ?? '-';
+            $model->text_ru = $page['text_ru'] ?? '-';
+            $model->seo_title_ru = $page['seo_title_ru'] ?? '-';
+            $model->seo_description_ru = $page['seo_description_ru'] ?? '-';
+            $model->seo_keywords_ru = $page['seo_keywords_ru'] ?? '-';
+            $model->image = $page['image'] ?? '-';
+            $model->image_og = $page['og_image'] ?? '-';
+
+            if ($model->save(false)) {
+                echo "\n Saved " . $model->title_uk;
+                $page->delete();
+
+            } else {
+                print_r($model->errors);
+
+            }
+        }
     }
 
 
