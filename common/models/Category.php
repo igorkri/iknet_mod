@@ -129,4 +129,19 @@ class Category extends \yii\db\ActiveRecord
 //            ->asArray()
             ->one();
     }
+
+    static function getTabProject($slug){
+        $cat_1 = Category::find()
+            ->with(['parents'])
+            ->where(['slug' => $slug])
+            ->one();
+        if(isset($cat_1->parents) && count($cat_1->parents) <= 0){
+            $cat_2 = Category::find()
+                ->with(['parents'])
+                ->where(['id' => $cat_1->parent_id])
+                ->one();
+            return $cat_2;
+        }
+        return $cat_1;
+    }
 }

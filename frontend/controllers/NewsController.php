@@ -15,8 +15,6 @@ class NewsController extends Controller
     {
 
         $tabs = Category::getTab();
-//        VarDumper::dump($tabs, 10,true);
-//        die;
         if($slug == null){
             $category = Category::find()
                 ->with(['parents'])

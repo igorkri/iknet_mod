@@ -1,55 +1,34 @@
+<?php
+
+use yii\helpers\Url;
+
+$slug = Yii::$app->request->get('slug');
+?>
 <section class="news">
     <div class="block">
-        <h2>Проєкти компанії</h2>
+        <h2><?=$category->getTitle($category->id)?></h2>
         <nav class="bookmarks" id="bookmarks">
-            <a href="#" class="active">Всі проєкти</a>
-            <a href="#">Сонячна енергетика</a>
-            <a href="#">Вітрова енергетика</a>
-            <a href="#">Біогаз/Біомаса</a>
-            <a href="#">Установки зберігання енергії</a>
+            <a href="<?=Url::to(['view', 'slug' => null])?>" class="<?= $slug == null || $slug == 'articles' ? 'active' : ''?>">Всі проєкти</a>
+            <?php if ($tabs): ?>
+                <?php foreach ($tabs->parents as $parent): ?>
+                    <a href="<?=Url::to(['companys-projects', 'slug' => $parent->slug])?>" class="<?= $parent->slug === $slug ? 'active' : ''?>"><?=$parent->getTitle($parent->id)?></a>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </nav>
-        <a href="project.html" class="item">
-            <div class="img">
-                <img src="img/project_for_sale1.webp" alt="">
-            </div>
-            <div class="text">
-                <h4>СЕС 8,1 МВт Черкаська область</h4>
-                <p>7.04.2023</p>
-                <p>Земельна ділянка площею 16 га знаходиться в Черкаському районі Черкаської області з можливістю будівництва
-                    СЕС загальною
-                    потужністю 8,1 МВт. Згідно з Технічними умовами на приєднання СЕС до електричних мереж ПАТ
-                    "Черкасиобленерго" орієнтовна
-                    схема видачі</p>
-            </div>
-        </a>
-        <a href="project.html" class="item">
-            <div class="img">
-                <img src="img/project_for_sale2.webp" alt="">
-            </div>
-            <div class="text">
-                <h4>СЕС 16,87 МВт в Чортківському районі Тернопільської області</h4>
-                <p>1.04.2023</p>
-                <p>Земельні ділянки площею 23,1837 га та 13,2446 га знаходяться за межами населеного пункту на території
-                    Сокиринецької
-                    сільської ради, Чортківського району Тернопільської області з можливістю будівництва СЕС загальною
-                    потужністю орієнтовно
-                    16,87 МВт. Згідно з Технічними у</p>
-            </div>
-        </a>
-        <a href="project.html" class="item">
-            <div class="img">
-                <img src="img/project_for_sale3.webp" alt="">
-            </div>
-            <div class="text">
-                <h4>СЕС 9,8 МВт в с. Залуква Галицького району Івано-Франківської області</h4>
-                <p>1.04.2023</p>
-                <p>Земельна ділянка площею 20,4 га знаходиться в межах с. Залуква Галицького району Івано-Франківської області
-                    урочище
-                    "Сад", з можливістю будівництва наземної СЕС потужністю 9,8 МВт. Ділянка знаходиться на відстані орієнтовно
-                    1,2 км від
-                    високовольтної підстанції</p>
-            </div>
-        </a>
+        <?php foreach ($news as $new): ?>
+            <a href="<?=Url::to(['view', 'slug' => $new->slug])?>" class="item">
+                <div class="img">
+                    <img src="<?= $new->image ?>" alt="">
+                </div>
+                <div class="text">
+                    <h4><?= $new->getTitle($new->id) ?></h4>
+                    <p><?= date('d.m.Y', $new->created_at) ?></p>
+                    <div class="short_descr">
+                        <p><?= strip_tags($new->getText($new->id)) ?></p>
+                    </div>
+                </div>
+            </a>
+        <?php endforeach; ?>
     </div>
     <button type="button" class="uni_link">Завантажити ще</button>
 </section>

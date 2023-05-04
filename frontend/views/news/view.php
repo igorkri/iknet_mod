@@ -8,8 +8,6 @@
 use yii\helpers\Url;
 
 $slug = Yii::$app->request->get('slug');
-//\yii\helpers\VarDumper::dump($slug,10, true);
-//die;
 ?>
 <!----- news ----->
 <section class="news">

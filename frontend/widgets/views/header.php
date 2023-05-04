@@ -12,7 +12,7 @@ $url = Yii::$app->request->get('slug');
 <header id="new_header" class="new_header">
     <div class="block">
         <div class="logo">
-            <a href="/" title="iknet">
+            <a href="<?=Url::to(['/', 'language' => $lang])?>" title="iknet">
                 <img src="/img/logo.webp" alt="iknet" class="normal-logo">
             </a>
         </div>
