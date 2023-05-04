@@ -43,6 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'site',
             'tel1',
             'tel2',
+            'image_uk',
+            'image_en',
+            'image_ru',
         ],
     ]) ?>
 

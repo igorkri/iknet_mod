@@ -21,6 +21,9 @@ use Yii;
  * @property string|null $site Сайт
  * @property string|null $tel1 Телефон_1
  * @property string|null $tel2 Телефон_2
+ * @property string|null $image_uk Телефон_2
+ * @property string|null $image_en Телефон_2
+ * @property string|null $image_ru Телефон_2
  */
 class Contacts extends \yii\db\ActiveRecord
 {
@@ -39,7 +42,8 @@ class Contacts extends \yii\db\ActiveRecord
     {
         return [
             [['coment_uk', 'coment_en', 'coment_ru'], 'string'],
-            [['title_uk', 'title_en', 'title_ru', 'adres_uk', 'adres_en', 'adres_ru', 'email', 'site', 'tel1', 'tel2'], 'string', 'max' => 255],
+            [['title_uk', 'title_en', 'title_ru', 'adres_uk', 'adres_en', 'adres_ru',
+                'image_uk', 'image_en','image_ru', 'email', 'site', 'tel1', 'tel2'], 'string', 'max' => 255],
         ];
     }
 
@@ -59,10 +63,13 @@ class Contacts extends \yii\db\ActiveRecord
             'coment_uk' => Yii::t('app', 'Коментарий_UK'),
             'coment_en' => Yii::t('app', 'Коментарий_EN'),
             'coment_ru' => Yii::t('app', 'Коментарий_RU'),
+            'image_uk' => Yii::t('app', 'Картинка_UK'),
+            'image_en' => Yii::t('app', 'Картинка_EN'),
+            'image_ru' => Yii::t('app', 'Картинка_RU'),
             'email' => Yii::t('app', 'Почта'),
             'site' => Yii::t('app', 'Сайт'),
-            'tel1' => Yii::t('app', 'Телефон_1'),
-            'tel2' => Yii::t('app', 'Телефон_2'),
+            'tel1' => Yii::t('app', 'Телефон'),
+            'tel2' => Yii::t('app', 'Телефон_Моб'),
         ];
     }
 }
