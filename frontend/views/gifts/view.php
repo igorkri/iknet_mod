@@ -12,11 +12,11 @@
             <div class="info">
                 <div class="title">
                     <h4><?= $present->getTitle($present->id) ?></h4>
-                    <h5>Код:<span>1001</span></h5>
+                    <h5>Код:<span><?= $present->sku_uk ?></span></h5>
                 </div>
                 <div class="disc">
                     <p><?= $present->getDescription($present->id) ?></p>
-                    <h5>Ціна:<span>399 грн</span></h5>
+                    <h5>Ціна:<span><?= $present->price_uk ?> грн</span></h5>
                 </div>
             </div>
         </div>
