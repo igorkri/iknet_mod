@@ -1,17 +1,34 @@
+<?php
+
+$lang = \Yii::$app->session->get('_language');
+
+if($lang == 'ru'){
+    $h2 =  'Карьера';
+    $h4 =  'Вакансии:';
+}elseif($lang == 'en'){
+    $h2 =  'Career';
+    $h4 =  'Vacancies:';
+}else{
+    $h2 =  'Кар\'єра';
+    $h4 =  'Вакансії:';
+}
+
+?>
+
 <!----- career ----->
 <section class="career" id="career">
     <div class="block">
-        <h2>Кар'єра</h2>
+        <h2><?= $h2 ?></h2>
         <div class="text">
             <div class="info">
-                <p><?= $text->text_header ?></p>
-                <h4>Вакансії:</h4>
+                <p><?= $text->getTopText($text->id) ?></p>
+                <h4><?= $h4 ?></h4>
                 <?php if ($vacancies != null) { ?>
                     <?php foreach ($vacancies as $vacancy): ?>
                         <?php if ($vacancy->published != 0): ?>
                             <div class="vacancy">
                                 <div class="head">
-                                    <div><?= $vacancy->title ?></div>
+                                    <div><?= $vacancy->getVacTitle($vacancy->id) ?></div>
                                     <svg width="10" height="7" viewBox="0 0 10 7" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -20,7 +37,7 @@
                                     </svg>
                                 </div>
                                 <div class="drop">
-                                    <?= $vacancy->message ?>
+                                    <?= $vacancy->getVacMessage($vacancy->id) ?>
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -28,7 +45,7 @@
                 <?php } else { ?>
                     <p>Нажаль, на даний момент, вакансій немає.</p>
                 <?php } ?>
-                <p><?= $text->text_footer ?></p>
+                <p><?= $text->getDownText($text->id) ?></p>
             </div>
             <div class="img">
                 <img src="img/career.webp" alt="">

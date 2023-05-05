@@ -46,4 +46,30 @@ class Vacancies extends \yii\db\ActiveRecord
             'message' => 'Message',
         ];
     }
+
+    public function getVacTitle($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->title_ru;
+        }elseif($lang == 'en'){
+            return $res->title_en;
+        }else{
+            return $res->title;
+        }
+    }
+
+    public function getVacMessage($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->message_ru;
+        }elseif($lang == 'en'){
+            return $res->message_en;
+        }else{
+            return $res->message;
+        }
+    }
 }

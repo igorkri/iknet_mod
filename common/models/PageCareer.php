@@ -46,4 +46,32 @@ class PageCareer extends \yii\db\ActiveRecord
             'text_footer' => 'Нижній текст',
         ];
     }
+
+    public function getTopText($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->text_header_ru;
+        }elseif($lang == 'en'){
+            return $res->text_header_en;
+        }else{
+            return $res->text_header;
+        }
+    }
+
+    public function getDownText($id)
+{
+    $lang = \Yii::$app->session->get('_language');
+    $res = self::find()->where(['id' => $id])->one();
+    if($lang == 'ru'){
+        return $res->text_footer_ru;
+    }elseif($lang == 'en'){
+        return $res->text_footer_en;
+    }else{
+        return $res->text_footer;
+    }
+}
+
+
 }
