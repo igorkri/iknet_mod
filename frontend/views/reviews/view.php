@@ -4,10 +4,12 @@
     <h2>Відгуки</h2>
     <?php foreach ($reviews as $review): ?>
         <div class="item">
-            <h5><?= $review->title_uk ?></h5>
-            <p><?= $review->description_uk ?></p>
+            <h5><?= $review->getTitle($review->id) ?></h5>
+            <br>
+            <p><?= $review->getText($review->id) ?></p>
            <br>
-            <p><?= $review->author_uk ?></p>
+            <p><?= $review->getAuthor($review->id) ?></p>
+            <br>
             <br>
             <br>
         </div>

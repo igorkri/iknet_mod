@@ -83,6 +83,7 @@ class Reviews extends \yii\db\ActiveRecord
             return $res->description_uk;
         }
     }
+
     public function getAuthor($id)
     {
         $lang = \Yii::$app->session->get('_language');

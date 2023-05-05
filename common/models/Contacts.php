@@ -19,11 +19,11 @@ use Yii;
  * @property string|null $coment_ru Коментарий_RU
  * @property string|null $email Почта
  * @property string|null $site Сайт
- * @property string|null $tel1 Телефон_1
- * @property string|null $tel2 Телефон_2
- * @property string|null $image_uk Телефон_2
- * @property string|null $image_en Телефон_2
- * @property string|null $image_ru Телефон_2
+ * @property string|null $tel1 Телефон
+ * @property string|null $tel2 Телефон_моб
+ * @property string|null $image_uk Картинка_UK
+ * @property string|null $image_en Картинка_EN
+ * @property string|null $image_ru Картинка_RU
  */
 class Contacts extends \yii\db\ActiveRecord
 {
@@ -71,5 +71,57 @@ class Contacts extends \yii\db\ActiveRecord
             'tel1' => Yii::t('app', 'Телефон'),
             'tel2' => Yii::t('app', 'Телефон_Моб'),
         ];
+    }
+
+    public function getTitle($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->title_ru;
+        }elseif($lang == 'en'){
+            return $res->title_en;
+        }else{
+            return $res->title_uk;
+        }
+    }
+
+    public function getComent($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->coment_ru;
+        }elseif($lang == 'en'){
+            return $res->coment_en;
+        }else{
+            return $res->coment_uk;
+        }
+    }
+
+    public function getAdress($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->adres_ru;
+        }elseif($lang == 'en'){
+            return $res->adres_en;
+        }else{
+            return $res->adres_uk;
+        }
+    }
+
+    public function getImage($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->image_ru;
+        }elseif($lang == 'en'){
+            return $res->image_en;
+        }else{
+            return $res->image_uk;
+        }
     }
 }

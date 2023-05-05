@@ -1,35 +1,33 @@
 <!----- contacts ----->
 <section class="contacts">
     <div class="block">
-        <h2>Контакти</h2>
+        <h2><?= $contact->getTitle($contact->id) ?></h2>
         <div class="cont">
             <div class="text">
                 <address>
-                    <img src="img/address.svg" alt="">
+                    <img src="/img/address.svg" alt="">
                     <div>
-                        03113, Україна, м. Київ<br>
-                        вул. Грушецька 9А, оф. 102
+                        <?= $contact->getAdress($contact->id) ?>
                     </div>
                 </address>
                 <address>
-                    <img src="img/phones.svg" alt="">
+                    <img src="/img/phones.svg" alt="">
                     <div>
-                        <a href="tel:+380445910873">+38 (044) 591-08-73</a>
-                        <a href="tel:+380504417020">+38 (050) 441-70-20</a>
+                        <a href="tel:<?= $contact->tel1 ?>"><?= $contact->tel1 ?></a>
+                        <a href="tel:<?= $contact->tel2 ?>"><?= $contact->tel2 ?></a>
                     </div>
                 </address>
                 <address>
-                    <img src="img/contacts.svg" alt="">
+                    <img src="/img/contacts.svg" alt="">
                     <div>
-                        <a href="mailto:link@iknet.com.ua">link@iknet.com.ua</a>
-                        <a href="www.iknet.com.ua">www.iknet.com.ua</a>
+                        <a href="mailto:<?= $contact->email ?>"><?= $contact->email ?></a>
+                        <a href="<?= $contact->site ?>"><?= $contact->site ?></a>
                     </div>
                 </address>
-                <p>Залишіть Ваше запитання та контактні дані.
-                    Наші фахівці зв'яжуться з Вами найближчим часом.</p>
+                <p><?= $contact->getComent($contact->id) ?></p>
             </div>
             <div class="img">
-                <img src="img/map.webp" alt="">
+                <img src="<?= $contact->getImage($contact->id) ?>" alt="">
             </div>
         </div>
     </div>
