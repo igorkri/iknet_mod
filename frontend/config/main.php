@@ -50,10 +50,9 @@ return [
                 'contacts' => '/contacts/view',
                 'karyera' => '/career/view',
 
-
-//                '<slug:[\w+-]*\w+>' => '/news/view',
-//                'articles/<slug:[\w+-]*\w+>' => '/news/item',
+                'articles/<slug:[\w+-]*\w+>' => '/news/view',
                 'articles' => '/news/view',
+                '<slug:[\w+-]*\w+>' => '/news/item',
 
                 'projects/projects-for-sale/<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
                 'projects/companys-projects/<slug:[\w+-]*\w+>' => '/projects/companys-projects',

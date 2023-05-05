@@ -32,7 +32,7 @@ $page = $get['page'] ?? 1;
         </nav>
 
         <?php foreach ($news as $new): ?>
-            <a href="<?=Yii::$app->urlManager->createUrl(['/news/item', 'c' => $new->getUrlParams($new->category_id)['c'], 'a' => $new->getUrlParams($new->category_id)['a'],'slug' => $new->slug])?>" class="item">
+            <a href="<?=Yii::$app->urlManager->createUrl(['/news/item','slug' => $new->slug])?>" class="item">
                 <div class="img">
                     <img src="/<?= $new->image ?>" alt="">
                 </div>
