@@ -60,7 +60,7 @@ class Reviews extends \yii\db\ActiveRecord
 
     public function getTitle($id)
     {
-        $lang = \Yii::$app->session->get('_language');
+        $lang = Yii::$app->session->get('_language');
         $res = self::find()->where(['id' => $id])->one();
         if($lang == 'ru'){
             return $res->title_ru;

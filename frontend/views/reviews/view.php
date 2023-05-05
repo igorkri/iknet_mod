@@ -1,7 +1,22 @@
+<?php
+
+use Yii;
+
+$lang = Yii::$app->session->get('_language');
+
+if($lang == 'ru'){
+     $h2 =  'Отзывы';
+}elseif($lang == 'en'){
+     $h2 =  'Reviews';
+}else{
+     $h2 =  'Відгуки';
+}
+
+?>
 <!----- reviews ----->
 <section class="about">
 <div class="block">
-    <h2>Відгуки</h2>
+    <h2><?= $h2 ?></h2>
     <?php foreach ($reviews as $review): ?>
         <div class="item">
             <h5><?= $review->getTitle($review->id) ?></h5>
