@@ -6,7 +6,7 @@ use yii\widgets\LinkPager;
 $get = Yii::$app->request->get();
 $slug = $get['slug'] ?? null;
 $page = $get['page'] ?? 1;
-//\yii\helpers\VarDumper::dump(count($news), 10, true);
+//\yii\helpers\VarDumper::dump($slug, 10, true);
 //die;
 ?>
 <section class="news">
@@ -47,7 +47,11 @@ $page = $get['page'] ?? 1;
         <?php endforeach; ?>
     </div>
     <?php
-    echo \yii\helpers\Html::a($pagination_btn, ['view', 'page' => $page ? $page + 1 : 2], ['type'=>'button', 'class'=>'uni_link'])
+    if($slug === null){
+        echo \yii\helpers\Html::a($pagination_btn, ['view', 'page' => $page ? $page + 1 : 2], ['type'=>'button', 'class'=>'uni_link']);
+    }else{
+        echo \yii\helpers\Html::a($pagination_btn, ['view', 'slug' => $slug,'page' => $page ? $page + 1 : 2], ['type'=>'button', 'class'=>'uni_link']);
+    }
     ?>
     <?php \yii\widgets\Pjax::end() ?>
 </section>
