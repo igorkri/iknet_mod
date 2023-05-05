@@ -11,6 +11,7 @@ use yii\helpers\Html;
 <div class="container">
 
 <div class="clients-brand-form">
+
     <?php $form = ActiveForm::begin(); ?>
     <div class="form-group">
         <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>

@@ -13,9 +13,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Contacts');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="contacts-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container contacts-index">
 
     <p>
         <?= Html::a(Yii::t('app', 'Create Contacts'), ['create'], ['class' => 'btn btn-success']) ?>

@@ -11,8 +11,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class= "container clients-brand-create">
 
-    <h4><?= Html::encode($this->title) ?></h4>
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
