@@ -11,9 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Abouts'), 'url' => [
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="about-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container about-view">
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -29,14 +27,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+//            'id',
             'title_uk',
             'title_en',
             'title_ru',
-            'description_uk:ntext',
-            'description_en:ntext',
-            'description_ru:ntext',
-            'image',
+            'description_uk:raw',
+            'description_en:raw',
+            'description_ru:raw',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'value' => function($data){
+                    return $data->image ? Html::img($data->image, ['width' => "220px"]) : "";
+                }
+            ],
         ],
     ]) ?>
 

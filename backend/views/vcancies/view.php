@@ -13,8 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container vacancies-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
@@ -29,8 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'page_id',
+//            'id',
+//            'page_id',
             'title',
             'message:raw',
             'title_en',

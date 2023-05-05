@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+//            'id',
             'slug',
             'created_at',
             'updated_at',
@@ -52,8 +52,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'seo_title_ru',
             'seo_description_ru',
             'seo_keywords_ru',
-            'image',
-            'image_og',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'value' => function($data){
+                    return $data->image ? Html::img($data->image, ['width' => "220px"]) : "";
+                }
+            ],
+            [
+                'attribute' => 'image_og',
+                'format' => 'raw',
+                'value' => function($data){
+                    return $data->image_og ? Html::img($data->image_og, ['width' => "220px"]) : "";
+                }
+            ],
         ],
     ]) ?>
 

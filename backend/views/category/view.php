@@ -26,15 +26,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+//            'id',
             'title_uk',
             'title_en',
             'title_ru',
             'slug',
-            'parent_id',
-            'order',
-            'published',
-            'image',
+//            'parent_id',
+//            'order',
+//            'published',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'value' => function($data){
+                    return $data->image ? Html::img($data->image, ['width' => "220px"]) : "";
+                }
+            ],
             'seo_description_uk',
             'seo_description_en',
             'seo_description_ru',
