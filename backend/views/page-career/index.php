@@ -15,9 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container page-career-index">
 
+    <?php if ($career === null){ ?>
     <p>
-        <?= Html::a('+', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('+ Добавить', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php } ?>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 

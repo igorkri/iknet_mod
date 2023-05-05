@@ -40,10 +40,11 @@ class PageCareerController extends Controller
     {
         $searchModel = new PageCareerSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
+        $career = PageCareer::find()->one();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'career' => $career,
         ]);
     }
 
