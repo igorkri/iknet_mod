@@ -1,3 +1,6 @@
+<?php
+
+?>
 <section class="project">
     <div class="block">
         <h2><?=$new->getTitle($new->id)?></h2>

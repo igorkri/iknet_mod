@@ -45,7 +45,7 @@ $page = $get['page'] ?? 1;
         <?php endforeach; ?>
     </div>
     <?php
-        echo \yii\helpers\Html::a('Завантажити ще', ['companys-projects', 'page' => $page ? $page + 1 : 2], ['type'=>'button', 'class'=>'uni_link'])
+        echo \yii\helpers\Html::a('Завантажити ще', ['projects-for-sale', 'page' => $page ? $page + 1 : 2], ['type'=>'button', 'class'=>'uni_link'])
     ?>
     <?php \yii\widgets\Pjax::end() ?>
 </section>

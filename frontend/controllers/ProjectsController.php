@@ -73,12 +73,9 @@ class ProjectsController extends \yii\web\Controller
             $count = intval($get['page']) * 5;
         }
 
-        $query = Projects::find()->where(['category_id' => $cat_ids, 'published' => 1]);
-        $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => $count]);
-        $pages->pageSizeParam = false;
-        $news = $query->offset($pages->offset)
-            ->limit($pages->limit)
+        $news = Projects::find()->where(['category_id' => $cat_ids, 'published' => 1])
+            ->orderBy('created_at DESC')
+            ->limit($count)
             ->all();
 
 
@@ -86,7 +83,6 @@ class ProjectsController extends \yii\web\Controller
             'tabs' => $tabs,
             'news' => $news,
             'category' => $category,
-            'pages' => $pages,
             'pagination_btn' => $pagination_btn,
         ]);
     }
@@ -137,12 +133,9 @@ class ProjectsController extends \yii\web\Controller
             $count = intval($get['page']) * 5;
         }
 
-        $query = Projects::find()->where(['category_id' => $cat_ids, 'published' => 1]);
-        $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => $count]);
-        $pages->pageSizeParam = false;
-        $news = $query->offset($pages->offset)
-            ->limit($pages->limit)
+        $news = Projects::find()->where(['category_id' => $cat_ids, 'published' => 1])
+            ->orderBy('created_at DESC')
+            ->limit($count)
             ->all();
 
 
@@ -150,7 +143,6 @@ class ProjectsController extends \yii\web\Controller
             'tabs' => $tabs,
             'news' => $news,
             'category' => $category,
-            'pages' => $pages,
             'pagination_btn' => $pagination_btn
         ]);
     }

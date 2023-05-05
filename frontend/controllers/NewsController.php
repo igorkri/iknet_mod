@@ -5,7 +5,11 @@ namespace frontend\controllers;
 
 use Codeception\PHPUnit\Constraint\Page;
 use common\models\Category;
+use common\models\News;
+use common\models\NewsCategory;
 use common\models\Pages;
+use Yii;
+use yii\data\Pagination;
 use yii\helpers\VarDumper;
 use \yii\web\Controller;
 
@@ -13,48 +17,70 @@ class NewsController extends Controller
 {
     public function actionView($slug = null)
     {
+//        $url = Yii::$app->request->pathInfo;
 
-        $tabs = Category::getTab();
-        if($slug == null){
-            $category = Category::find()
-                ->with(['parents'])
-                ->where(['id' => 1])
-                ->one();
-        }else{
-            $category = Category::find()
-                ->with(['parents'])
-                ->where(['slug' => $slug])
-//                ->asArray()
-                ->one();
+        $get = Yii::$app->request->get();
+        if($slug === null){
+            $url = Yii::$app->request->pathInfo;
+            $slug = explode('/', $url);
+            $slug = $slug[0];
         }
-        if($category->parents){
+
+        $lang = \Yii::$app->session->get('_language');
+        $pagination_btn = 'Завантажити ще';
+        if($lang === 'ru') {
+            $pagination_btn = "Скачать еще";
+        }elseif ($lang === 'en'){
+            $pagination_btn = "Download more";
+        }
+
+        if($slug === 'articles'){
+            $categories = NewsCategory::find()
+                ->where(['parent_id' => 1])
+                ->all();
+        }
+        $category = NewsCategory::find()
+            ->with(['parents'])
+            ->where(['slug' => $slug])
+            ->one();
+
+        $tabs = NewsCategory::getTabNews($slug);
+
+        if(isset($category->parents) && $category->parents){
             $cat_ids = [];
             foreach ($category->parents as $parent){
                 $cat_ids[] = $parent->id;
             }
-            array_push($cat_ids, 1,2);
+        }elseif($slug === 'articles'){
+            foreach ($categories as $c){
+                $cat_ids[] = $c->id;
+            }
         }else{
             $cat_ids[] = $category->id;
         }
-//        VarDumper::dump($cat_ids, 10, true);
-//        die;
-        $news = Pages::find()
-            ->where([
-                'category_id' => $cat_ids,
-                'published' => 1,
-            ])
+        $count = 5;
+        if(isset($get['page'])){
+            $count = intval($get['page']) * 5;
+        }
+
+        $news = News::find()
+            ->where(['category_id' => $cat_ids, 'published' => 1])
+            ->orderBy('created_at DESC')
+            ->limit($count)
             ->all();
 
-        return $this->render('view',[
+        return $this->render('view', [
+            'tabs' => $tabs,
             'news' => $news,
             'category' => $category,
-            'tabs' => $tabs
+//            'pages' => $pages,
+            'pagination_btn' => $pagination_btn,
         ]);
     }
 
     public function actionItem($slug){
 
-        $new = Pages::find()->where(['slug' => $slug])->one();
+        $new = News::find()->where(['slug' => $slug])->one();
 
         return $this->render('item',[
             'new' => $new,

@@ -89,12 +89,12 @@ class News extends \yii\db\ActiveRecord
     }
 
     public function getCategory(){
-        return $this->hasOne(Category::class, ['id' => 'category_id']);
+        return $this->hasOne(NewsCategory::class, ['id' => 'category_id']);
     }
 
    public function getTitle($id, $lang = null){
        $lang = \Yii::$app->session->get('_language');
-        $post = Pages::find()->where(['id' => $id])->one();
+        $post = News::find()->where(['id' => $id])->one();
         if($lang == 'en'){
             return $post->title_en;
         }elseif($lang == 'ru'){
@@ -106,7 +106,7 @@ class News extends \yii\db\ActiveRecord
 
    public function getText($id, $lang = null){
        $lang = \Yii::$app->session->get('_language');
-        $post = Pages::find()->where(['id' => $id])->one();
+        $post = News::find()->where(['id' => $id])->one();
         if($lang == 'en'){
             return $post->text_en;
         }elseif($lang == 'ru'){
@@ -115,5 +115,16 @@ class News extends \yii\db\ActiveRecord
            return $post->text_uk;
        }
    }
+
+    public function getUrlParams($cat_id){
+
+        $res = [];
+        $category = NewsCategory::find()->with('parent')->where(['id' => $cat_id])->one();
+        $res = [
+            'c' => $category->parent->slug,
+            'a' => $category->slug
+        ];
+        return $res;
+    }
 
 }

@@ -6,6 +6,7 @@ namespace console\controllers;
 use common\models\Category;
 use common\models\Menu;
 use common\models\News;
+use common\models\NewsCategory;
 use common\models\Pages;
 use common\models\ProjectCategory;
 use common\models\Projects;
@@ -448,13 +449,81 @@ class ImportOldDbController extends Controller
 
     }
 
-    public function actionPageT(){
-        $page_cat = 28;
-        $proj_cat = 30;
+    public function actionNewsCategory(){
+        $category = Category::find()->with('parents')
+            ->where(['id' => [1, 27, 34]])
+//            ->asArray()
+            ->all();
+        foreach ($category as $value) {
+            $model = new NewsCategory();
+            $model->id = $value->id;
+            $model->title_uk = $value->title_uk;
+            $model->title_en = $value->title_en;
+            $model->title_ru = $value->title_ru;
+            $model->slug = $value->slug;
+            $model->parent_id = $value->parent_id;
+            $model->order = $value->order;
+            $model->published = $value->published;
+            $model->image = $value->image;
+            $model->seo_description_uk = $value->seo_description_uk;
+            $model->seo_description_en = $value->seo_description_en;
+            $model->seo_description_ru = $value->seo_description_ru;
+            $model->seo_keywords_uk = $value->seo_keywords_uk;
+            $model->seo_keywords_en = $value->seo_keywords_en;
+            $model->seo_keywords_ru = $value->seo_keywords_ru;
+            if ($model->save(false)) {
+                echo "Saved " . $model->title_uk . PHP_EOL;
+            }
+        }
+        $category_p = Category::find()->with('parents')
+            ->where(['id' => [27, 34]])
+//            ->asArray()
+            ->all();
+        foreach ($category_p as $v) {
+            foreach ($v->parents as $value) {
+                $model = new NewsCategory();
+                $model->id = $value->id;
+                $model->title_uk = $value->title_uk;
+                $model->title_en = $value->title_en;
+                $model->title_ru = $value->title_ru;
+                $model->slug = $value->slug;
+                $model->parent_id = $value->parent_id;
+                $model->order = $value->order;
+                $model->published = $value->published;
+                $model->image = $value->image;
+                $model->seo_description_uk = $value->seo_description_uk;
+                $model->seo_description_en = $value->seo_description_en;
+                $model->seo_description_ru = $value->seo_description_ru;
+                $model->seo_keywords_uk = $value->seo_keywords_uk;
+                $model->seo_keywords_en = $value->seo_keywords_en;
+                $model->seo_keywords_ru = $value->seo_keywords_ru;
+                if ($model->save(false)) {
+                    echo "Saved " . $model->title_uk . PHP_EOL;
+                }
+            }
+        }
 
-        $pages = Pages::find()->where(['category_id' => $page_cat])->all();
+        $res = NewsCategory::find()->all();
+        foreach ($res as $re){
+            $rm = Category::find()->where(['id' => $re->id])->one();
+//            $rm->delete();
+        }
+
+    }
+
+    public function actionPageT(){
+        $page_cat = [1,2,36];
+        $proj_cat = 35;
+
+        $pages = News::find()
+//            ->select(['id', 'category_id', 'title_uk'])
+            ->where(['category_id' => $page_cat])
+//            ->asArray()
+            ->all();
+//        print_r($pages);
+//        die;
         foreach ($pages as $page){
-            $model = new Projects();
+//            $model = new News();
             $model->slug = $page->slug ?? '-';
             $model->created_at = isset($page['created_at']) ? intval($page['created_at']) : 0;
             $model->updated_at = isset($page['updated_at']) ? intval($page['updated_at']) : 0;
@@ -484,7 +553,7 @@ class ImportOldDbController extends Controller
 
             if ($model->save(false)) {
                 echo "\n Saved " . $model->title_uk;
-                $page->delete();
+//                $page->delete();
 
             } else {
                 print_r($model->errors);
