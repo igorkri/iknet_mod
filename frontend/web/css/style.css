@@ -1711,13 +1711,23 @@ form.your_contact .right input[type=submit]:hover {
 }
 
 .short_descr {
-
   width: 100%;
   margin-top: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+}
+
+.review_short_descr {
+  width: 100%;
+  margin-top: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 
 }

@@ -118,30 +118,30 @@ class ContactsController extends Controller
         $model = $this->findModel($id);
         $dir = Yii::getAlias('@frontendWeb/img/contacts');
 
-        if ($this->request->isPost){
+        if ($model->load($this->request->post())) {
 
             if($_FILES and $_FILES['Contacts']['size']['image_uk'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image_uk');
                 $imageName = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-                $model->image = '/img/contacts/' . $imageName . '.' . $file->extension;
+                $model->image_uk = '/img/contacts/' . $imageName . '.' . $file->extension;
             }
 
             if($_FILES and $_FILES['Contacts']['size']['image_en'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image_en');
                 $imageName = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-                $model->image = '/img/contacts/' . $imageName . '.' . $file->extension;
+                $model->image_en = '/img/contacts/' . $imageName . '.' . $file->extension;
             }
 
             if($_FILES and $_FILES['Contacts']['size']['image_ru'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image_ru');
                 $imageName = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-                $model->image = '/img/contacts/' . $imageName . '.' . $file->extension;
+                $model->image_ru = '/img/contacts/' . $imageName . '.' . $file->extension;
             }
         }
-        if ($this->request->isPost && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
 
         }

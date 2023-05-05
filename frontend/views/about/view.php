@@ -20,7 +20,9 @@ use yii\helpers\Url;
             <?php foreach ($reviews as $review): ?>
             <div class="item">
                 <h5><?= $review->getTitle($review->id) ?></h5>
+                <div class="review_short_descr">
                 <p><?= $review->getText($review->id) ?></p>
+                </div>
                 <a href="<?= Url::to(['/reviews/view']) ?>"><?=$detail?> →</a>
                 <p><?= $review->getAuthor($review->id) ?></p>
             </div>
