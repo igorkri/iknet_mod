@@ -56,4 +56,5 @@ class PresentsEnergyList extends \yii\db\ActiveRecord
     public function getImages(){
         return $this->hasMany(PresentsEnergyListImg::class, ['presents_energy_list_id' => 'id']);
     }
+
 }

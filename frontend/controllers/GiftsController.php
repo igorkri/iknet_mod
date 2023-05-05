@@ -3,6 +3,7 @@
 
 namespace frontend\controllers;
 
+use common\models\PresentsEnergy;
 use \yii\web\Controller;
 
 
@@ -10,6 +11,8 @@ class GiftsController extends Controller
 {
     public function actionView()
     {
-      return  $this->render('view');
+        $item = PresentsEnergy::find()->one();
+
+        return  $this->render('view',['item'=>$item]);
     }
 }

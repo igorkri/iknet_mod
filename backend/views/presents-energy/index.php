@@ -29,7 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
             'title',
-            'description:ntext',
+            'title_en',
+            'title_ru',
+            'description:raw',
+            'description_en:raw',
+            'description_ru:raw',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, PresentsEnergy $model, $key, $index, $column) {
