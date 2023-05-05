@@ -11,9 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contacts'), 'url' =>
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="contacts-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container contacts-view">
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -29,23 +27,38 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'title_uk',
             'title_en',
             'title_ru',
             'adres_uk',
             'adres_en',
             'adres_ru',
-            'coment_uk:ntext',
-            'coment_en:ntext',
-            'coment_ru:ntext',
+            'coment_uk:raw',
+            'coment_en:raw',
+            'coment_ru:raw',
             'email:email',
             'site',
             'tel1',
             'tel2',
-            'image_uk',
-            'image_en',
-            'image_ru',
+            [
+                'attribute' => 'image_uk',
+                'format' => 'raw',
+                'value' => function($data){
+                    return $data->image_uk ? Html::img($data->image_uk, ['width' => "220px"]) : "";
+                }
+            ],[
+                'attribute' => 'image_en',
+                'format' => 'raw',
+                'value' => function($data){
+                    return $data->image_en ? Html::img($data->image_en, ['width' => "220px"]) : "";
+                }
+            ],[
+                'attribute' => 'image_ru',
+                'format' => 'raw',
+                'value' => function($data){
+                    return $data->image_ru ? Html::img($data->image_ru, ['width' => "220px"]) : "";
+                }
+            ],
         ],
     ]) ?>
 

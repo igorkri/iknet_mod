@@ -56,7 +56,6 @@ return [
 
                 'projects/projects-for-sale/<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
                 'projects/companys-projects/<slug:[\w+-]*\w+>' => '/projects/companys-projects',
-//                'projects/companys-projects/<page:\w+>' => '/projects/companys-projects',
                 '<c:[\w+-]*\w+>/<a:[\w+-]*\w+>/<slug:[\w+-]*\w+>' => '/projects/view',
 
 

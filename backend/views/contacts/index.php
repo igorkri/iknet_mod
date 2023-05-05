@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'adres_uk',
             //'adres_en',
             //'adres_ru',
-            'coment_uk:ntext',
+            'coment_uk:raw',
             //'coment_en:ntext',
             //'coment_ru:ntext',
             'email:email',
