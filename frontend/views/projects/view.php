@@ -1,3 +1,8 @@
+<?php
+
+
+?>
+
 <!----- project ----->
 <section class="project">
     <div class="block">

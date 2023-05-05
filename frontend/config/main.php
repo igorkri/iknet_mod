@@ -50,16 +50,15 @@ return [
                 'contacts' => '/contacts/view',
                 'karyera' => '/career/view',
 
-                '<c:[\w+-]*\w+>/<a:[\w+-]*\w+>/<slug:[\w+-]*\w+>' => '/projects/view',
 
 //                '<slug:[\w+-]*\w+>' => '/news/view',
-                'articles/<slug:[\w+-]*\w+>' => '/news/item',
-                'articles' => '/news/view',
-                '<slug:[\w+-]*\w+>' => '/projects/view',
+//                'articles/<slug:[\w+-]*\w+>' => '/news/item',
+//                'articles' => '/news/view',
 
-
-                'projects/<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
-                'projects/<slug:[\w+-]*\w+>' => '/projects/companys-projects',
+                'projects/projects-for-sale/<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
+                'projects/companys-projects/<slug:[\w+-]*\w+>' => '/projects/companys-projects',
+//                'projects/companys-projects/<page:\w+>' => '/projects/companys-projects',
+                '<c:[\w+-]*\w+>/<a:[\w+-]*\w+>/<slug:[\w+-]*\w+>' => '/projects/view',
 
 
 //                '<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',

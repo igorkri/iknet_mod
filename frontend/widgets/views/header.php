@@ -97,9 +97,9 @@ $url = explode('/', $path);
                             <div class="drop">
                                 <?php foreach ($menu->children as $child):?>
 <!--                                <a href="https://iknet.com.ua/uk/innovations#" class="back">Назад</a>-->
-                                <a href="<?= Url::to(['/'. $child->slug]) ?>">
-                                    <?=$child->getTitleText($child->id)?>
-                                </a>
+                                    <a href="<?= Url::to(['/'. $child->slug]) ?>">
+                                        <?=$child->getTitleText($child->id)?>
+                                    </a>
                                 <?php endforeach; ?>
                             </div>
                         </div>

@@ -101,7 +101,7 @@ class ProjectCategory extends \yii\db\ActiveRecord
         return $this->hasOne(ProjectCategory::class, ['id' => 'parent_id']);
     }
     public function getParents(){
-        return $this->hasMany(ProjectCategory::class, ['parent_id' => 'id']);
+        return $this->hasMany(ProjectCategory::class, ['parent_id' => 'id'])->orderBy('order ASC');
     }
     public function getParents2(){
         return $this->hasMany(ProjectCategory::class, ['id' => 'parent_id']);

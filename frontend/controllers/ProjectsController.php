@@ -8,6 +8,8 @@ use common\models\Category;
 use common\models\ProjectCategory;
 use common\models\Projects;
 use Yii;
+use yii\base\BaseObject;
+use yii\data\Pagination;
 use yii\helpers\VarDumper;
 
 class ProjectsController extends \yii\web\Controller
@@ -16,6 +18,10 @@ class ProjectsController extends \yii\web\Controller
     {
         $new = Projects::find()->where(['slug' => $slug])->one();
 
+//        \yii\helpers\VarDumper::dump($slug, 10, true);
+//        \yii\helpers\VarDumper::dump($new, 10, true);
+//        die;
+
         return $this->render('view',[
             'new' => $new,
         ]);
@@ -23,10 +29,25 @@ class ProjectsController extends \yii\web\Controller
 
     public function actionCompanysProjects($slug = null)
     {
+        $get = Yii::$app->request->get();
         if($slug === null){
             $url = Yii::$app->request->pathInfo;
             $slug = explode('/', $url);
             $slug = $slug[1];
+        }
+
+        $lang = \Yii::$app->session->get('_language');
+        $pagination_btn = 'Завантажити ще';
+        if($lang === 'ru') {
+            $pagination_btn = "Скачать еще";
+        }elseif ($lang === 'en'){
+            $pagination_btn = "Download more";
+        }
+
+        if($slug === 'all_projects'){
+            $categories = ProjectCategory::find()
+                ->where(['parent_id' => 12])
+                ->all();
         }
         $category = ProjectCategory::find()
             ->with(['parents'])
@@ -35,26 +56,38 @@ class ProjectsController extends \yii\web\Controller
 
         $tabs = ProjectCategory::getTabProject($slug);
 
-        if($category->parents){
+        if(isset($category->parents) && $category->parents){
             $cat_ids = [];
             foreach ($category->parents as $parent){
                 $cat_ids[] = $parent->id;
             }
+        }elseif($slug === 'all_projects'){
+            foreach ($categories as $c){
+                $cat_ids[] = $c->id;
+            }
         }else{
             $cat_ids[] = $category->id;
         }
+        $count = 5;
+        if(isset($get['page'])){
+            $count = intval($get['page']) * 5;
+        }
 
-        $news = Projects::find()
-            ->where([
-                'category_id' => $cat_ids,
-                'published' => 1,
-            ])
+        $query = Projects::find()->where(['category_id' => $cat_ids, 'published' => 1]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => $count]);
+        $pages->pageSizeParam = false;
+        $news = $query->offset($pages->offset)
+            ->limit($pages->limit)
             ->all();
+
 
         return $this->render('projects-compani', [
             'tabs' => $tabs,
             'news' => $news,
-            'category' => $category
+            'category' => $category,
+            'pages' => $pages,
+            'pagination_btn' => $pagination_btn,
         ]);
     }
 
@@ -65,6 +98,20 @@ class ProjectsController extends \yii\web\Controller
             $slug = explode('/', $url);
             $slug = $slug[1];
         }
+        $lang = \Yii::$app->session->get('_language');
+        $pagination_btn = 'Завантажити ще';
+        if($lang === 'ru') {
+            $pagination_btn = "Скачать еще";
+        }elseif ($lang === 'en'){
+            $pagination_btn = "Download more";
+        }
+
+
+        if($slug === 'vsi-proekti'){
+            $categories = ProjectCategory::find()
+                ->where(['parent_id' => 12])
+                ->all();
+        }
         $category = ProjectCategory::find()
             ->with(['parents'])
             ->where(['slug' => $slug])
@@ -72,29 +119,39 @@ class ProjectsController extends \yii\web\Controller
 
         $tabs = ProjectCategory::getTabProject($slug);
 
-        if($category->parents){
+        if(isset($category->parents) && $category->parents){
             $cat_ids = [];
             foreach ($category->parents as $parent){
                 $cat_ids[] = $parent->id;
             }
+        }elseif($slug === 'vsi-proekti'){
+            foreach ($categories as $c){
+                $cat_ids[] = $c->id;
+            }
         }else{
             $cat_ids[] = $category->id;
         }
-        $news = Projects::find()
-            ->where([
-                'category_id' => $cat_ids,
-                'published' => 1,
-            ])
+
+        $count = 5;
+        if(isset($get['page'])){
+            $count = intval($get['page']) * 5;
+        }
+
+        $query = Projects::find()->where(['category_id' => $cat_ids, 'published' => 1]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => $count]);
+        $pages->pageSizeParam = false;
+        $news = $query->offset($pages->offset)
+            ->limit($pages->limit)
             ->all();
 
-//        VarDumper::dump($slug, 10, true);
-//        VarDumper::dump($cat_ids, 10, true);
-//        die;
 
-        return $this->render('projects-compani', [
+        return $this->render('projects-for-sale', [
             'tabs' => $tabs,
             'news' => $news,
-            'category' => $category
+            'category' => $category,
+            'pages' => $pages,
+            'pagination_btn' => $pagination_btn
         ]);
     }
 }
