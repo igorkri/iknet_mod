@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="presents-energy-form">
+<div class="container presents-energy-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

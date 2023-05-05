@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\PresentsEnergy;
 use common\models\search\PresentsEnergySearch;
+use yii\base\BaseObject;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -40,10 +41,11 @@ class PresentsEnergyController extends Controller
     {
         $searchModel = new PresentsEnergySearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
+        $present = PresentsEnergy::find()->one();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'present' => $present,
         ]);
     }
 

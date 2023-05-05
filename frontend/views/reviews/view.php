@@ -1,8 +1,6 @@
 <?php
 
-use Yii;
-
-$lang = Yii::$app->session->get('_language');
+$lang = \Yii::$app->session->get('_language');
 
 if($lang == 'ru'){
      $h2 =  'Отзывы';

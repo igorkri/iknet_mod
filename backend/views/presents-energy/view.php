@@ -11,9 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Presents Energies', 'url' => ['ind
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="presents-energy-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container presents-energy-view">
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -29,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+//            'id',
             'title',
             'description:ntext',
         ],

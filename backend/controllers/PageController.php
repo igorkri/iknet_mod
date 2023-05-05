@@ -73,7 +73,7 @@ class PageController extends Controller
     {
         $model = new Pages();
         $dir = Yii::getAlias('@frontendWeb/img/posts');
-        if ($this->request->isPost) {
+        if ($model->load($this->request->post())) {
             if($_FILES and $_FILES['Pages']['size']['image'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image');
                 $imageName = uniqid();
@@ -112,12 +112,14 @@ class PageController extends Controller
         $dir = Yii::getAlias('@frontendWeb/img/posts');
 
         if ($model->load($this->request->post())) {
-
+            $old_model = $this->findModel($id);
             if($_FILES and $_FILES['Pages']['size']['image'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image');
                 $imageName = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
                 $model->image = '/img/posts/' . $imageName . '.' . $file->extension;
+            }else{
+                $model->image = $old_model->image;
             }
 
             if($_FILES and $_FILES['Pages']['size']['image_og'] > 0) {
@@ -125,9 +127,9 @@ class PageController extends Controller
                 $imageName = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
                 $model->image_og = '/img/posts/' . $imageName . '.' . $file->extension;
+            }else{
+                $model->image_og = $old_model->image_og;
             }
-//            print_r($model->image);
-//            die;
         }
         if ($this->request->isPost && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

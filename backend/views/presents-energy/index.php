@@ -14,11 +14,11 @@ $this->title = 'Presents Energies';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container presents-energy-index">
-
+    <?php if ($present === null){ ?>
     <p>
         <?= Html::a('Create Presents Energy', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <?php } ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'title',
             'description:ntext',
             [

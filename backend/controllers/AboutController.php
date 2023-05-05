@@ -42,10 +42,12 @@ class AboutController extends Controller
     {
         $searchModel = new AboutSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $about = About::find()->one();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'about' => $about,
         ]);
     }
 
@@ -72,7 +74,7 @@ class AboutController extends Controller
         $model = new About();
         $dir = Yii::getAlias('@frontendWeb/img/about');
 
-        if ($this->request->isPost) {
+        if ($model->load($this->request->post())) {
             if($_FILES and $_FILES['About']['size']['image'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image');
                 $imageName = uniqid();
@@ -103,14 +105,16 @@ class AboutController extends Controller
         $model = $this->findModel($id);
         $dir = Yii::getAlias('@frontendWeb/img/about');
 
-        if ($this->request->isPost){
-
+        if ($model->load($this->request->post())) {
+            $old_model = $this->findModel($id);
             if($_FILES and $_FILES['About']['size']['image'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image');
                 $imageName = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
                 $model->image = '/img/about/' . $imageName . '.' . $file->extension;
-            }
+            }else{
+                $model->image = $old_model->image;
+        }
         }
         if ($this->request->isPost && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -120,7 +124,8 @@ class AboutController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
-    }
+      }
+
 
     /**
      * Deletes an existing About model.

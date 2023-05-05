@@ -71,6 +71,7 @@
                     ['label' => 'Отзывы', 'url' => ['reviews/index'], 'icon' => 'list'],
                     ['label' => 'О компании', 'url' => ['about/index'], 'icon' => 'list'],
                     ['label' => 'Контакты', 'url' => ['contacts/index'], 'icon' => 'list'],
+                    ['label' => 'Карьера', 'url' => ['page-career/index'], 'icon' => 'list'],
 //                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
 //                    ['label' => 'Level1'],
 //                    [
