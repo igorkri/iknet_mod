@@ -16,7 +16,7 @@ if($lang == 'ru'){
     $buttonAbout = 'Подробнее';
     $mapSite = 'Карта сайта';
     $h2Other = 'Простые решения сложных задач';
-
+    $st = 'Управление проектами в энергетике';
 }elseif($lang == 'en'){
     $telName = 'Phone: ';
     $h2Cont = 'Contacts';
