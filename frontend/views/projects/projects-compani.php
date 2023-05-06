@@ -47,7 +47,24 @@ $page = $get['page'] ?? 1;
         <?php endforeach; ?>
     </div>
     <?php
-        echo \yii\helpers\Html::a($pagination_btn, ['companys-projects', 'page' => $page ? $page + 1 : 2], ['type'=>'button', 'class'=>'uni_link'])
+    if($slug === null){
+        echo \yii\helpers\Html::a($pagination_btn, ['companys-projects', 'page' => $page ? $page + 1 : 2], [
+            'type'=>'button',
+            'class'=>'uni_link',
+            'data-pjax'=>1,
+            'onclick' => 'page(' . $page . ')'
+
+        ]);
+
+    }else{
+        echo \yii\helpers\Html::a($pagination_btn, ['companys-projects', 'slug' => $slug,'page' => $page ? $page + 1 : 2], [
+            'type'=>'button',
+            'class'=>'uni_link',
+            'data-pjax'=>1,
+            'onclick' => 'page(' . $page . ')'
+        ]);
+
+    }
     ?>
     <?php \yii\widgets\Pjax::end() ?>
 </section>
