@@ -79,7 +79,6 @@ class PresentsEnergyListController extends Controller
         $model = new PresentsEnergyList();
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-//              \Yii::$app->session->setFlash('success', "Збережено додайте наступну мову");
                 return $this->redirect(['create-img',
                     'id' => $model->id,
 

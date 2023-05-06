@@ -131,7 +131,7 @@ class PageController extends Controller
                 $model->image_og = $old_model->image_og;
             }
         }
-        if ($this->request->isPost && $model->save()) {
+        if ($this->request->isPost && $model->save(false)) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
