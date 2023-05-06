@@ -82,7 +82,6 @@ mihaildev\elfinder\Assets::noConflict($this);
             ])->label('Текст RU');?>
 
         </div>
-
             <div>
                 <br>
                 <?php if ($model->isNewRecord): ?>

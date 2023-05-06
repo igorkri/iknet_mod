@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var common\models\ClientsBrand $model */
 
-$this->title = 'Редактирование : ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Клиенты', 'url' => ['index']];
+$this->title = 'Редагування : ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Клієнти', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Редактировать';
+$this->params['breadcrumbs'][] = 'Редагувати';
 ?>
 <div class="container clients-brand-update">
 

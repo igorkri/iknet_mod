@@ -10,15 +10,13 @@ use yii\grid\ActionColumn;
 /** @var common\models\search\VcanciesSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Вакансии';
+$this->title = 'Вакансії';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container vacancies-index">
     <p>
-        <?= Html::a(' + Добавить', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(' + Створити', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

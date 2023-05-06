@@ -46,10 +46,6 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?= $form->field($model, 'slug')->hiddenInput(['maxlength' => true])->label(false) ?>
 
-    <?php // $form->field($model, 'created_at')->textInput() ?>
-
-    <?php // $form->field($model, 'updated_at')->textInput() ?>
-    <?php // $form->field($model, 'menu_id')->textInput() ?>
 
     <div class="row">
         <div class="col-6">

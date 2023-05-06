@@ -5,16 +5,14 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var common\models\Contacts $model */
 
-$this->title = Yii::t('app', 'Update Contacts: {name}', [
+$this->title = Yii::t('app', 'Редагувати: {name}', [
     'name' => $model->id,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contacts'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Контакти'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('app', 'Редагувати');
 ?>
 <div class="contacts-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

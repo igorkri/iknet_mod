@@ -1,7 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="<?=$assetDir?>/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="/" class="brand-link">
+<!--        <img src="--><?//=$assetDir?><!--/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">-->
+        <img src="/favicon.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Iknet</span>
     </a>
 
@@ -13,14 +14,14 @@
         <!-- SidebarSearch Form -->
         <!-- href be escaped -->
         <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
+<!--            <div class="input-group" data-widget="sidebar-search">-->
+<!--                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">-->
+<!--                <div class="input-group-append">-->
+<!--                    <button class="btn btn-sidebar">-->
+<!--                        <i class="fas fa-search fa-fw"></i>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
         <!-- Sidebar Menu -->
@@ -38,7 +39,7 @@
 //                    ],
 
                     ['label' => 'Меню', 'url' => ['menu/index'], 'icon' => 'ellipsis-v'],
-                    ['label' => 'Категории', 'url' => ['category/index'], 'icon' => 'bars'],
+                    ['label' => 'Катеорії', 'url' => ['category/index'], 'icon' => 'bars'],
 //                    ['label' => 'Новости', 'url' => ['news/index'], 'icon' => 'newspaper'],
 //                    ['label' => 'Проекти', 'url' => ['page/project'], 'icon' => 'project-diagram'],
 //                    [
@@ -48,29 +49,46 @@
 //                            ['label' => 'Проекты компании', 'url' => ['page/index', 'category_id' => 13],'icon' => 'list']
 //                        ]
 //                    ],
-                    ['label' => 'Цены и тарифы', 'url' => ['price/index'], 'icon' => 'barcode'],
-                    ['label' => 'Страницы', 'url' => ['page/index'], 'icon' => 'file-alt'],
+//                    ['label' => 'Цены и тарифы', 'url' => ['price/index'], 'icon' => 'barcode'],
+                    ['label' => 'Сторінки', 'url' => ['page/index'], 'icon' => 'file-alt'],
 //                    ['label' => 'Подарки енергетикам', 'url' => ['presents-energy-list/index'], 'icon' => 'gift'],
-                    ['label' => 'Проекти', 'url' => ['page/project'], 'icon' => 'project-diagram'],
+//                    ['label' => 'Проекти', 'url' => ['page/project'], 'icon' => 'project-diagram'],
                     [
-                        'label' => 'Подарки енергетикам', 'icon' => 'gift',
+                        'label' => 'Новини', 'icon' => 'file-alt',
                         'items' => [
-                            ['label' => 'Ред. страницы', 'url' => ['presents-energy/index', 'category_id' => 13],'icon' => 'edit'],
-                            ['label' => 'Подарки', 'url' => ['presents-energy-list/index'],'icon' => 'list']
+                            ['label' => 'Новини', 'url' => ['news/index'], 'icon' => 'edit'],
+                            ['label' => 'Категорії новин', 'url' => ['news-category/index'],'icon' => 'list']
+                        ]
+
+                    ],
+                    [
+                        'label' => 'Проєкти', 'icon' => 'project-diagram',
+                        'items' => [
+                            ['label' => 'Проєкти', 'url' => ['projects/index'], 'icon' => 'edit'],
+                            ['label' => 'Категорії проєктів', 'url' => ['project-category/index'],'icon' => 'list']
+                       ]
+
+                    ],
+
+                    [
+                        'label' => 'Подарунки енергетикам', 'icon' => 'gift',
+                        'items' => [
+                            ['label' => 'Ред. сторінки', 'url' => ['presents-energy/index', 'category_id' => 13],'icon' => 'edit'],
+                            ['label' => 'Подарунки', 'url' => ['presents-energy-list/index'],'icon' => 'list']
                         ]
                     ],
 
                     [
-                        'label' => 'Вакансии', 'icon' => 'chart-line',
+                        'label' => 'Вакансії', 'icon' => 'chart-line',
                         'items' => [
-                            ['label' => 'Ред. страницы', 'url' => ['page-career/index'],'icon' => 'edit'],
-                            ['label' => 'Список вакансий', 'url' => ['vcancies/index'],'icon' => 'list']
+                            ['label' => 'Ред. сторінки', 'url' => ['page-career/index'],'icon' => 'edit'],
+                            ['label' => 'Список вакансій', 'url' => ['vcancies/index'],'icon' => 'list']
                         ]
                     ],
-                    ['label' => 'Клиенты', 'url' => ['clients-brand/index'], 'icon' => 'copyright'],
-                    ['label' => 'Отзывы', 'url' => ['reviews/index'], 'icon' => 'list'],
-                    ['label' => 'О компании', 'url' => ['about/index'], 'icon' => 'list'],
-                    ['label' => 'Контакты', 'url' => ['contacts/index'], 'icon' => 'list'],
+                    ['label' => 'Клієнты', 'url' => ['clients-brand/index'], 'icon' => 'copyright'],
+                    ['label' => 'Відгуки', 'url' => ['reviews/index'], 'icon' => 'list'],
+                    ['label' => 'Про компанію', 'url' => ['about/index'], 'icon' => 'list'],
+                    ['label' => 'Контакти', 'url' => ['contacts/index'], 'icon' => 'list'],
 //                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
 //                    ['label' => 'Level1'],
 //                    [

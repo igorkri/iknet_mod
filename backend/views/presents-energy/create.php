@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var common\models\PresentsEnergy $model */
 
-$this->title = 'Create Presents Energy';
-$this->params['breadcrumbs'][] = ['label' => 'Presents Energies', 'url' => ['index']];
+$this->title = 'Подарунки енергетикам';
+$this->params['breadcrumbs'][] = ['label' => 'Подарунки енергетикам', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="presents-energy-create">

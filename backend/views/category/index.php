@@ -10,13 +10,13 @@ use yii\grid\ActionColumn;
 /** @var common\models\search\CategorySearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Категории';
+$this->title = 'Категорії';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container category-index">
 
     <p>
-        <?= Html::a('Cоздать категорию', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('+ Створити', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
