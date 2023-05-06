@@ -91,7 +91,6 @@ class PresentsEnergyListController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'langs' => Language::find()->all(),
         ]);
     }
 

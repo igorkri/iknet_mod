@@ -4,8 +4,7 @@ use yii\helpers\Url;
 
 $param = \Yii::$app->request->get('q');
 $lang = \Yii::$app->session->get('_language');
-//\yii\helpers\VarDumper::dump($pages, 10, true);
-//die;
+
 ?>
 <section class="news">
     <div class="block">
