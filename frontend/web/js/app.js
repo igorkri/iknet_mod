@@ -135,26 +135,28 @@ $('#file').change(function () {
 // gifts
 $('#gifts .block .item').click(function () {
   var filter = $(this).data('filter');
-  if (filter == 'gift_1') {
-    $('#gifts .dark_bcg').append('<div class="gift_slider" id="gift_slider"></div>');
-    $('#gift_slider').append('<div class="item"><img src="img/gift1_1.webp" alt=""></div><div class="item"><img src="img/gift1_2.webp" alt=""></div><div class="item"><img src="img/gift1_3.webp" alt=""></div>');
-    $('#gift_slider').slick({
-      dots: false,
-      arrows: true,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    });
-  }
-  else if (filter == 'gift_2') {
-    $('#gifts .dark_bcg').append('<div class="gift_slider" id="gift_slider"></div>');
-    $('#gift_slider').append('<div class="item"><img src="img/gift2_1.webp" alt=""></div><div class="item"><img src="img/gift2_2.webp" alt=""></div><div class="item"><img src="img/gift2_3.webp" alt=""></div>');
-    $('#gift_slider').slick({
-      dots: false,
-      arrows: true,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    });
-  }
+  var id = $(this).data('id');
+
+  $.ajax({
+    url: "/ru/gifts/img-gifts",
+    type: 'get',
+    data: {
+      'id': id,
+    },
+    success: function(data) {
+      $('#gifts .dark_bcg').append('<div class="gift_slider" id="gift_slider"></div>');
+      $('#gift_slider').append(data);
+      $('#gift_slider').slick({
+        dots: false,
+        arrows: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      });
+    },
+    error: function(data){
+      console.log('error', data);
+    }
+  });
   $('#gifts .dark_bcg').addClass('active');
 });
 

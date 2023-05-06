@@ -4,10 +4,12 @@
         <h2><?= $item->getTitle($item->id) ?></h2>
         <p><?= $item->getDescription($item->id) ?>
         </p>
-        <?php foreach ($presents as $present): ?>
-        <div class="item" data-filter="gift_1">
+        <?php $i = 1; foreach ($presents as $present): ?>
+        <div class="item" data-filter="gift_<?=$i?>" data-id="<?=$present->id?>">
             <div class="img">
-                <img src="/img/gift1.webp" alt="">
+                <?php if(isset($present->img)): ?>
+                <img src="/images/presents-list/<?=$present->img->file?>" alt="">
+                <?php endif; ?>
             </div>
             <div class="info">
                 <div class="title">
@@ -20,7 +22,7 @@
                 </div>
             </div>
         </div>
-       <?php endforeach; ?>
+       <?php $i++; endforeach; ?>
         <form action="" class="your_contact">
             <div class="left">
                 <h3>Залиште свої контактні дані і ми з вами зв’яжемось</h3>
