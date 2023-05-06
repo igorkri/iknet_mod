@@ -4,9 +4,12 @@ namespace backend\controllers;
 
 use common\models\Projects;
 use common\models\search\ProjectsSearch;
+use Yii;
+use yii\base\BaseObject;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProjectsController implements the CRUD actions for Projects model.
@@ -68,9 +71,22 @@ class ProjectsController extends Controller
     public function actionCreate()
     {
         $model = new Projects();
+        $dir = Yii::getAlias('@frontendWeb/img/projects');
+        if ($model->load($this->request->post())) {
+            if($_FILES and $_FILES['Projects']['size']['image'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image = '/img/projects/' . $imageName . '.' . $file->extension;
+            }
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if($_FILES and $_FILES['Projects']['size']['image_og'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image_og');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image_og = '/img/projects/' . $imageName . '.' . $file->extension;
+            }
+            if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -92,8 +108,29 @@ class ProjectsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $dir = Yii::getAlias('@frontendWeb/img/projects');
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($model->load($this->request->post())) {
+            $old_model = $this->findModel($id);
+            if($_FILES and $_FILES['Projects']['size']['image'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image = '/img/projects/' . $imageName . '.' . $file->extension;
+            }else{
+                $model->image = $old_model->image;
+            }
+
+            if($_FILES and $_FILES['Projects']['size']['image_og'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image_og');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image_og = '/img/projects/' . $imageName . '.' . $file->extension;
+            }else{
+                $model->image_og = $old_model->image_og;
+            }
+        }
+        if ($this->request->isPost && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

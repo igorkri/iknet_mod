@@ -4,9 +4,12 @@ namespace backend\controllers;
 
 use common\models\NewsCategory;
 use common\models\search\NewsCategorySearch;
+use Yii;
+use yii\base\BaseObject;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * NewsCategoryController implements the CRUD actions for NewsCategory model.
@@ -69,9 +72,19 @@ class NewsCategoryController extends Controller
     {
         $model = new NewsCategory();
 
+        $dir = Yii::getAlias('@frontend/web/img/news_category');
+
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                if($_FILES and $_FILES['NewsCategory']['size']['image'] > 0) {
+                    $file = UploadedFile::getInstance($model, 'image');
+                    $imageName = uniqid();
+                    $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                    $model->image = '/img/news_category/' . $imageName . '.' . $file->extension;
+                }
+                if($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -92,9 +105,21 @@ class NewsCategoryController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $dir = Yii::getAlias('@frontend/web/img/news_category');
+        if ($model->load($this->request->post())) {
+            $old_model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($_FILES and $_FILES['NewsCategory']['size']['image'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image = '/img/news_category/' . $imageName . '.' . $file->extension;
+            }else{
+                $model->image = $old_model->image;
+            }
+            if ($this->request->isPost && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [

@@ -4,9 +4,12 @@ namespace backend\controllers;
 
 use common\models\News;
 use common\models\search\NewsSearch;
+use Yii;
+use yii\base\BaseObject;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -69,8 +72,22 @@ class NewsController extends Controller
     {
         $model = new News();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+        $dir = Yii::getAlias('@frontendWeb/img/news');
+        if ($model->load($this->request->post())) {
+            if($_FILES and $_FILES['News']['size']['image'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image = '/img/news/' . $imageName . '.' . $file->extension;
+            }
+
+            if($_FILES and $_FILES['News']['size']['image_og'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image_og');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image_og = '/img/news/' . $imageName . '.' . $file->extension;
+            }
+            if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -92,8 +109,29 @@ class NewsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $dir = Yii::getAlias('@frontendWeb/img/news');
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($model->load($this->request->post())) {
+            $old_model = $this->findModel($id);
+            if($_FILES and $_FILES['News']['size']['image'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image = '/img/news/' . $imageName . '.' . $file->extension;
+            }else{
+                $model->image = $old_model->image;
+            }
+
+            if($_FILES and $_FILES['News']['size']['image_og'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image_og');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image_og = '/img/news/' . $imageName . '.' . $file->extension;
+            }else{
+                $model->image_og = $old_model->image_og;
+            }
+        }
+        if ($this->request->isPost && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

@@ -4,9 +4,12 @@ namespace backend\controllers;
 
 use common\models\ProjectCategory;
 use common\models\search\ProjectCategorySearch;
+use Yii;
+use yii\base\BaseObject;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProjectCategoryController implements the CRUD actions for ProjectCategory model.
@@ -69,9 +72,19 @@ class ProjectCategoryController extends Controller
     {
         $model = new ProjectCategory();
 
+        $dir = Yii::getAlias('@frontend/web/img/project_category');
+
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                if($_FILES and $_FILES['ProjectCategory']['size']['image'] > 0) {
+                    $file = UploadedFile::getInstance($model, 'image');
+                    $imageName = uniqid();
+                    $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                    $model->image = '/img/project_category/' . $imageName . '.' . $file->extension;
+                }
+                if($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -92,9 +105,21 @@ class ProjectCategoryController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $dir = Yii::getAlias('@frontend/web/img/project_category');
+        if ($model->load($this->request->post())) {
+            $old_model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($_FILES and $_FILES['ProjectCategory']['size']['image'] > 0) {
+                $file = UploadedFile::getInstance($model, 'image');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->image = '/img/project_category/' . $imageName . '.' . $file->extension;
+            }else{
+                $model->image = $old_model->image;
+            }
+            if ($this->request->isPost && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [
