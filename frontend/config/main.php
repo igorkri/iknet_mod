@@ -46,19 +46,22 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '/' => '/site/index',
+                'search' => '/search/index',
                 'about' => '/about/view',
                 'contacts' => '/contacts/view',
                 'karyera' => '/career/view',
 
                 'articles/<slug:[\w+-]*\w+>' => '/news/view',
                 'articles' => '/news/view',
-                '<slug:[\w+-]*\w+>' => '/news/item',
+                'new/<slug:[\w+-]*\w+>/' => '/news/item',
 
                 'projects/projects-for-sale/<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
                 'projects/companys-projects/<slug:[\w+-]*\w+>' => '/projects/companys-projects',
-                '<c:[\w+-]*\w+>/<a:[\w+-]*\w+>/<slug:[\w+-]*\w+>' => '/projects/view',
-
+                'project/<slug:[\w+-]*\w+>' => '/projects/view',
+//                '<c:[\w+-]*\w+>/<a:[\w+-]*\w+>/<slug:[\w+-]*\w+>' => '/projects/view',
+                'article/<slug:[\w+-]*\w+>' => '/page/article',
                 '<slug:[\w+-]*\w+>' => '/gifts/view',
+//                '<controller>/<action>/<slug:[\w+-]*\w+>' => '<controller>/<action>',
 
 
 //                '<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',

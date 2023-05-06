@@ -17,23 +17,4 @@ $this->params['breadcrumbs'][] = 'Редактирование';
         'model' => $model,
     ]) ?>
 
-
-    <?php if(!empty($model->image) || !empty($model->image_og)): ?>
-        <hr>
-    <div class="row">
-        <div class="col-6">
-            <label for="">Головне зображення</label>
-            <img src="<?=Yii::$app->request->hostInfo. $model->image?>" style="width: 550px" alt="">
-        </div>
-        <div class="col-6">
-            <label for="">SEO зображення</label>
-            <img src="<?=Yii::$app->request->hostInfo. $model->image_og?>" style="width: 550px" alt="">
-        </div>
-    </div>
-
-        <hr>
-        <br>
-        <br>
-    <?php endif; ?>
-
 </div>

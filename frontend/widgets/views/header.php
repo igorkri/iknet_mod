@@ -3,12 +3,12 @@
 use yii\helpers\Url;
 
 $path = Yii::$app->request->pathInfo;
-//$url = Yii::$app->request->get('slug');
+$get = Yii::$app->request->get();
 
 $url = explode('/', $path);
 
 //\yii\helpers\VarDumper::dump($path, 10, true);
-//\yii\helpers\VarDumper::dump($url, 10, true);
+//\yii\helpers\VarDumper::dump($get['q'], 10, true);
 //die;
 /**
  * @var \common\models\Menu $menu
@@ -24,7 +24,9 @@ $url = explode('/', $path);
         <div class="cont">
             <div class="search">
                 <img src="/img/lens.svg" alt="">
-                <input type="text" id="search-input" placeholder="<?=$search?>">
+                <form action="<?=Url::to(['/search/index'])?>">
+                    <input type="text" name="q" id="search-input" placeholder="<?=$search?>">
+                </form>
             </div>
             <div class="social_networks">
                 <a href="https://twitter.com/iknetUA">
@@ -68,9 +70,15 @@ $url = explode('/', $path);
                 <a href="tel:+380504417020">+38 050 441 70 20</a>
             </div>
             <div class="languages">
-                <a href="<?=Url::to(['/'. $path, 'language' => 'uk'])?>" class="<?=$lang === 'uk' ? 'active' : ''?>">UK</a>
-                <a href="<?=Url::to(['/'. $path, 'language' => 'en'])?>" class="<?=$lang === 'en' ? 'active' : ''?>">EN</a>
-                <a href="<?=Url::to(['/'. $path, 'language' => 'ru'])?>" class="<?=$lang === 'ru' ? 'active' : ''?>">RU</a>
+                <?php if(!isset($get["q"])): ?>
+                    <a href="<?=Url::to(['/'. $path, 'language' => 'uk'])?>" class="<?=$lang === 'uk' ? 'active' : ''?>">UK</a>
+                    <a href="<?=Url::to(['/'. $path, 'language' => 'en'])?>" class="<?=$lang === 'en' ? 'active' : ''?>">EN</a>
+                    <a href="<?=Url::to(['/'. $path, 'language' => 'ru'])?>" class="<?=$lang === 'ru' ? 'active' : ''?>">RU</a>
+                <?php else: ?>
+                    <a href="<?=Url::to(['/'. $path, 'q' => $get["q"], 'language' => 'uk'])?>" class="<?=$lang === 'uk' ? 'active' : ''?>">UK</a>
+                    <a href="<?=Url::to(['/'. $path, 'q' => $get["q"], 'language' => 'en'])?>" class="<?=$lang === 'en' ? 'active' : ''?>">EN</a>
+                    <a href="<?=Url::to(['/'. $path, 'q' => $get["q"], 'language' => 'ru'])?>" class="<?=$lang === 'ru' ? 'active' : ''?>">RU</a>
+                <?php endif; ?>
             </div>
             <!----- Menu ---------->
             <div class="links_drop">
