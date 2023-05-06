@@ -1,3 +1,23 @@
+<?php
+
+$lang = \Yii::$app->session->get('_language');
+
+if($lang == 'ru'){
+    $price =  'Цена:';
+    $cod =  'Код:';
+    $many =  'руб';
+}elseif($lang == 'en'){
+    $price =  'Price:';
+    $cod =  'Code:';
+    $many =  'USD';
+}else{
+    $price = 'Ціна:';
+    $cod =  'Код:';
+    $many =  ' грн';
+}
+
+?>
+
 <!----- gifts ----->
 <section class="gifts" id="gifts">
     <div class="block">
@@ -14,11 +34,11 @@
             <div class="info">
                 <div class="title">
                     <h4><?= $present->getTitle($present->id) ?></h4>
-                    <h5>Код:<span><?= $present->sku_uk ?></span></h5>
+                    <h5><?= $cod ?><span><?= $present->getCod($present->id) ?></span></h5>
                 </div>
                 <div class="disc">
                     <p><?= $present->getDescription($present->id) ?></p>
-                    <h5>Ціна:<span><?= $present->price_uk ?> грн</span></h5>
+                    <h5><?= $price ?><span><?= $present->getPrice($present->id) ?> <?= $many ?></span></h5>
                 </div>
             </div>
         </div>
