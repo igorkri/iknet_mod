@@ -48,10 +48,27 @@
 //                            ['label' => 'Проекты компании', 'url' => ['page/index', 'category_id' => 13],'icon' => 'list']
 //                        ]
 //                    ],
-                    ['label' => 'Цены и тарифы', 'url' => ['price/index'], 'icon' => 'barcode'],
+//                    ['label' => 'Цены и тарифы', 'url' => ['price/index'], 'icon' => 'barcode'],
                     ['label' => 'Страницы', 'url' => ['page/index'], 'icon' => 'file-alt'],
 //                    ['label' => 'Подарки енергетикам', 'url' => ['presents-energy-list/index'], 'icon' => 'gift'],
-                    ['label' => 'Проекти', 'url' => ['page/project'], 'icon' => 'project-diagram'],
+//                    ['label' => 'Проекти', 'url' => ['page/project'], 'icon' => 'project-diagram'],
+                    [
+                        'label' => 'Новини', 'icon' => 'file-alt',
+                        'items' => [
+                            ['label' => 'Новини', 'url' => ['news/index'], 'icon' => 'edit'],
+                            ['label' => 'Категорії', 'url' => ['news-category/index'],'icon' => 'list']
+                        ]
+
+                    ],
+                    [
+                        'label' => 'Проекти', 'icon' => 'project-diagram',
+                        'items' => [
+                            ['label' => 'Проєкти', 'url' => ['projects/index'], 'icon' => 'edit'],
+                            ['label' => 'Категорії', 'url' => ['project-category/index'],'icon' => 'list']
+                       ]
+
+                    ],
+
                     [
                         'label' => 'Подарки енергетикам', 'icon' => 'gift',
                         'items' => [
