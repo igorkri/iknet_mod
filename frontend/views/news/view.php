@@ -10,7 +10,7 @@ $page = $get['page'] ?? 1;
 //die;
 ?>
 <section class="news">
-    <?php \yii\widgets\Pjax::begin() ?>
+    <?php // \yii\widgets\Pjax::begin(['id' => 'new-list']) ?>
     <div class="block">
         <h2><?=$category->getTitle($category->id)?></h2>
         <nav class="bookmarks" id="bookmarks">
@@ -34,7 +34,7 @@ $page = $get['page'] ?? 1;
         <?php foreach ($news as $new): ?>
             <a href="<?=Yii::$app->urlManager->createUrl(['/news/item','slug' => $new->slug])?>" class="item">
                 <div class="img">
-                    <img src="/<?= $new->image ?>" alt="">
+                    <img src="<?= $new->image ?>" alt="">
                 </div>
                 <div class="text">
                     <h4><?= $new->getTitle($new->id) ?></h4>
@@ -48,10 +48,47 @@ $page = $get['page'] ?? 1;
     </div>
     <?php
     if($slug === null){
-        echo \yii\helpers\Html::a($pagination_btn, ['view', 'page' => $page ? $page + 1 : 2], ['type'=>'button', 'class'=>'uni_link']);
+        echo \yii\helpers\Html::a($pagination_btn, ['view', 'page' => $page ? $page + 1 : 2], [
+            'type'=>'button',
+            'class'=>'uni_link',
+            'data-pjax'=>1,
+            'onclick' => 'page(' . $page . ')'
+
+        ]);
+//        echo \yii\helpers\Html::button($pagination_btn, [
+//            'type'=>'button',
+//            'class'=>'uni_link',
+////            'data-pjax'=>1,
+//            'onclick' => 'page(' . $page . ')'
+//
+//        ]);
     }else{
-        echo \yii\helpers\Html::a($pagination_btn, ['view', 'slug' => $slug,'page' => $page ? $page + 1 : 2], ['type'=>'button', 'class'=>'uni_link']);
+        echo \yii\helpers\Html::a($pagination_btn, ['view', 'slug' => $slug,'page' => $page ? $page + 1 : 2], [
+            'type'=>'button',
+            'class'=>'uni_link',
+            'data-pjax'=>1,
+            'onclick' => 'page(' . $page . ')'
+        ]);
+
     }
     ?>
-    <?php \yii\widgets\Pjax::end() ?>
+    <?php //\yii\widgets\Pjax::end() ?>
 </section>
+
+<!--<script>-->
+<!--    function page(page){-->
+<!--        $.ajax({-->
+<!--            url: '/news/view',-->
+<!--            method: 'get',-->
+<!--            // dataType: 'json',-->
+<!--            data: {-->
+<!--                'page': page-->
+<!--            },-->
+<!--            success: function(data) {-->
+<!--                document.location.reload();-->
+<!--                console.log(data);-->
+<!--            }-->
+<!--        });-->
+<!---->
+<!--    }-->
+<!--</script>-->

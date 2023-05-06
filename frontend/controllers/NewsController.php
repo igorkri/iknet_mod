@@ -68,7 +68,16 @@ class NewsController extends Controller
             ->orderBy('created_at DESC')
             ->limit($count)
             ->all();
-
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return $this->renderAjax('view', [
+                'tabs' => $tabs,
+                'news' => $news,
+                'category' => $category,
+//            'pages' => $pages,
+                'pagination_btn' => $pagination_btn,
+            ]);
+        }
         return $this->render('view', [
             'tabs' => $tabs,
             'news' => $news,
@@ -85,6 +94,12 @@ class NewsController extends Controller
         return $this->render('item',[
             'new' => $new,
         ]);
+
+    }
+    public function actionPagination($page){
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        return $page;
 
     }
 }
