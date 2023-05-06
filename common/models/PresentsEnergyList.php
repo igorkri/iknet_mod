@@ -94,4 +94,17 @@ class PresentsEnergyList extends \yii\db\ActiveRecord
             return $res->price_uk;
         }
     }
+
+    public function getCod($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->sku_ru;
+        }elseif($lang == 'en'){
+            return $res->sku_en;
+        }else{
+            return $res->sku_uk;
+        }
+    }
 }

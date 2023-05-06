@@ -5,12 +5,15 @@ $lang = \Yii::$app->session->get('_language');
 if($lang == 'ru'){
     $price =  'Цена:';
     $cod =  'Код:';
+    $many =  'руб';
 }elseif($lang == 'en'){
     $price =  'Price:';
     $cod =  'Code:';
+    $many =  'USD';
 }else{
     $price = 'Ціна:';
     $cod =  'Код:';
+    $many =  ' грн';
 }
 
 ?>
@@ -31,11 +34,11 @@ if($lang == 'ru'){
             <div class="info">
                 <div class="title">
                     <h4><?= $present->getTitle($present->id) ?></h4>
-                    <h5><?= $cod ?><span><?= $present->sku_uk ?></span></h5>
+                    <h5><?= $cod ?><span><?= $present->getCod($present->id) ?></span></h5>
                 </div>
                 <div class="disc">
                     <p><?= $present->getDescription($present->id) ?></p>
-                    <h5><?= $price ?><span><?= $present->getPrice($present->id) ?> грн</span></h5>
+                    <h5><?= $price ?><span><?= $present->getPrice($present->id) ?> <?= $many ?></span></h5>
                 </div>
             </div>
         </div>
