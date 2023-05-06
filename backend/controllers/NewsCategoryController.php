@@ -117,7 +117,7 @@ class NewsCategoryController extends Controller
             }else{
                 $model->image = $old_model->image;
             }
-            if ($this->request->isPost && $model->save()) {
+            if ($this->request->isPost && $model->save(false)) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
