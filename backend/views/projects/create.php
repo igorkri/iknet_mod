@@ -9,9 +9,7 @@ $this->title = Yii::t('app', 'Create Projects');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Projects'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="projects-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container projects-create">
 
     <?= $this->render('_form', [
         'model' => $model,

@@ -13,9 +13,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Projects');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="projects-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container projects-index">
 
     <p>
         <?= Html::a(Yii::t('app', 'Create Projects'), ['create'], ['class' => 'btn btn-success']) ?>

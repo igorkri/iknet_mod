@@ -13,9 +13,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Project Categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="project-category-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container project-category-index">
 
     <p>
         <?= Html::a(Yii::t('app', 'Create Project Category'), ['create'], ['class' => 'btn btn-success']) ?>
@@ -29,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'title_uk',
             'title_en',
             'title_ru',

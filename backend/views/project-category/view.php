@@ -11,9 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Project Categories')
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="project-category-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container project-category-view">
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -29,13 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+//            'id',
             'title_uk',
             'title_en',
             'title_ru',
             'slug',
-            'parent_id',
-            'order',
+//            'parent_id',
+//            'order',
             'published',
             'image',
             'seo_description_uk',

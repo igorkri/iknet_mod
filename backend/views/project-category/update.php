@@ -12,9 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Project Categories')
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
-<div class="project-category-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container project-category-update">
 
     <?= $this->render('_form', [
         'model' => $model,
