@@ -82,5 +82,16 @@ class PresentsEnergyList extends \yii\db\ActiveRecord
             return $res->description_uk;
         }
     }
-
+    public function getPrice($id)
+    {
+        $lang = \Yii::$app->session->get('_language');
+        $res = self::find()->where(['id' => $id])->one();
+        if($lang == 'ru'){
+            return $res->price_ru;
+        }elseif($lang == 'en'){
+            return $res->price_en;
+        }else{
+            return $res->price_uk;
+        }
+    }
 }
