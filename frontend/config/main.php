@@ -58,6 +58,8 @@ return [
                 'projects/companys-projects/<slug:[\w+-]*\w+>' => '/projects/companys-projects',
                 '<c:[\w+-]*\w+>/<a:[\w+-]*\w+>/<slug:[\w+-]*\w+>' => '/projects/view',
 
+                '<slug:[\w+-]*\w+>' => '/gifts/view',
+
 
 //                '<slug:[\w+-]*\w+>' => '/projects/projects-for-sale',
 //                '/<lang:\w+>' => 'site/index',

@@ -97,9 +97,16 @@ $url = explode('/', $path);
                             <div class="drop">
                                 <?php foreach ($menu->children as $child):?>
 <!--                                <a href="https://iknet.com.ua/uk/innovations#" class="back">Назад</a>-->
-                                    <a href="<?= Url::to(['/'. $child->slug]) ?>">
-                                        <?=$child->getTitleText($child->id)?>
-                                    </a>
+                                    <?php if($child->slug == 'podarunki-energetikam'): ?>
+                                        <a href="<?= Url::to(['/gifts/view', 'slug' => $child->slug]) ?>">
+                                            <?=$child->getTitleText($child->id)?>
+                                        </a>
+                                    <?php else: ?>
+                                        <a href="<?= Url::to(['/'. $child->slug]) ?>">
+                                            <?=$child->getTitleText($child->id)?>
+                                        </a>
+                                    <?php endif; ?>
+
                                 <?php endforeach; ?>
                             </div>
                         </div>
