@@ -66,8 +66,8 @@ $url = explode('/', $path);
                 </a>
             </div>
             <div class="tels">
-                <a href="tel:+380445910873">+38 044 591 08 73</a>
-                <a href="tel:+380504417020">+38 050 441 70 20</a>
+                <a href="tel:<?=str_replace([' ', '(', ')', '-'], '', $contact->tel1)?>"><?=str_replace([' ', '(', ')', '-'], ' ', $contact->tel1)?></a>
+                <a href="tel:<?=str_replace([' ', '(', ')', '-'], '', $contact->tel2)?>"><?=str_replace([' ', '(', ')', '-'], ' ', $contact->tel2)?></a>
             </div>
             <div class="languages">
                 <?php if(!isset($get["q"])): ?>

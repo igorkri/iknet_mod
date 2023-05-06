@@ -1,6 +1,6 @@
 <section class="possibilities" id="possibilities">
     <div class="block">
-        <div class="item">
+        <div class="item" id="management">
             <h1>Інжиніринг в енергетиці</h1>
             <div class="info">
                 <div class="part1">
@@ -149,7 +149,7 @@
                 </div>
             </div>
         </div>
-        <div class="item">
+        <div class="item" id="connection">
             <h1>Приєднання об’єктів</h1>
             <div class="info">
                 <div class="part1">
@@ -247,7 +247,7 @@
                 </div>
             </div>
         </div>
-        <div class="item">
+        <div class="item" id="energy-efficiency">
             <h1>Напрямки бізнесу</h1>
             <div class="info">
                 <div class="part1">

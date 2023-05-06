@@ -13,8 +13,8 @@
                 <address>
                     <img src="/img/phones.svg" alt="">
                     <div>
-                        <a href="tel:<?= $contact->tel1 ?>"><?= $contact->tel1 ?></a>
-                        <a href="tel:<?= $contact->tel2 ?>"><?= $contact->tel2 ?></a>
+                        <a href="tel:<?=str_replace([' ', '(', ')', '-'], '', $contact->tel1)?>"><?= $contact->tel1 ?></a>
+                        <a href="tel:<?=str_replace([' ', '(', ')', '-'], '', $contact->tel2)?>"><?= $contact->tel2 ?></a>
                     </div>
                 </address>
                 <address>
