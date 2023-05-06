@@ -28,6 +28,7 @@ if($lang == 'ru'){
     $buttonAbout = 'Read more';
     $mapSite = 'Site map';
     $h2Other = 'Simple solutions to complex problems';
+    $st = 'Project management in energy';
 }else{
     $telName = 'Тел: ';
     $h2Cont = 'Контакти';
@@ -39,6 +40,7 @@ if($lang == 'ru'){
     $buttonAbout = 'Докладніше';
     $mapSite = 'Карта сайту';
     $h2Other = 'Прості рішення складних завдань';
+    $st = 'Управління проєктами в енергетиці';
 
 }
 ?>
@@ -77,26 +79,24 @@ if($lang == 'ru'){
         <div class="footer_block">
             <div class="part">
                 <h4><?=$mapSite?></h4>
-                <a href="<?= Url::to(['/about/view']) ?>">Про компанію</a>
-                <a href="#">Управління</a>
-                <a href="#">Приєднання</a>
-                <a href="#">Бізнес в енергетиці</a>
-                <a href="#">Публікації</a>
-                <a href="#">Ринок електроенергії</a>
-                <a href="#">Проекти</a>
+                <?php foreach ($site_map as $sm): ?>
+                    <a href="<?=Url::to(['/'.$sm->slug])?>"><?=$sm->getTitleText($sm->id)?></a>
+                <?php endforeach; ?>
             </div>
             <div class="part">
                 <h4><?=$h4About?></h4>
                 <p>
                     <?=$textAbout?>
-                    <a href="#"><?=$buttonAbout?> →</a>
+                    <a href="<?=Url::to(['/about'])?>"><?=$buttonAbout?> →</a>
                 </p>
             </div>
             <div class="part">
                 <h4><?=$h2Service?></h4>
-                <a href="#">Управління проектами в енергетиці</a>
-                <a href="#">Приєднання об’єктів енергетики</a>
-                <a href="#">Бізнес в енергетиці</a>
+                <a href="#management"><?=$st?></a>
+                <?php foreach ($services as $sm): ?>
+                    <a href="<?=Url::to(['/'.$sm->slug])?>"><?=$sm->getTitleText($sm->id)?></a>
+                <?php endforeach; ?>
+
             </div>
             <div class="part">
                 <h4><?=$h2Cont?></h4>
