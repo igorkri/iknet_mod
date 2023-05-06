@@ -10,13 +10,13 @@ use yii\grid\GridView;
 /** @var common\models\search\PresentsEnergySearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Presents Energies';
+$this->title = 'Подарунки енергетикам';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container presents-energy-index">
     <?php if ($present === null){ ?>
     <p>
-        <?= Html::a('Create Presents Energy', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('+ Створити', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php } ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

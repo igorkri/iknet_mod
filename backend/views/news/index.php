@@ -10,13 +10,13 @@ use yii\grid\GridView;
 /** @var common\models\search\NewsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'News');
+$this->title = Yii::t('app', 'Новини');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container news-index">
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create News'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', '+ Створити'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

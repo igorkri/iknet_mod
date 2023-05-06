@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container menu-index">
 
     <p>
-        <?= Html::a('Добавить меню', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('+ Створити', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

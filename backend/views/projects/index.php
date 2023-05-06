@@ -10,16 +10,14 @@ use yii\grid\GridView;
 /** @var common\models\search\ProjectsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Projects');
+$this->title = Yii::t('app', 'Проєкти');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container projects-index">
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Projects'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', '+ Створити'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

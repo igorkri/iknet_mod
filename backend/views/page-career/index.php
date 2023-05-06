@@ -17,11 +17,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if ($career === null){ ?>
     <p>
-        <?= Html::a('+ Добавить', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('+ Додати', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php } ?>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

@@ -11,7 +11,7 @@ use yii\helpers\Url;
 
     <?php
     $form = ActiveForm::begin(); ?>
-        <?php // $form->field($model, 'presents_energy_list_id')->textInput() ?>
+
         <?= $form->field($model, 'file')->widget(FileInput::class, [
             'language' => 'uk',
             'options' => [
@@ -36,7 +36,7 @@ use yii\helpers\Url;
                 ['delete-img', 'id' => $image->id],
                 [
                     'class' => 'btn btn-xs btn-danger',
-                    'onclick' => 'return confirm("Ви впевнені що хочете видалити")',
+                    'onclick' => 'return confirm("Ви впевнені що хочете видалити?")',
                     'data' => [
                         'method' => 'post',
                     ],

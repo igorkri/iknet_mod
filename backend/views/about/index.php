@@ -10,14 +10,14 @@ use yii\grid\GridView;
 /** @var common\models\search\AboutSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Abouts');
+$this->title = Yii::t('app', 'Про компанію');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
 
 <?php if ($about === null){ ?>
     <p>
-        <?= Html::a(Yii::t('app', 'Create About'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', '+ Додати'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php } ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

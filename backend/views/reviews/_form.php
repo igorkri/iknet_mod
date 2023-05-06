@@ -39,17 +39,6 @@ mihaildev\elfinder\Assets::noConflict($this);
         <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>
     </div>
 
-
-
-    <?php // $form->field($model, 'created_at')->textInput() ?>
-
-    <?php // $form->field($model, 'updated_at')->textInput() ?>
-    <?php // $form->field($model, 'menu_id')->textInput() ?>
-
-
-
-
-
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="uk-tab">
 
@@ -91,9 +80,6 @@ mihaildev\elfinder\Assets::noConflict($this);
             ])->label('Текст RU');?>
             <?= $form->field($model, 'author_ru')->textInput(['maxlength' => true]) ?>
         </div>
-
-
-
     </div>
 
     <?php ActiveForm::end(); ?>

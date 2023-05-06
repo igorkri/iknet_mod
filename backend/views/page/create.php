@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var common\models\Pages $model */
 
-$this->title = 'Создание страницы';
-$this->params['breadcrumbs'][] = ['label' => 'Страницы', 'url' => ['index']];
+$this->title = '+ Створити';
+$this->params['breadcrumbs'][] = ['label' => 'Сторінки', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container pages-create">

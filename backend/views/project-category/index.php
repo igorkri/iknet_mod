@@ -10,16 +10,15 @@ use yii\grid\GridView;
 /** @var common\models\search\ProjectCategorySearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Project Categories');
+$this->title = Yii::t('app', 'Категорії проєктів');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container project-category-index">
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Project Category'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', '+ Створити'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

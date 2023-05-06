@@ -13,16 +13,14 @@ use yii\grid\ActionColumn;
 /** @var common\models\search\PagesSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Страницы';
+$this->title = 'Сторінки';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container pages-index">
 
     <p>
-        <?= Html::a(' + Создать страницу', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(' + Створити', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

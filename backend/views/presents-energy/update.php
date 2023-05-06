@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var common\models\PresentsEnergy $model */
 
-$this->title = 'Update Presents Energy: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Presents Energies', 'url' => ['index']];
+$this->title = 'Редагувати: ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Подарунки енергетикам', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Редагувати';
 ?>
 <div class="container presents-energy-update">
 

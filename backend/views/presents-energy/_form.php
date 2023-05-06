@@ -17,7 +17,7 @@ mihaildev\elfinder\Assets::noConflict($this);
 <div class="container presents-energy-form">
 
     <?php $form = ActiveForm::begin([
-        'id' => 'about-form',
+        'id' => 'presents-energy-form',
         'options' => [
             'class' => 'form-horizontal',
             'enctype' => 'multipart/form-data'
