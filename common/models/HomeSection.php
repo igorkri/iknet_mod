@@ -68,4 +68,28 @@ class HomeSection extends \yii\db\ActiveRecord
     public function getTabs(){
         return $this->hasMany(HomeTabs::class, ['section_id' => 'id']);
     }
+
+    public function getTitle($id, $lang = null){
+        $lang = \Yii::$app->session->get('_language');
+        $post = HomeSection::find()->where(['id' => $id])->one();
+        if($lang == 'en'){
+            return $post->title_en;
+        }elseif($lang == 'ru'){
+            return $post->title_ru;
+        }else{
+            return $post->title_uk;
+        }
+    }
+
+    public function getText($id, $lang = null){
+        $lang = \Yii::$app->session->get('_language');
+        $post = HomeSection::find()->where(['id' => $id])->one();
+        if($lang == 'en'){
+            return $post->description_en;
+        }elseif($lang == 'ru'){
+            return $post->description_ru;
+        }else{
+            return $post->description_uk;
+        }
+    }
 }
