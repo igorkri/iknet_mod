@@ -17,7 +17,14 @@ class News extends Widget
     public function run()
     {
 
-        return $this->render('news');
+        $news = \common\models\News::find()
+            ->where(['published' => 1])
+            ->andWhere(['IS NOT', 'image', NULL ])
+            ->orWhere(['IS NOT', 'image_og', NULL ])
+            ->limit(20)
+            ->orderBy('created_at DESC')->all();
+
+        return $this->render('news', compact('news'));
     }
 
 
