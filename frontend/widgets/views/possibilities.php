@@ -5,6 +5,7 @@ use yii\helpers\Url;
 ?>
 <section class="possibilities" id="possibilities">
     <div class="block">
+        <?php if($possibilitie): ?>
         <div class="item" id="management">
             <h1><?=$possibilitie->getTitle($possibilitie->id)?></h1>
             <div class="info">
@@ -44,6 +45,8 @@ use yii\helpers\Url;
                 </div>
             </div>
         </div>
+        <?php endif; ?>
+        <?php if($connection): ?>
         <div class="item" id="connection">
             <h1><?=$connection->getTitle($connection->id)?></h1>
             <div class="info">
@@ -82,6 +85,8 @@ use yii\helpers\Url;
                 </div>
             </div>
         </div>
+        <?php endif; ?>
+        <?php if($energy_efficiency): ?>
         <div class="item" id="energy-efficiency">
             <h1><?=$energy_efficiency->getTitle($energy_efficiency->id)?></h1>
             <div class="info">
@@ -121,5 +126,6 @@ use yii\helpers\Url;
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 </section>
