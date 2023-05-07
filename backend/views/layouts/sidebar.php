@@ -89,7 +89,13 @@
                     ['label' => 'Відгуки', 'url' => ['reviews/index'], 'icon' => 'list'],
                     ['label' => 'Про компанію', 'url' => ['about/index'], 'icon' => 'list'],
                     ['label' => 'Контакти', 'url' => ['contacts/index'], 'icon' => 'list'],
-                    ['label' => 'Таби головної сторінки', 'url' => ['home-tabs/index'], 'icon' => 'list'],
+                    [
+                        'label' => 'Секції головної сторінки', 'icon' => 'list',
+                        'items' => [
+                            ['label' => 'Список секцій', 'url' => ['home-section/index'],'icon' => 'list'],
+                            ['label' => 'Таби головної сторінки', 'url' => ['home-tabs/index'], 'icon' => 'list'],
+                        ]
+                    ],
 //                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
 //                    ['label' => 'Level1'],
 //                    [

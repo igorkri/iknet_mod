@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var common\models\HomeTabs $model */
+/** @var common\models\HomeSection $model */
 
-$this->title = $model->title_uk;
-$this->params['breadcrumbs'][] = ['label' => 'Список', 'url' => ['index']];
+$this->title = "Секція: " . $model->title_uk;
+$this->params['breadcrumbs'][] = ['label' => 'Секції', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="container home-tabs-view">
+<div class="container home-section-view">
 
     <p>
         <?= Html::a('+ Створити ще', ['create'], ['class' => 'btn btn-success']) ?>
@@ -24,7 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -32,13 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'title_uk',
             'title_en',
             'title_ru',
-            'slug',
-            'section.title_uk',
+//            'slug',
 //            'order',
             'published:boolean',
             'description_uk:raw',
             'description_en:raw',
             'description_ru:raw',
+//            'image',
+//            'image_2',
         ],
     ]) ?>
 

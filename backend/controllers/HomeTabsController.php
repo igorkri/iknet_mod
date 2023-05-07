@@ -7,6 +7,7 @@ use common\models\News;
 use common\models\Pages;
 use common\models\Projects;
 use common\models\search\HomeTabsSearch;
+use Statickidz\GoogleTranslate;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -216,5 +217,22 @@ class HomeTabsController extends Controller
 
             return $page->title_uk;
         }
+    }
+
+    public function actionTranslate($lang, $title, $text = null){
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $source = 'uk';
+        $target = $lang;
+
+        $trans = new GoogleTranslate();
+        $result = [];
+        if($title){
+            $result['title'] = $trans->translate($source, $target, $title);
+            $result['lang'] = $lang;
+        }
+        if($text){
+            $result['text'] = $trans->translate($source, $target, $text);
+        }
+        return $result;
     }
 }

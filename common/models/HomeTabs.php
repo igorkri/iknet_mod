@@ -63,4 +63,7 @@ class HomeTabs extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getSection(){
+        return $this->hasOne(HomeSection::class, ['id' => 'section_id']);
+    }
 }

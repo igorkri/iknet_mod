@@ -30,7 +30,9 @@
         "codemix/yii2-localeurls": "^1.8",
         "stkevich/yii2-ckeditor5": "dev-master",
         "kotchuprik/yii2-sortable-widgets": "*",
-        "kartik-v/yii2-widget-select2": "dev-master"
+        "kartik-v/yii2-widget-select2": "dev-master",
+        "statickidz/php-google-translate-free": "^1.2",
+        "vova07/yii2-imperavi-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

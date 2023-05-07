@@ -1,22 +1,22 @@
 <?php
 
-use common\models\HomeTabs;
+use common\models\HomeSection;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /** @var yii\web\View $this */
-/** @var common\models\search\HomeTabsSearch $searchModel */
+/** @var common\models\search\HomeSectionSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Таби головної сторінки';
+$this->title = 'Секції';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container home-tabs-index">
+<div class="container home-section-index">
 
     <p>
-        <?= Html::a('+ Створити', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('+ Створення секції', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -27,19 +27,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'section.title_uk',
+            'id',
             'title_uk',
             'title_en',
             'title_ru',
-            'slug',
+//            'slug',
             //'order',
             'published:boolean',
             //'description_uk:ntext',
             //'description_en:ntext',
             //'description_ru:ntext',
+            //'image',
+            //'image_2',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, HomeTabs $model, $key, $index, $column) {
+                'urlCreator' => function ($action, HomeSection $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
