@@ -89,6 +89,7 @@
                     ['label' => 'Відгуки', 'url' => ['reviews/index'], 'icon' => 'list'],
                     ['label' => 'Про компанію', 'url' => ['about/index'], 'icon' => 'list'],
                     ['label' => 'Контакти', 'url' => ['contacts/index'], 'icon' => 'list'],
+                    ['label' => 'Експерт в реалізації проєктів', 'url' => ['reclaimed/index'], 'icon' => 'list'],
                     [
                         'label' => 'Секції головної сторінки', 'icon' => 'list',
                         'items' => [

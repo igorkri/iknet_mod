@@ -3,6 +3,7 @@
 
 namespace frontend\widgets;
 
+use common\models\Reclaimed;
 use yii\base\Widget;
 
 class Reclame extends Widget
@@ -17,7 +18,8 @@ class Reclame extends Widget
     public function run()
     {
 
-        return $this->render('reclame');
+        $reclames = Reclaimed::find()->where(['published' => 1])->all();
+        return $this->render('reclame', compact('reclames'));
     }
 
 
