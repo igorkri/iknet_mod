@@ -43,12 +43,12 @@ class PresentsEnergy extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'title_en' => 'Title_en',
-            'title_ru' => 'Title_ru',
-            'description' => 'Description',
-            'description_en' => 'Description_en',
-            'description_ru' => 'Description_ru',
+            'title' => 'Назва UK',
+            'title_en' => 'Назва EN',
+            'title_ru' => 'Назва RU',
+            'description' => 'Опис ',
+            'description_en' => 'Опис EN',
+            'description_ru' => 'Опис RU',
         ];
     }
 

@@ -46,12 +46,12 @@ class Reviews extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'title_uk' => Yii::t('app', 'Название UK'),
-            'title_en' => Yii::t('app', 'Название EN'),
-            'title_ru' => Yii::t('app', 'Название RU'),
-            'description_uk' => Yii::t('app', 'Описание UK'),
-            'description_en' => Yii::t('app', 'Описание EN'),
-            'description_ru' => Yii::t('app', 'Описание RU'),
+            'title_uk' => Yii::t('app', 'Назва UK'),
+            'title_en' => Yii::t('app', 'Назва EN'),
+            'title_ru' => Yii::t('app', 'Назва RU'),
+            'description_uk' => Yii::t('app', 'Опис UK'),
+            'description_en' => Yii::t('app', 'Опис EN'),
+            'description_ru' => Yii::t('app', 'Опис RU'),
             'author_uk' => Yii::t('app', 'Автор UK'),
             'author_en' => Yii::t('app', 'Автор EN'),
             'author_ru' => Yii::t('app', 'Автор RU'),

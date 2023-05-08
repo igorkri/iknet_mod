@@ -50,16 +50,16 @@ class HomeTabs extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title_uk' => 'Название UK',
-            'title_en' => 'Название EN',
-            'title_ru' => 'Название RU',
-            'slug' => 'Урл страницы',
-            'section_id' => 'Секция отображения',
-            'order' => 'Сортировка',
-            'published' => 'Отображать',
-            'description_uk' => 'Описание UK',
-            'description_en' => 'Описание EN',
-            'description_ru' => 'Описание RU',
+            'title_uk' => 'Назва UK',
+            'title_en' => 'Назва EN',
+            'title_ru' => 'Назва RU',
+            'slug' => 'Урл сторінки',
+            'section_id' => 'Секція відображення',
+            'order' => 'Сортування',
+            'published' => 'Відображати',
+            'description_uk' => 'Описа UK',
+            'description_en' => 'Опис EN',
+            'description_ru' => 'Опис RU',
         ];
     }
 

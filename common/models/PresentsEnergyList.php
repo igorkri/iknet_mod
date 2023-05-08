@@ -42,10 +42,10 @@ class PresentsEnergyList extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'price' => 'Price',
-            'sku' => 'Sku',
+            'title' => 'Назва',
+            'description' => 'Опис',
+            'price' => 'Ціна',
+            'sku' => 'Код',
         ];
     }
 

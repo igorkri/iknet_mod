@@ -71,12 +71,12 @@ class Menu extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title_uk' => 'Назва UK',
-            'title_en' => 'Name EN',
-            'title_ru' => 'Название RU',
+            'title_en' => 'Назва EN',
+            'title_ru' => 'Назва RU',
             'slug' => 'SLUG',
-            'parent_id' => 'Категория',
-            'order' => 'Сортировка',
-            'published' => 'Отображать (Да | Нет)',
+            'parent_id' => 'Категорія',
+            'order' => 'Сортування',
+            'published' => 'Відображати (Так | Ні)',
         ];
     }
 

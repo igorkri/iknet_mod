@@ -41,9 +41,9 @@ class Vacancies extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'page_id' => 'Page ID',
-            'title' => 'Title',
-            'message' => 'Message',
+            'page_id' => 'Сторінка ID',
+            'title' => 'Назва',
+            'message' => 'Повідомлення',
         ];
     }
 
