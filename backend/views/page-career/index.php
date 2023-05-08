@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var common\models\search\PageCareerSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Сторінка вакансій';
+$this->title = 'Сторінка кар\'єра ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container page-career-index">

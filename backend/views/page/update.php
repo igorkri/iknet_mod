@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Редагування: ' . $model->title_uk;
 $this->params['breadcrumbs'][] = ['label' => 'Сторінки', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->title_uk, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Редагування';
 ?>
 <div class="container pages-update">

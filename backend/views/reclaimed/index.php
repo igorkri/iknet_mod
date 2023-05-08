@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container reclaimed-index">
 
     <p>
-        <?= Html::a('Create Reclaimed', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('+ Створити', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'title_uk',
             'title_en',
             'title_ru',

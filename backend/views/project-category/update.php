@@ -6,10 +6,10 @@ use yii\helpers\Html;
 /** @var common\models\ProjectCategory $model */
 
 $this->title = Yii::t('app', 'Редагувати категорію проєкта: {name}', [
-    'name' => $model->id,
+    'name' => $model->title_uk,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Категорії проєктів'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->title_uk, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Редагувати');
 ?>
 <div class="container project-category-update">

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\Reclaimed $model */
 
-$this->title = $model->id;
+$this->title = $model->title_uk;
 $this->params['breadcrumbs'][] = ['label' => 'Reclaimeds', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+//            'id',
             'title_uk',
             'title_en',
             'title_ru',

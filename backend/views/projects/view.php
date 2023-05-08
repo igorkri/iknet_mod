@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\Projects $model */
 
-$this->title = $model->id;
+$this->title = $model->title_uk;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Проєкти'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);

@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Редагувати меню: ' . $model->title_uk;
 $this->params['breadcrumbs'][] = ['label' => 'Меню', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->title_uk, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Редагувати';
 ?>
 <div class="menu-update">
