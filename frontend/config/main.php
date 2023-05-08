@@ -14,6 +14,11 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute' => '/site',
     'components' => [
+        'metamaster' => [
+            'class' => 'floor12\metamaster\MetaMaster',
+            'siteName' => 'IKNET',
+            'defaultImage' => '/img/logo.webp',
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
             'baseUrl' => '',

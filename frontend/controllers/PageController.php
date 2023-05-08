@@ -19,6 +19,15 @@ class PageController extends Controller
 
         $new = Pages::find()->where(['slug' => $slug])->one();
 
+        $meta = \Yii::$app->metamaster->setTitle($new->getTitle($new->id));
+        $meta->setDescription($new->getDescr($new->id));
+        if(file_exists(\Yii::getAlias('@frontend/web/' . $new->image_og))){
+            $meta->setImage($new->image_og);
+        }elseif(file_exists(\Yii::getAlias('@frontend/web/' . $new->image))){
+            $meta->setImage($new->image);
+        }
+        $meta->register(\Yii::$app->getView());
+
         return $this->render('article', [
             'new' => $new,
         ]);

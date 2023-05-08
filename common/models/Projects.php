@@ -124,6 +124,17 @@ class Projects extends \yii\db\ActiveRecord
            return $post->title_uk;
        }
    }
+    public function getDescr($id){
+        $lang = \Yii::$app->session->get('_language');
+        $post = self::find()->where(['id' => $id])->one();
+        if($lang == 'en'){
+            return $post->seo_description_en;
+        }elseif($lang == 'ru'){
+            return $post->seo_description_ru;
+        }else{
+            return $post->seo_description_uk;
+        }
+    }
 
    public function getText($id, $lang = null){
        $lang = \Yii::$app->session->get('_language');

@@ -32,7 +32,8 @@
         "kotchuprik/yii2-sortable-widgets": "*",
         "kartik-v/yii2-widget-select2": "dev-master",
         "statickidz/php-google-translate-free": "^1.2",
-        "vova07/yii2-imperavi-widget": "*"
+        "vova07/yii2-imperavi-widget": "*",
+        "floor12/yii2-metamaster": "^1.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
