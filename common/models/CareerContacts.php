@@ -44,12 +44,12 @@ class CareerContacts extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'mail' => 'Mail',
-            'phone' => 'Phone',
-            'vacation' => 'Vacation',
-            'page_id' => 'Page ID',
-            'message' => 'Message',
+            'name' => 'ФІП',
+            'mail' => 'Пошта',
+            'phone' => 'Телефон',
+            'vacation' => 'Вакансія',
+            'page_id' => 'Сторінка ID',
+            'message' => 'Повідомлення',
         ];
     }
 }

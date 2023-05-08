@@ -80,9 +80,9 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title_uk' => 'Title Uk',
-            'title_en' => 'Title En',
-            'title_ru' => 'Title Ru',
+            'title_uk' => 'Назва Uk',
+            'title_en' => 'Назва En',
+            'title_ru' => 'Назва Ru',
             'slug' => 'Slug',
             'parent_id' => 'Parent ID',
             'order' => 'Order',
