@@ -1,7 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
-<!--        <img src="--><?//=$assetDir?><!--/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">-->
         <img src="/favicon.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Iknet</span>
     </a>
@@ -29,46 +28,23 @@
             <?php
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
-//                    [
-//                        'label' => 'Новости',
-//                        'icon' => 'tachometer-alt',
-////                        'badge' => '<span class="right badge badge-info">2</span>',
-//                        'items' => [
-//                            ['label' => 'Все новости', 'url' => ['news/index'], 'iconStyle' => 'far'],
-//                        ]
-//                    ],
 
                     ['label' => 'Меню', 'url' => ['menu/index'], 'icon' => 'ellipsis-v'],
-                    ['label' => 'Катеорії', 'url' => ['category/index'], 'icon' => 'bars'],
-//                    ['label' => 'Новости', 'url' => ['news/index'], 'icon' => 'newspaper'],
-//                    ['label' => 'Проекти', 'url' => ['page/project'], 'icon' => 'project-diagram'],
-//                    [
-//                        'label' => 'Проекти', 'icon' => 'project-diagram',
-//                        'items' => [
-//                            ['label' => 'Проекты на продаж', 'url' => ['page/index', 'category_id' => 12],'icon' => 'edit'],
-//                            ['label' => 'Проекты компании', 'url' => ['page/index', 'category_id' => 13],'icon' => 'list']
-//                        ]
-//                    ],
-//                    ['label' => 'Цены и тарифы', 'url' => ['price/index'], 'icon' => 'barcode'],
-                    ['label' => 'Сторінки', 'url' => ['page/index'], 'icon' => 'file-alt'],
-//                    ['label' => 'Подарки енергетикам', 'url' => ['presents-energy-list/index'], 'icon' => 'gift'],
-//                    ['label' => 'Проекти', 'url' => ['page/project'], 'icon' => 'project-diagram'],
+
                     [
-                        'label' => 'Новини', 'icon' => 'file-alt',
+                        'label' => 'Катеорії', 'icon' => 'bars',
                         'items' => [
-                            ['label' => 'Новини', 'url' => ['news/index'], 'icon' => 'edit'],
-                            ['label' => 'Категорії новин', 'url' => ['news-category/index'],'icon' => 'list']
+                            ['label' => 'Категорії новин', 'url' => ['news-category/index'],'icon' => 'list'],
+                            ['label' => 'Категорії проєктів', 'url' => ['project-category/index'],'icon' => 'list']
                         ]
 
                     ],
-                    [
-                        'label' => 'Проєкти', 'icon' => 'project-diagram',
-                        'items' => [
-                            ['label' => 'Проєкти', 'url' => ['projects/index'], 'icon' => 'edit'],
-                            ['label' => 'Категорії проєктів', 'url' => ['project-category/index'],'icon' => 'list']
-                       ]
+                    ['label' => 'Новини', 'url' => ['news/index'], 'icon' => 'file-alt'],
 
-                    ],
+                    ['label' => 'Проєкти', 'url' => ['projects/index'], 'icon' => 'edit'],
+
+                    ['label' => 'Сторінки', 'url' => ['page/index'], 'icon' => 'file-alt'],
+
 
                     [
                         'label' => 'Подарунки енергетикам', 'icon' => 'gift',
@@ -77,7 +53,6 @@
                             ['label' => 'Подарунки', 'url' => ['presents-energy-list/index'],'icon' => 'list']
                         ]
                     ],
-
                     [
                         'label' => 'Вакансії', 'icon' => 'chart-line',
                         'items' => [
@@ -85,41 +60,23 @@
                             ['label' => 'Список вакансій', 'url' => ['vcancies/index'],'icon' => 'list']
                         ]
                     ],
-                    ['label' => 'Клієнты', 'url' => ['clients-brand/index'], 'icon' => 'copyright'],
-                    ['label' => 'Відгуки', 'url' => ['reviews/index'], 'icon' => 'list'],
-                    ['label' => 'Про компанію', 'url' => ['about/index'], 'icon' => 'list'],
-                    ['label' => 'Контакти', 'url' => ['contacts/index'], 'icon' => 'list'],
-                    ['label' => 'Експерт в реалізації проєктів', 'url' => ['reclaimed/index'], 'icon' => 'list'],
                     [
-                        'label' => 'Секції головної сторінки', 'icon' => 'list',
+                        'label' => 'Компанія', 'icon' => 'chart-line',
                         'items' => [
+                            ['label' => 'Клієнты', 'url' => ['clients-brand/index'], 'icon' => 'copyright'],
+                            ['label' => 'Відгуки', 'url' => ['reviews/index'], 'icon' => 'list'],
+                            ['label' => 'Про компанію', 'url' => ['about/index'], 'icon' => 'list'],
+                            ['label' => 'Контакти', 'url' => ['contacts/index'], 'icon' => 'list'],
+                        ]
+                    ],
+                    [
+                        'label' => 'Головна сторінка', 'icon' => 'bars',
+                        'items' => [
+                            ['label' => 'Експерт в реалізації проєктів', 'url' => ['reclaimed/index'], 'icon' => 'list'],
                             ['label' => 'Список секцій', 'url' => ['home-section/index'],'icon' => 'list'],
                             ['label' => 'Таби головної сторінки', 'url' => ['home-tabs/index'], 'icon' => 'list'],
                         ]
                     ],
-//                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
-//                    ['label' => 'Level1'],
-//                    [
-//                        'label' => 'Level1',
-//                        'items' => [
-//                            ['label' => 'Level2', 'iconStyle' => 'far'],
-//                            [
-//                                'label' => 'Level2',
-//                                'iconStyle' => 'far',
-//                                'items' => [
-//                                    ['label' => 'Level3', 'iconStyle' => 'far', 'icon' => 'dot-circle'],
-//                                    ['label' => 'Level3', 'iconStyle' => 'far', 'icon' => 'dot-circle'],
-//                                    ['label' => 'Level3', 'iconStyle' => 'far', 'icon' => 'dot-circle']
-//                                ]
-//                            ],
-//                            ['label' => 'Level2', 'iconStyle' => 'far']
-//                        ]
-//                    ],
-//                    ['label' => 'Level1'],
-//                    ['label' => 'LABELS', 'header' => true],
-//                    ['label' => 'Important', 'iconStyle' => 'far', 'iconClassAdded' => 'text-danger'],
-//                    ['label' => 'Warning', 'iconClass' => 'nav-icon far fa-circle text-warning'],
-//                    ['label' => 'Informational', 'iconStyle' => 'far', 'iconClassAdded' => 'text-info'],
                 ],
             ]);
             ?>
