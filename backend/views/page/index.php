@@ -33,12 +33,24 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
 //            'updated_at',
             [
-                'attribute' => 'published',
+                'attribute' => 'image',
                 'format' => 'raw',
                 'value' => function($model){
-                    return $model->published == 1 ? '<span class="badge badge-success">Так</span>' : '<span class="badge badge-danger">Ні</span>';
+                    return Html::img($model->image, ['width' => '60px']);
                 },
-                'width' => '50px',
+                'filter' => false,
+                'width' => '10%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
+            [
+                'attribute' => 'created_at',
+                'filter' => false,
+                'value' => function($model){
+                    return Yii::$app->formatter->asDate($model->created_at, 'long');
+                },
+                'width' => '5%',
                 'vAlign' => GridView::ALIGN_MIDDLE,
                 'hAlign' => GridView::ALIGN_CENTER,
 
@@ -54,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                    return $model->published == 1 ? '<span class="badge badge-success">Так</span>' : '<span class="badge badge-danger">Ні</span>';
 
 //                },
-                'width' => '30%',
+                'width' => '10%',
                 'vAlign' => GridView::ALIGN_MIDDLE,
                 'hAlign' => GridView::ALIGN_CENTER,
 
@@ -64,6 +76,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
             'title_uk',
+            [
+                'attribute' => 'published',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->published == 1 ? '<span class="badge badge-success">Так</span>' : '<span class="badge badge-danger">Ні</span>';
+                },
+                'width' => '50px',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
             //'text_uk:ntext',
             //'seo_title_uk',
             //'seo_description_uk',
