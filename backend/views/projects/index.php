@@ -1,10 +1,13 @@
 <?php
 
+use common\models\Category;
 use common\models\Projects;
+use kartik\grid\GridView;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
-use yii\grid\GridView;
+
 
 /** @var yii\web\View $this */
 /** @var common\models\search\ProjectsSearch $searchModel */
@@ -24,15 +27,61 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+//            'id',
+//            'slug',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::img($model->image, ['width' => '60px']);
+                },
+                'filter' => false,
+                'width' => '10%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
 
-            'id',
-            'slug',
-            'created_at',
-            'updated_at',
-            'category_id',
+            ],
+            [
+                'attribute' => 'created_at',
+                'filter' => false,
+                'value' => function($model){
+                    return Yii::$app->formatter->asDate($model->created_at, 'long');
+                },
+                'width' => '5%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
+            'title_uk',
+//            'updated_at',
+//            'category.title_uk',
+            [
+                'attribute' => 'category_id',
+                'format' => 'raw',
+                'value' => 'category.title_uk',
+                'filter' => ArrayHelper::map(\common\models\ProjectCategory::find()->with(['parent', 'parents'])
+                    ->asArray()->all(),
+                    'id', 'title_uk', 'parent.title_uk'),
+                'width' => '15%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],[
+                'attribute' => 'published',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->published ? 'Так' : 'Ні';
+                },
+                'filter' => [
+                        1 => 'Так',
+                        0 => 'Ні',
+                ],
+                'width' => '15%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
             //'menu_id',
-            //'published',
-            //'title_uk',
             //'text_uk:ntext',
             //'seo_title_uk',
             //'seo_description_uk',
@@ -47,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'seo_title_ru',
             //'seo_description_ru',
             //'seo_keywords_ru',
-            //'image',
+
             //'image_og',
             [
                 'class' => ActionColumn::className(),

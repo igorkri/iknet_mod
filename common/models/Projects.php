@@ -110,7 +110,7 @@ class Projects extends \yii\db\ActiveRecord
     }
 
     public function getCategory(){
-        return $this->hasOne(Category::class, ['id' => 'category_id']);
+        return $this->hasOne(ProjectCategory::class, ['id' => 'category_id']);
     }
 
    public function getTitle($id, $lang = null){
