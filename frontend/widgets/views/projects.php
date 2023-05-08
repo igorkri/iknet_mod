@@ -1,6 +1,23 @@
+<?php
+
+$lang = \Yii::$app->session->get('_language');
+
+if($lang == 'ru'){
+    $img_projects =  '/img/project_ru.png';
+
+}elseif($lang == 'en'){
+    $img_projects =  '/img/project_en.png';
+
+}else{
+    $img_projects =  '/img/project.png';
+
+}
+
+?>
+
 <section class="projects">
     <div class="block">
-        <img src="/img/projects.svg" alt="" class="projects_img">
+        <img src="<?= $img_projects ?>" alt="" class="projects_img">
         <div class="projects_container">
             <?php use yii\helpers\Url;
 

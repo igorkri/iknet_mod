@@ -1,6 +1,27 @@
+<?php
+
+$lang = \Yii::$app->session->get('_language');
+
+if($lang == 'ru'){
+    $all_news = 'Все новости';
+    $img_projects =  '/img/news_ru.png';
+
+}elseif($lang == 'en'){
+    $all_news = 'All news';
+    $img_projects =  '/img/news_en.png';
+
+}else{
+    $all_news = 'Усі новини';
+    $img_projects =  '/img/news_uk.png';
+
+}
+
+?>
+
+
 <section class="main_news" id="main_news">
     <div class="block">
-        <img src="/img/news.svg" alt="" class="news_img">
+        <img src="<?= $img_projects ?>" alt="" class="news_img">
         <div class="news_slider">
             <?php use yii\helpers\Url;
 
@@ -26,6 +47,6 @@
             <?php endif; ?>
             <?php endforeach; ?>
         </div>
-        <a href="#" class="uni_link">Усі новини</a>
+        <a href="#" class="uni_link"><?= $all_news ?></a>
     </div>
 </section>
