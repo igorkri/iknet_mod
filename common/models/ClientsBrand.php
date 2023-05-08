@@ -41,10 +41,10 @@ class ClientsBrand extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Назва',
             'slug' => 'Slug',
-            'file' => 'File',
-            'published' => 'Published',
+            'file' => 'Картинка',
+            'published' => 'Відображення',
         ];
     }
 }
