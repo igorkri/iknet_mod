@@ -61,16 +61,16 @@
                         ]
                     ],
                     [
-                        'label' => 'Компанія', 'icon' => 'chart-line',
+                        'label' => 'Компанія', 'icon' => 'warehouse',
                         'items' => [
                             ['label' => 'Клієнты', 'url' => ['clients-brand/index'], 'icon' => 'copyright'],
-                            ['label' => 'Відгуки', 'url' => ['reviews/index'], 'icon' => 'list'],
-                            ['label' => 'Про компанію', 'url' => ['about/index'], 'icon' => 'list'],
-                            ['label' => 'Контакти', 'url' => ['contacts/index'], 'icon' => 'list'],
+                            ['label' => 'Відгуки', 'url' => ['reviews/index'], 'icon' => 'user-check'],
+                            ['label' => 'Про компанію', 'url' => ['about/index'], 'icon' => 'eject'],
+                            ['label' => 'Контакти', 'url' => ['contacts/index'], 'icon' => 'tablet-alt'],
                         ]
                     ],
                     [
-                        'label' => 'Головна сторінка', 'icon' => 'bars',
+                        'label' => 'Головна сторінка', 'icon' => 'tv',
                         'items' => [
                             ['label' => 'Експерт в реалізації проєктів', 'url' => ['reclaimed/index'], 'icon' => 'list'],
                             ['label' => 'Список секцій', 'url' => ['home-section/index'],'icon' => 'list'],
