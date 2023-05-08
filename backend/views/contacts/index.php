@@ -14,11 +14,11 @@ $this->title = Yii::t('app', 'Контакти');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container contacts-index">
-
+    <?php if ($contact === null){ ?>
     <p>
         <?= Html::a(Yii::t('app', '+ Створити'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <?php } ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([

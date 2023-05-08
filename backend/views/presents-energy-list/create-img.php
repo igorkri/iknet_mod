@@ -5,12 +5,18 @@ use kartik\form\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+$this->title = Yii::t('app', 'Додавання картинок');
+
 ?>
 
 <div class="container presents-energy-list-form">
 
     <?php
     $form = ActiveForm::begin(); ?>
+
+    <div class="form-group">
+        <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>
+    </div>
 
         <?= $form->field($model, 'file')->widget(FileInput::class, [
             'language' => 'uk',
@@ -51,9 +57,7 @@ use yii\helpers\Url;
     <?php endif; ?>
         <br>
         <br>
-    <div class="form-group">
-        <?= Html::submitButton('Зберегти', ['class' => 'btn btn-success']) ?>
-    </div>
+
 
     <?php ActiveForm::end(); ?>
 

@@ -43,10 +43,12 @@ class ContactsController extends Controller
     {
         $searchModel = new ContactsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $contact = Contacts::find()->one();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'contact' => $contact,
         ]);
     }
 
