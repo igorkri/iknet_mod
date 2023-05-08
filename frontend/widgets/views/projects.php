@@ -26,14 +26,14 @@ if($lang == 'ru'){
                     <?php if($project->id == 12): ?>
                         <a href="<?=Url::to(['projects/companys-projects'])?>">
                             <div>
-                                <img src="/img/project_1.webp" alt="">
+                                <img src="/img/project_1.png" alt="">
                             </div>
                             <h3><?=$project->getTitle($project->id)?></h3>
                         </a>
                     <?php else: ?>
                         <a href="<?=Url::to(['projects/projects-for-sale'])?>">
                             <div>
-                                <img src="/img/project_2.webp" alt="">
+                                <img src="/img/project_2.png" alt="">
                             </div>
                             <h3><?=$project->getTitle($project->id)?></h3>
                         </a>
