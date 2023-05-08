@@ -66,7 +66,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'vAlign' => GridView::ALIGN_MIDDLE,
                 'hAlign' => GridView::ALIGN_CENTER,
 
-            ],[
+            ],
+            [
                 'attribute' => 'published',
                 'format' => 'raw',
                 'value' => function($model){

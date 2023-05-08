@@ -1,10 +1,16 @@
 <?php
 
 use common\models\News;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
-use yii\grid\GridView;
+//use yii\grid\GridView;
+use kartik\grid\GridView;
+
+
+
+
 
 /** @var yii\web\View $this */
 /** @var common\models\search\NewsSearch $searchModel */
@@ -28,13 +34,60 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-            'slug',
-            'created_at',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::img($model->image, ['width' => '60px']);
+                },
+                'filter' => false,
+                'width' => '10%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
+//            'slug',
+            [
+                'attribute' => 'created_at',
+                'filter' => false,
+                'value' => function($model){
+                    return Yii::$app->formatter->asDate($model->created_at, 'long');
+                },
+                'width' => '5%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
 //            'updated_at',
-            'category_id',
+            [
+                'attribute' => 'category_id',
+                'format' => 'raw',
+                'value' => 'category.title_uk',
+                'filter' => ArrayHelper::map(\common\models\NewsCategory::find()->with(['parent', 'parents'])
+                    ->asArray()->all(),
+                    'id', 'title_uk', 'parent.title_uk'),
+                'width' => '15%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
+            'title_uk',
             //'menu_id',
-            //'published',
-            //'title_uk',
+            [
+                'attribute' => 'published',
+                'format' => 'raw',
+                'value' => function($model){
+                    return $model->published ? 'Так' : 'Ні';
+                },
+                'filter' => [
+                    1 => 'Так',
+                    0 => 'Ні',
+                ],
+                'width' => '15%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
             //'text_uk:ntext',
             //'seo_title_uk',
             //'seo_description_uk',
