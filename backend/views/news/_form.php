@@ -3,13 +3,16 @@
 use common\models\NewsCategory;
 use kartik\file\FileInput;
 use mihaildev\ckeditor\CKEditor;
+use mihaildev\elfinder\InputFile;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Json;
+use yii\web\JsExpression;
 use yii\widgets\ActiveForm;
 
 use mihaildev\elfinder\ElFinder;
 
-mihaildev\elfinder\Assets::noConflict($this);
+//mihaildev\elfinder\Assets::noConflict($this);
 
 /** @var yii\web\View $this */
 /** @var common\models\News $model */
@@ -74,10 +77,16 @@ mihaildev\elfinder\Assets::noConflict($this);
             <?= $form->field($model, 'text_uk')->widget(CKEditor::class, [
                 'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
                     'language' => 'uk',
+                    'controller' => 'elfinder', // вставляем название контроллера, по умолчанию равен elfinder
+                    'path' => 'image', // будет открыта папка из настроек контроллера с добавлением указанной под деритории
+                    'filter'     => 'image',    // фильтр файлов, можно задать массив фильтров https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#wiki-onlyMimes
+                    'name'       => 'myinput',
+                    'value'      => '',
 //                    'width' => '500',
                     'height' => '35em'
                 ]),
-            ])->label('Текст UK');?>
+            ])->label('Текст UK');
+            ?>
 
             <?= $form->field($model, 'seo_title_uk')->textInput(['maxlength' => true])->label('SEO Назва UK') ?>
 
@@ -92,6 +101,7 @@ mihaildev\elfinder\Assets::noConflict($this);
 
             <?= $form->field($model, 'text_en')->widget(CKEditor::class, [
                 'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
+//                        'path' => 'fsdfasdfasdfasdfasdf',
                     'language' => 'uk',
                     //                    'width' => '500',
                     'height' => '35em'
@@ -109,12 +119,14 @@ mihaildev\elfinder\Assets::noConflict($this);
 
             <?= $form->field($model, 'title_ru')->textInput(['maxlength' => true])->label('Название RU') ?>
 
-            <?= $form->field($model, 'text_ru')->widget(CKEditor::class, [
+            <?= $form->field($model, 'text_ru')->widget(CKEditor::class,
+                [
                 'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
                     'language' => 'uk',
                     //                    'width' => '500',
                     'height' => '35em'
-                ]),
+                ]
+                ),
             ])->label('Текст RU');?>
             <?= $form->field($model, 'seo_title_ru')->textInput(['maxlength' => true])->label('SEO Название RU') ?>
 
@@ -194,3 +206,17 @@ mihaildev\elfinder\Assets::noConflict($this);
     <br>
     <br>
 </div>
+<?php
+$js = <<<JS
+$( document ).ready(function() {
+    //set image path to dialog  
+    // var input = $('input#cke_316_textInput').val();
+    var input = $('input#cke_316_textInput').val('45646546546546546');
+  console.log('454545', input);
+
+});
+
+JS;
+$this->registerJs($js);
+
+?>

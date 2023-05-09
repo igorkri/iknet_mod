@@ -13,7 +13,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
-        'gridview' =>  [
+        'gridview' => [
             'class' => '\kartik\grid\Module'
             // enter optional module parameters below - only if you need to
             // use your own export download action or custom translation
@@ -25,7 +25,7 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
-                        'baseUrl' => '/admin',
+            'baseUrl' => '/admin',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -65,15 +65,26 @@ return [
     ],
     'controllerMap' => [
         'elfinder' => [
-            'class' => 'mihaildev\elfinder\PathController',
+//            'class' => 'mihaildev\elfinder\PathController',
+            'class' => 'backend\controllers\cke\PathController',
+            'plugin' => [
+                [
+                    'class' => '\mihaildev\elfinder\plugin\Sluggable',
+                    'lowercase' => true,
+                    'replacement' => '-'
+                ]
+            ],
+            'connectOptions' => [
+                'debug' => true,
+            ],
             'access' => ['@'],
             'root' => [
                 'baseUrl'=>'@web',
                 'basePath'=>'@frontendWeb',
                 'path' => '/img/posts',
-                'name' => 'Files'
+                'name' => 'Files',
             ],
-        ]
+        ],
     ],
     'params' => $params,
 ];
