@@ -17,7 +17,7 @@ if($lang == 'ru'){
     <h2><?= $h2 ?></h2>
     <?php foreach ($reviews as $review): ?>
         <div class="item">
-            <h5><?= $review->getTitle($review->id) ?></h5>
+            <h3><?= $review->getTitle($review->id) ?></h3>
             <br>
             <p><?= $review->getText($review->id) ?></p>
            <br>
