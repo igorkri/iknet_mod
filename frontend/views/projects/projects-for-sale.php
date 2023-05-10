@@ -30,7 +30,7 @@ $page = $get['page'] ?? 1;
             <?php endif; ?>
         </nav>
         <?php foreach ($news as $new): ?>
-            <a href="<?php //Yii::$app->urlManager->createUrl(['/projects/view', 'c' => $new->getUrlParams($new->category_id)['c'], 'a' => $new->getUrlParams($new->category_id)['a'],'slug' => $new->slug])?>" class="item">
+        <a href="<?php //Yii::$app->urlManager->createUrl(['/projects/view', 'c' => $new->getUrlParams($new->category_id)['c'], 'a' => $new->getUrlParams($new->category_id)['a'],'slug' => $new->slug])?>" class="item">
             <a href="<?=Url::to(['/projects/view', 'slug' => $new->slug])?>" class="item">
                 <div class="img">
                     <img src="<?= $new->image ?>" alt="">

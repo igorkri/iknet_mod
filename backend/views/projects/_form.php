@@ -49,6 +49,7 @@ mihaildev\elfinder\Assets::noConflict($this);
     <div class="row">
         <div class="col-6">
             <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(ProjectCategory::find()->with(['parent', 'parents'])
+                ->where(['parent_id' => [12, 13]])
                 ->asArray()->all(),
                 'id', 'title_uk', 'parent.title_uk'),
                 ['prompt'=>'Виберіть...']

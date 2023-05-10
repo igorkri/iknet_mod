@@ -48,7 +48,8 @@ mihaildev\elfinder\Assets::noConflict($this);
     <div class="row">
         <div class="col-6">
                 <?= $form->field($model, 'parent_id')->dropDownList(ArrayHelper::map(NewsCategory::find()->with(['parent', 'parents'])
-                ->asArray()->all(),
+                    ->where(['parent_id' => 1])
+                    ->asArray()->all(),
                 'id', 'title_uk', 'parent.title_uk'),
                 ['prompt'=>'Виберіть...']
             )->label('Категорія')?>

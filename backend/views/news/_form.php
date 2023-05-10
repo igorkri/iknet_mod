@@ -52,6 +52,7 @@ use mihaildev\elfinder\ElFinder;
     <div class="row">
         <div class="col-6">
             <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(NewsCategory::find()->with(['parent', 'parents'])
+                ->where(['parent_id' => 1])
                 ->asArray()->all(),
                 'id', 'title_uk', 'parent.title_uk'),
                 ['prompt'=>'Виберіть...']

@@ -563,4 +563,78 @@ class ImportOldDbController extends Controller
     }
 
 
+    /**
+     * перевірка зображень
+     */
+
+    public function actionImg(){
+        $Query = new Query();
+        $original_db = Yii::$app->dbOriginal;
+
+        $pages = $original_db->createCommand(
+            $Query->select('*')
+                ->from('{{%pages}}')
+                ->createCommand()
+                ->getRawSql()
+        )->queryAll();
+
+//        print_r($pages);
+        foreach ($pages as $page){
+//            echo $page['key'] . "\n";
+            $ps = Pages::find()->where(['slug' => $page['key']])->one();
+            if($ps){
+                if($page['image']){
+                    $ps->image = $page['image'];
+                    if($ps->save()){
+                        echo "Saved image Pages " . $ps->image . PHP_EOL;
+                    }
+                }else{
+                    $ps->image = 'no';
+                    if($ps->save()){
+                        echo "Saved no Pages " . $ps->image . PHP_EOL;
+                    }
+                }
+            }
+
+        }
+        foreach ($pages as $page){
+//            echo $page['key'] . "\n";
+
+            $pr = Projects::find()->where(['slug' => $page['key']])->one();
+
+           if($pr){
+                if($page['image']){
+                    $pr->image = $page['image'];
+                    if($pr->save()){
+                        echo "Saved image Projects " . $pr->image . PHP_EOL;
+                    }
+                }else{
+                    $pr->image = 'no';
+                    if($pr->save()){
+                        echo "Saved no Projects " . $pr->image . PHP_EOL;
+                    }
+                }
+            }
+        }
+        foreach ($pages as $page){
+//            echo $page['key'] . "\n";
+
+            $ns = News::find()->where(['slug' => $page['key']])->one();
+
+            if($ns){
+                if($page['image']){
+                    $ns->image = $page['image'];
+                    if($ns->save()){
+                        echo "Saved image Projects " . $ns->image . PHP_EOL;
+                    }
+                }else{
+                    $ns->image = 'no';
+                    if($ns->save()){
+                        echo "Saved no Projects " . $ns->image . PHP_EOL;
+                    }
+                }
+            }
+        }
+    }
+
 }
