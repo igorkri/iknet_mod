@@ -3,7 +3,9 @@
 namespace frontend\controllers;
 
 use common\models\FormCallback;
+use Yii;
 use yii\base\BaseObject;
+use yii\helpers\VarDumper;
 
 class FormCallbackController extends \yii\web\Controller
 {
@@ -11,15 +13,18 @@ class FormCallbackController extends \yii\web\Controller
     {
         $model = new FormCallback();
 
+        $post = \Yii::$app->request->post('FormCallback');
+
         if ($this->request->isPost) {
+            $model->sendEmail($post);
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['index', 'id' => $model->id]);
+                return $this->redirect(['/contacts/view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
         }
 
-        return $this->render('index', [
+        return $this->render('/contacts/view', [
             'model' => $model,
         ]);
     }

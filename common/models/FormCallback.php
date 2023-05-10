@@ -5,6 +5,7 @@ namespace common\models;
 use manchenkov\yii\recaptcha\ReCaptchaValidator;
 use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "form_callback".
@@ -55,8 +56,9 @@ class FormCallback extends ActiveRecord
             [['created_at'], 'safe'],
             [['message'], 'string'],
             [['email'], 'email'],
+//            [['fio', 'email', 'phone', 'email'], 'required'],
             [['page', 'fio', 'email', 'phone', 'vacancies', 'code', 'file'], 'string', 'max' => 255],
-            ['captcha', ReCaptchaValidator::class, 'score' => 0.8, 'action' => 'index'],
+//            ['captcha', ReCaptchaValidator::class, 'score' => 0.8, 'action' => 'index'],
         ];
     }
 
@@ -75,7 +77,93 @@ class FormCallback extends ActiveRecord
             'message' => 'Повідомлення',
             'vacancies' => 'Вакансія',
             'code' => 'Код',
-            'file' => 'Коментарий_UK',
+            'file' => 'Файл',
         ];
+    }
+
+    public function sendEmail($post)
+    {
+//            VarDumper::dump($post, 10, true);
+//            die;
+        return Yii::$app->mailer->compose()
+            ->setTo($post['email']) // кому
+            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']]) // від кого
+//            ->setReplyTo([$this->email => $this->name])
+            ->setSubject('test email')
+            ->setTextBody($post['message'])
+            ->send();
+    }
+
+    public function getLabel(){
+        $lang = \Yii::$app->session->get('_language');
+        if($lang == 'ru'){
+            return [
+                'title' => 'Связаться с нами',
+                'fio' => 'Имя',
+                'email' => 'Почта',
+                'phone' => 'Телефон',
+                'page' => 'Страница',
+                'message' => 'Ваше сообщение',
+                'vacancies' => 'Вакансия',
+                'code' => 'Код',
+                'file' => 'файл',
+            ];
+        }elseif($lang == 'en'){
+            return [
+                'title' => 'Contact us',
+                'page' => 'Page',
+                'fio' => 'Name',
+                'email' => 'Email',
+                'phone' => 'Phone',
+                'message' => 'Your message',
+                'vacancies' => 'Vacancy',
+                'code' => 'Code',
+                'file' => 'File'
+            ];
+        }else{
+            return [
+                'title' => 'Зв’язатись з нами',
+                'page' => 'Сторінка',
+                'fio' => 'Ім’я',
+                'email' => 'Email',
+                'phone' => 'Телефон',
+                'message' => 'Ваше повідомлення',
+                'vacancies' => 'Вакансія',
+                'code' => 'Код',
+                'file' => 'Файл'
+            ];
+        }
+    }
+
+    public function getMessError(){
+        $lang = \Yii::$app->session->get('_language');
+        if($lang == 'ru'){
+            return [
+                'fio' => 'Укажите пожалуйста Ваш ФИО',
+                'email' => 'Укажите, пожалуйста, Ваш Email',
+                'phone' => 'Укажите, пожалуйста, Ваш телефон',
+                'message' => 'Укажите пожалуйста Ваше сообщение',
+                'vacancies' => 'Укажите, пожалуйста, вакансию',
+                'code' => 'Укажите пожалуйста код',
+            ];
+        }elseif($lang == 'en'){
+            return [
+                'fio' => 'Please enter your full name',
+                'email' => 'Please enter your email',
+                'phone' => 'Please enter your phone number',
+                'message' => 'Please enter your message',
+                'vacancies' => 'Please specify the vacancy',
+                'code' => 'Please enter the code',
+            ];
+        }else{
+            return [
+                'fio' => 'Укажіть будь ласка Ваше ПІБ',
+                'email' => 'Укажіть будь ласка Ваш Email',
+                'phone' => 'Укажіть будь ласка Ваш телефон',
+                'message' => 'Укажіть будь ласка Ваше повідомлення',
+                'vacancies' => 'Укажіть будь ласка вакансію',
+                'code' => 'Укажіть будь ласка код',
+            ];
+        }
     }
 }

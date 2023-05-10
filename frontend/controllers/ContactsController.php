@@ -14,10 +14,15 @@ class ContactsController extends Controller
 {
     public function actionView()
     {
+        $post = \Yii::$app->request->post();
         $model = new FormCallback();
         $contact = Contacts::find()->one();
 
         if ($this->request->isPost) {
+
+//        VarDumper::dump($post, 10, true);
+//        die;
+
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view',
                     'contact' => $contact,

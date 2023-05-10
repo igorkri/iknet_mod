@@ -31,7 +31,7 @@ use yii\helpers\Html;
 
     <?= $form->field($model, 'file')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'captcha')->widget(ReCaptchaWidget::class, ['action' => 'index']);
+    <?php // $form->field($model, 'captcha')->widget(ReCaptchaWidget::class, ['action' => 'index']);
     // action name must be the same as validation rules ?>
 
     <div class="form-group">
