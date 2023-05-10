@@ -23,6 +23,7 @@ class ContactsController extends Controller
 //        VarDumper::dump($post, 10, true);
 //        die;
 
+
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view',
                     'contact' => $contact,
