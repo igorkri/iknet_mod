@@ -48,18 +48,12 @@ use yii\widgets\ActiveForm;
             <input name="FormCallback[fio]" type="text" placeholder="ПІБ">
             <input name="FormCallback[email]" type="text" placeholder="Пошта">
             <input name="FormCallback[phone]" type="text" placeholder="Телефон">
-            <?php // $form->field($model, 'fio')->textInput(['maxlength' => true]) ?>
 
-            <?php //$form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-            <?php // $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
-
-            <?php // $form->field($model, 'captcha')->widget(ReCaptchaWidget::class, ['action' => 'view']);
+            <?php $form->field($model, 'captcha')->widget(ReCaptchaWidget::class, ['action' => 'view']);
             // action name must be the same as validation rules ?>
 
         </div>
         <div class="right">
-            <?php // $form->field($model, 'message')->textarea(['rows' => 6]) ?>
             <textarea name="" id="message" cols="30" rows="9" placeholder="Ваше повідомлення"></textarea>
             <input type="submit">
         </div>
