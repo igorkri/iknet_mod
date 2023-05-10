@@ -16,6 +16,7 @@ if ($lang == 'ru') {
     $a7 = 'Концепция';
     $a8 = 'Бизнес-план';
 
+
 } elseif ($lang == 'en') {
     $Read_more = 'Read more ';
     $a1 = 'SPP';
@@ -26,6 +27,8 @@ if ($lang == 'ru') {
     $a6 = 'Energy audit';
     $a7 = 'Concept';
     $a8 = 'Business plan';
+
+
 } else {
     $Read_more = 'Докладніше ';
     $a1 = 'СЕС';
@@ -36,6 +39,7 @@ if ($lang == 'ru') {
     $a6 = 'Аудит';
     $a7 = 'Концепція';
     $a8 = 'Бізнес-план';
+
 }
 
 
@@ -49,9 +53,9 @@ if ($lang == 'ru') {
                 <div class="part1">
                     <img src="/img/possibilities1_1.webp" alt="">
                     <div class="links">
-                        <a href="#"><?= $a1 ?> →</a>
-                        <a href="#"><?= $a2 ?> →</a>
-                        <a href="#"><?= $a3 ?> →</a>
+                        <a href="<?= Url::to(['/page/article', 'slug' => 'solar-plants-construction']) ?>"><?= $a1 ?> →</a>
+                        <a href="<?= Url::to(['/page/article', 'slug' => 'construction-biogas-power-plants']) ?>"><?= $a2 ?> →</a>
+                        <a href="<?= Url::to(['/page/article', 'slug' => 'biomass-power-plants-construction']) ?>"><?= $a3 ?> →</a>
                     </div>
                 </div>
                 <div class="part2">
@@ -91,8 +95,8 @@ if ($lang == 'ru') {
                 <div class="part1">
                     <img src="/img/possibilities2_1.webp" alt="">
                     <div class="links">
-                        <a href="#"><?= $a4 ?> →</a>
-                        <a href="#"><?= $a5 ?> →</a>
+                        <a href="<?= Url::to(['/page/article', 'slug' => 'technical-specifications']) ?>"><?= $a4 ?> →</a>
+                        <a href="<?= Url::to(['/page/article', 'slug' => 'technical-specifications']) ?>"><?= $a5 ?> →</a>
                     </div>
                 </div>
                 <div class="part2">
@@ -132,9 +136,9 @@ if ($lang == 'ru') {
                 <div class="part1">
                     <img src="/img/possibilities3_1.webp" alt="">
                     <div class="links">
-                        <a href="#"><?= $a6 ?> →</a>
-                        <a href="#"><?= $a7 ?> →</a>
-                        <a href="#"><?= $a8 ?> →</a>
+                        <a href="<?= Url::to(['/page/article', 'slug' => 'energy-project-audit']) ?>"><?= $a6 ?> →</a>
+                        <a href="<?= Url::to(['/page/article', 'slug' => 'energy-project-concept']) ?>"><?= $a7 ?> →</a>
+                        <a href="<?= Url::to(['/page/article', 'slug' => 'energy-business-plan']) ?>"><?= $a8 ?> →</a>
                     </div>
                 </div>
                 <div class="part2">
