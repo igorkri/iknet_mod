@@ -25,7 +25,7 @@ if($lang == 'ru'){
     <div class="block">
         <h1><?= $h1 ?></h1>
         <img src="<?= $image_tab ?>" alt="">
-        <a href="<?= $image_tab ?>" class="uni_link">
+        <a href="<?= $image_tab ?>" class="uni_link" download>
             <?= $download ?>
             <svg width="13" height="17" viewBox="0 0 13 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
