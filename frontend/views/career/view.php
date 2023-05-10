@@ -48,7 +48,7 @@ if($lang == 'ru'){
                 <p><?= $text->getDownText($text->id) ?></p>
             </div>
             <div class="img">
-                <img src="img/career.webp" alt="">
+                <img src="/img/career.webp" alt="">
             </div>
         </div>
         <form action="" class="your_contact">
