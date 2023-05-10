@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a45a1aafd289bf34e80ec7b66899895b",
+    "content-hash": "9e78fd687cb72f0eb3cd801bb82dbffe",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1284,47 +1284,6 @@
                 "source": "https://github.com/kotchuprik/yii2-sortable-widgets/tree/v2.2.0"
             },
             "time": "2022-07-13T23:10:38+00:00"
-        },
-        {
-            "name": "manchenkov/yii2-recaptcha3",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/manchenkoff/yii2-recaptcha3.git",
-                "reference": "a4c070dbcc60e5030dc79fa0ad0112ced87e4914"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/manchenkoff/yii2-recaptcha3/zipball/a4c070dbcc60e5030dc79fa0ad0112ced87e4914",
-                "reference": "a4c070dbcc60e5030dc79fa0ad0112ced87e4914",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2-httpclient": "^2.0"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "manchenkov\\yii\\recaptcha\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Artem Manchenkov",
-                    "email": "artyom@manchenkoff.me"
-                }
-            ],
-            "description": "Yii 2 extension to work with Google reCAPTCHA v3",
-            "support": {
-                "issues": "https://github.com/manchenkoff/yii2-recaptcha3/issues",
-                "source": "https://github.com/manchenkoff/yii2-recaptcha3/tree/1.0.3"
-            },
-            "abandoned": true,
-            "time": "2021-02-25T09:07:44+00:00"
         },
         {
             "name": "mihaildev/yii2-ckeditor",
@@ -2821,6 +2780,57 @@
                 "source": "https://github.com/vova07/yii2-imperavi-widget"
             },
             "time": "2019-03-26T11:39:06+00:00"
+        },
+        {
+            "name": "xstreamka/yii2-recaptcha-widget",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xstreamka/yii2-recaptcha-widget.git",
+                "reference": "2a51983726808891fdea0424f16296a522fc56b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xstreamka/yii2-recaptcha-widget/zipball/2a51983726808891fdea0424f16296a522fc56b1",
+                "reference": "2a51983726808891fdea0424f16296a522fc56b1",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.0",
+                "yiisoft/yii2-httpclient": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "xstreamka\\recaptcha\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "XStream",
+                    "email": "xstreamka@gmail.com",
+                    "homepage": "https://github.com/xstreamka/yii2-recaptcha-widget",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Spam check widget for Yii2, based on Google reCAPTCHA API v3",
+            "keywords": [
+                "captcha",
+                "extension",
+                "google",
+                "recaptcha",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/xstreamka/yii2-recaptcha-widget/issues",
+                "source": "https://github.com/xstreamka/yii2-recaptcha-widget"
+            },
+            "time": "2022-04-27T14:39:49+00:00"
         },
         {
             "name": "yiisoft/yii2",

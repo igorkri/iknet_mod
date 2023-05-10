@@ -14,6 +14,11 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute' => '/site',
     'components' => [
+        'reCaptcha' => [
+            'class' => 'xstreamka\recaptcha\ReCaptchaConfig',
+            'siteKeyV3' => '6LchtoglAAAAAFBtLTRaj_7cnXwV2xM60hS2hhQ1',
+            'secretV3' => '6LchtoglAAAAAFcWcB4Kp91QJJadKhcgRq-h4Xb6',
+        ],
         'metamaster' => [
             'class' => 'floor12\metamaster\MetaMaster',
             'siteName' => 'IKNET',

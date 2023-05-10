@@ -34,7 +34,7 @@
         "statickidz/php-google-translate-free": "^1.2",
         "vova07/yii2-imperavi-widget": "*",
         "floor12/yii2-metamaster": "^1.2",
-        "manchenkov/yii2-recaptcha3": "^1.0"
+        "xstreamka/yii2-recaptcha-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -48,10 +48,8 @@ use yii\widgets\ActiveForm;
             <input name="FormCallback[fio]" type="text" placeholder="ПІБ">
             <input name="FormCallback[email]" type="text" placeholder="Пошта">
             <input name="FormCallback[phone]" type="text" placeholder="Телефон">
-
-            <?= $form->field($model, 'captcha')->widget(ReCaptchaWidget::class, ['action' => 'view', 'preloading' => true]);
-            // action name must be the same as validation rules ?>
-
+            <?=\xstreamka\recaptcha\ReCaptcha::widget(); // added hidden input ?>
+            <?php // \xstreamka\recaptcha\ReCaptcha::validate(); ?>
         </div>
         <div class="right">
             <textarea name="" id="message" cols="30" rows="9" placeholder="Ваше повідомлення"></textarea>
