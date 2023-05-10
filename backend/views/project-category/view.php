@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'slug',
 //            'parent_id',
 //            'order',
-            'published',
+            'published:boolean',
             'image',
             'seo_description_uk',
             'seo_description_en',

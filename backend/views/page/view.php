@@ -1,5 +1,6 @@
 <?php
 
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -31,11 +32,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
 //            'id',
             'slug',
-            'created_at',
-            'updated_at',
-            'category_id',
+            [
+                'attribute' => 'created_at',
+                'filter' => false,
+                'value' => function($model){
+                    return Yii::$app->formatter->asDate($model->created_at, 'long');
+                },
+                'width' => '5%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
+//            'created_at',
+//            'updated_at',
+//            'category_id',
             'menu_id',
-            'published',
+            'published:boolean',
             'title_uk',
             'text_uk:raw',
             'seo_title_uk',

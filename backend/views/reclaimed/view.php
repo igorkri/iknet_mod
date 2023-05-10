@@ -36,8 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'value_en',
             'value_ru',
             'qty',
-            'order',
-            'published',
+//            'order',
+            'published:boolean',
         ],
     ]) ?>
 

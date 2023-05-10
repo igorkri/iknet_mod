@@ -1,5 +1,6 @@
 <?php
 
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -33,9 +34,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'title_ru',
             'slug',
             'parent_id',
-            'order',
-            'published',
-            'image',
+//            'order',
+            'published:boolean',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::img($model->image, ['width' => '60px']);
+                },
+//                'filter' => false,
+//                'width' => '10%',
+                'vAlign' => GridView::ALIGN_MIDDLE,
+                'hAlign' => GridView::ALIGN_CENTER,
+
+            ],
+//            'image',
             'seo_description_uk',
             'seo_description_en',
             'seo_description_ru',
