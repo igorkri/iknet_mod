@@ -36,7 +36,8 @@ use yii\helpers\Url;
                                 </div>
                                 <div class="cont">
                                     <?=$tab->getText($tab->id)?>
-                                    <a href="<?=Url::to([$tab->slug])?>">Докладніше →</a>
+                                    <?php $u = explode('/', $tab->slug);?>
+                                    <a href="<?=Url::to(['/' . $u[1] . '/' . $u[2], 'slug' => $u[3]])?>">Докладніше →</a>
                                 </div>
                             </div>
                             <?php endforeach; ?>
@@ -76,7 +77,8 @@ use yii\helpers\Url;
                                     </div>
                                     <div class="cont">
                                         <?=$tab->getText($tab->id)?>
-                                        <a href="<?=Url::to([$tab->slug])?>">Докладніше →</a>
+                                        <?php $u = explode('/', $tab->slug);?>
+                                        <a href="<?=Url::to(['/' . $u[1] . '/' . $u[2], 'slug' => $u[3]])?>">Докладніше →</a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -117,7 +119,8 @@ use yii\helpers\Url;
                                     </div>
                                     <div class="cont">
                                         <?=$tab->getText($tab->id)?>
-                                        <a href="<?=Url::to([$tab->slug])?>">Докладніше →</a>
+                                        <?php $u = explode('/', $tab->slug);?>
+                                        <a href="<?=Url::to(['/' . $u[1] . '/' . $u[2], 'slug' => $u[3]])?>">Докладніше →</a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
