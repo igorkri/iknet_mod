@@ -7,13 +7,35 @@ $lang = \Yii::$app->session->get('_language');
 
 if ($lang == 'ru') {
     $Read_more = 'Подробнее ';
+    $a1 = 'СЭС';
+    $a2 = 'Биогазовые ЭС';
+    $a3 = 'ЭС на биомассе';
+    $a4 = 'Стандарт';
+    $a5 = 'Нестандарт';
+    $a6 = 'Аудит';
+    $a7 = 'Концепция';
+    $a8 = 'Бизнес-план';
 
 } elseif ($lang == 'en') {
     $Read_more = 'Read more ';
-
+    $a1 = 'SPP';
+    $a2 = 'Biogas PP';
+    $a3 = 'Biomass PP';
+    $a4 = 'Standard';
+    $a5 = 'Non-standard';
+    $a6 = 'Energy audit';
+    $a7 = 'Concept';
+    $a8 = 'Business plan';
 } else {
     $Read_more = 'Докладніше ';
-
+    $a1 = 'СЕС';
+    $a2 = 'Біогазові ЕС';
+    $a3 = 'ЕС на біомасі';
+    $a4 = 'Стандарт';
+    $a5 = 'Нестандарт';
+    $a6 = 'Аудит';
+    $a7 = 'Концепція';
+    $a8 = 'Бізнес-план';
 }
 
 
@@ -27,9 +49,9 @@ if ($lang == 'ru') {
                 <div class="part1">
                     <img src="/img/possibilities1_1.webp" alt="">
                     <div class="links">
-                        <a href="#">СЕС →</a>
-                        <a href="#">Біогазові ЕС →</a>
-                        <a href="#">ЕС на біомасі →</a>
+                        <a href="#"><?= $a1 ?> →</a>
+                        <a href="#"><?= $a2 ?> →</a>
+                        <a href="#"><?= $a3 ?> →</a>
                     </div>
                 </div>
                 <div class="part2">
@@ -69,8 +91,8 @@ if ($lang == 'ru') {
                 <div class="part1">
                     <img src="/img/possibilities2_1.webp" alt="">
                     <div class="links">
-                        <a href="#">Стандарт →</a>
-                        <a href="#">Нестандарт →</a>
+                        <a href="#"><?= $a4 ?> →</a>
+                        <a href="#"><?= $a5 ?> →</a>
                     </div>
                 </div>
                 <div class="part2">
@@ -110,9 +132,9 @@ if ($lang == 'ru') {
                 <div class="part1">
                     <img src="/img/possibilities3_1.webp" alt="">
                     <div class="links">
-                        <a href="#">Аудит →</a>
-                        <a href="#">Концепція →</a>
-                        <a href="#">Бізнес-план →</a>
+                        <a href="#"><?= $a6 ?> →</a>
+                        <a href="#"><?= $a7 ?> →</a>
+                        <a href="#"><?= $a8 ?> →</a>
                     </div>
                 </div>
                 <div class="part2">
