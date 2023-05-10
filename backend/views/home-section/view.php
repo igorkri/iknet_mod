@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container home-section-view">
 
     <p>
-        <?= Html::a('+ Створити ще', ['create'], ['class' => 'btn btn-success']) ?>
+<!--        --><?php //= Html::a('+ Створити ще', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Редагувати', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Видалити', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
