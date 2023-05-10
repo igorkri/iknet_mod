@@ -1,3 +1,9 @@
+<?php
+
+use manchenkov\yii\recaptcha\ReCaptchaWidget;
+use yii\widgets\ActiveForm;
+
+?>
 <!----- contacts ----->
 <section class="contacts">
     <div class="block">
@@ -35,17 +41,29 @@
 
 <!----- contact_us ----->
 <section class="contact_us">
-    <form action="">
+    <?php $form = ActiveForm::begin(); ?>
+<!--    <form action="">-->
         <div class="left">
             <h3>Зв’язатись з нами</h3>
-            <input type="text" placeholder="ПІБ">
-            <input type="text" placeholder="Пошта">
-            <input type="text" placeholder="Телефон">
+            <input name="FormCallback[fio]" type="text" placeholder="ПІБ">
+            <input name="FormCallback[email]" type="text" placeholder="Пошта">
+            <input name="FormCallback[phone]" type="text" placeholder="Телефон">
+            <?php // $form->field($model, 'fio')->textInput(['maxlength' => true]) ?>
+
+            <?php //$form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
+            <?php // $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'captcha')->widget(ReCaptchaWidget::class, ['action' => 'view']);
+            // action name must be the same as validation rules ?>
+
         </div>
         <div class="right">
-            <textarea name="" id="" cols="30" rows="9" placeholder="Ваше повідомлення"></textarea>
+            <?php // $form->field($model, 'message')->textarea(['rows' => 6]) ?>
+            <textarea name="" id="message" cols="30" rows="9" placeholder="Ваше повідомлення"></textarea>
             <input type="submit">
         </div>
-    </form>
+<!--    </form>-->
+    <?php ActiveForm::end(); ?>
 </section>
 
