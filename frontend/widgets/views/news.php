@@ -47,6 +47,6 @@ if($lang == 'ru'){
             <?php endif; ?>
             <?php endforeach; ?>
         </div>
-        <a href="#" class="uni_link"><?= $all_news ?></a>
+        <a href="/articles" class="uni_link"><?= $all_news ?></a>
     </div>
 </section>
