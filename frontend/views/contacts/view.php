@@ -49,7 +49,7 @@ use yii\widgets\ActiveForm;
             <input name="FormCallback[email]" type="text" placeholder="Пошта">
             <input name="FormCallback[phone]" type="text" placeholder="Телефон">
 
-            <?php $form->field($model, 'captcha')->widget(ReCaptchaWidget::class, ['action' => 'view']);
+            <?= $form->field($model, 'captcha')->widget(ReCaptchaWidget::class, ['action' => 'view', 'preloading' => true]);
             // action name must be the same as validation rules ?>
 
         </div>
