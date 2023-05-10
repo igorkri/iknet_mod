@@ -14,7 +14,7 @@ class m230509_211203_create_form_callback_table extends Migration
     {
         $this->createTable('{{%form_callback}}', [
             'id' => $this->primaryKey(),
-            'created_at' => $this->dateTime()->comment('Дата'),
+            'created_at' => $this->integer()->comment('Дата'),
             'page' => $this->string()->comment('Сторінка'),
             'fio' => $this->string()->comment('ПІБ'),
             'email' => $this->string()->comment('Email'),

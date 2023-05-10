@@ -54,7 +54,7 @@ use yii\widgets\ActiveForm;
 
             <?php // $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'captcha')->widget(ReCaptchaWidget::class, ['action' => 'view']);
+            <?php // $form->field($model, 'captcha')->widget(ReCaptchaWidget::class, ['action' => 'view']);
             // action name must be the same as validation rules ?>
 
         </div>

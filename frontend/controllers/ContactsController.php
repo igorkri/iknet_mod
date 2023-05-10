@@ -16,6 +16,18 @@ class ContactsController extends Controller
     {
         $model = new FormCallback();
         $contact = Contacts::find()->one();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view',
+                    'contact' => $contact,
+                    'model' => $model
+                ]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
         return  $this->render('view',[
             'contact' => $contact,
             'model' => $model
