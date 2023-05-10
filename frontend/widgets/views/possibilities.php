@@ -2,6 +2,21 @@
 
 use yii\helpers\Url;
 
+
+$lang = \Yii::$app->session->get('_language');
+
+if ($lang == 'ru') {
+    $Read_more = 'Подробнее ';
+
+} elseif ($lang == 'en') {
+    $Read_more = 'Read more ';
+
+} else {
+    $Read_more = 'Докладніше ';
+
+}
+
+
 ?>
 <section class="possibilities" id="possibilities">
     <div class="block">
@@ -37,7 +52,7 @@ use yii\helpers\Url;
                                 <div class="cont">
                                     <?=$tab->getText($tab->id)?>
                                     <?php $u = explode('/', $tab->slug);?>
-                                    <a href="<?=Url::to(['/' . $u[1] . '/' . $u[2], 'slug' => $u[3]])?>">Докладніше →</a>
+                                    <a href="<?=Url::to(['/' . $u[1] . '/' . $u[2], 'slug' => $u[3]])?>"><?= $Read_more ?>→</a>
                                 </div>
                             </div>
                             <?php endforeach; ?>
@@ -78,7 +93,7 @@ use yii\helpers\Url;
                                     <div class="cont">
                                         <?=$tab->getText($tab->id)?>
                                         <?php $u = explode('/', $tab->slug);?>
-                                        <a href="<?=Url::to(['/' . $u[1] . '/' . $u[2], 'slug' => $u[3]])?>">Докладніше →</a>
+                                        <a href="<?=Url::to(['/' . $u[1] . '/' . $u[2], 'slug' => $u[3]])?>"><?= $Read_more ?>→</a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -120,7 +135,7 @@ use yii\helpers\Url;
                                     <div class="cont">
                                         <?=$tab->getText($tab->id)?>
                                         <?php $u = explode('/', $tab->slug);?>
-                                        <a href="<?=Url::to(['/' . $u[1] . '/' . $u[2], 'slug' => $u[3]])?>">Докладніше →</a>
+                                        <a href="<?=Url::to(['/' . $u[1] . '/' . $u[2], 'slug' => $u[3]])?>"><?= $Read_more ?>→</a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
