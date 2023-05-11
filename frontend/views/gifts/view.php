@@ -1,5 +1,7 @@
 <?php
 
+use yii\widgets\ActiveForm;
+
 $lang = \Yii::$app->session->get('_language');
 
 if($lang == 'ru'){
@@ -43,19 +45,26 @@ if($lang == 'ru'){
             </div>
         </div>
        <?php $i++; endforeach; ?>
-        <form action="" class="your_contact">
+        <?php $form = ActiveForm::begin([
+                'options' => [
+                    'class' => 'your_contact'
+                ],
+        ]); ?>
             <div class="left">
-                <h3>Залиште свої контактні дані і ми з вами зв’яжемось</h3>
-                <input type="text" placeholder="ПІБ">
-                <input type="text" placeholder="Пошта">
-                <input type="text" placeholder="Телефон">
-                <input type="text" placeholder="Вакансія">
+                <h3><?=$model->getLabelGifts()['title']?></h3>
+                <input name="FormCallback[fio]" type="text" placeholder="<?=$model->getLabelGifts()['fio']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['fio']?>')" oninput="this.setCustomValidity('')" required>
+                <input name="FormCallback[email]" type="text" placeholder="<?=$model->getLabelGifts()['email']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['email']?>')" oninput="this.setCustomValidity('')" required>
+                <input name="FormCallback[phone]" type="text" placeholder="<?=$model->getLabelGifts()['phone']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['phone']?>')" oninput="this.setCustomValidity('')" required>
+                <input name="FormCallback[code]" type="text" placeholder="<?=$model->getLabelGifts()['code']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['code']?>')" oninput="this.setCustomValidity('')" required>
+                <?php //\xstreamka\recaptcha\ReCaptcha::widget(); // added hidden input ?>
+                <?php // \xstreamka\recaptcha\ReCaptcha::validate(); ?>
+
             </div>
             <div class="right">
-                <textarea name="" id="" cols="30" rows="9" placeholder="Ваше повідомлення"></textarea>
+                <textarea name="FormCallback[message]" id="message" cols="30" rows="9" placeholder="<?=$model->getLabel()['message']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['message']?>')" oninput="this.setCustomValidity('')" required></textarea>
                 <input type="submit" value="Надіслати">
             </div>
-        </form>
+        <?php ActiveForm::end(); ?>
     </div>
 
     <div class="dark_bcg">

@@ -2,7 +2,7 @@
 return [
 
     'senderEmail' => 'iknet@ukr.net',
-    'senderName' => 'Example.com mailer',
+    'senderName' => 'IKNET',
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
 ];

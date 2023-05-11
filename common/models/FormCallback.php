@@ -81,24 +81,21 @@ class FormCallback extends ActiveRecord
         ];
     }
 
-    public function sendEmail($post)
+    public function sendEmail($post, $attach = null, $page = null)
     {
-
-        return \Yii::$app->mailer->compose()
-            ->setFrom([Yii::$app->params['senderEmail']])
-            ->setTo('igorkri26@gmail.com')
-            ->setSubject('Повідомлення зі сторінки контакти | IKNET')
-            ->setTextBody("Test message 'Повідомлення зі сторінки контакти | IKNET'")
-            ->send();
-
-//        return Yii::$app->mailer->compose()
-//            ->setTo($post['email']) // кому
-//            ->setFrom([Yii::$app->params['senderEmail']]) // від кого
-////            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']]) // від кого
-////            ->setReplyTo([$this->email => $this->name])
-//            ->setSubject('Повідомлення зі сторінки контакти | IKNET')
-//            ->setTextBody($post['message'])
-//            ->send();
+//        ->attach(\Yii::getAlias('@backend/web/img/template_free_stock.png'))
+        $sendEmail = Yii::$app->mailer->compose(['html' => 'form-html'], ['post' => $post])
+            ->setTo($post['email']) // кому
+            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']]) // від кого
+            ->setReplyTo([$post['email'] => $post['fio']])
+            ->setSubject('Повідомлення зі сторінки ' . $page . ' | IKNET')
+            ->setTextBody($post['message']);
+        if($attach){
+            $sendEmail->attach(\Yii::getAlias('@frontendWeb' . $attach));
+        }
+        if($sendEmail->send()){
+            return $sendEmail;
+        }
     }
 
     public function getLabel(){
@@ -130,6 +127,47 @@ class FormCallback extends ActiveRecord
         }else{
             return [
                 'title' => 'Зв’язатись з нами',
+                'page' => 'Сторінка',
+                'fio' => 'Ім’я',
+                'email' => 'Email',
+                'phone' => 'Телефон',
+                'message' => 'Ваше повідомлення',
+                'vacancies' => 'Вакансія',
+                'code' => 'Код',
+                'file' => 'Файл'
+            ];
+        }
+    }
+
+    public function getLabelGifts(){
+        $lang = \Yii::$app->session->get('_language');
+        if($lang == 'ru'){
+            return [
+                'title' => 'Оставьте свои контактные данные и мы с вами свяжемся',
+                'fio' => 'Имя',
+                'email' => 'Почта',
+                'phone' => 'Телефон',
+                'page' => 'Страница',
+                'message' => 'Ваше сообщение',
+                'vacancies' => 'Вакансия',
+                'code' => 'Назва/код товару',
+                'file' => 'файл',
+            ];
+        }elseif($lang == 'en'){
+            return [
+                'title' => 'Leave your contact details and we will contact you',
+                'page' => 'Page',
+                'fio' => 'Name',
+                'email' => 'Email',
+                'phone' => 'Phone',
+                'message' => 'Your message',
+                'vacancies' => 'Vacancy',
+                'code' => 'Code',
+                'file' => 'File'
+            ];
+        }else{
+            return [
+                'title' => 'Залиште свої контактні дані і ми з вами зв’яжемось',
                 'page' => 'Сторінка',
                 'fio' => 'Ім’я',
                 'email' => 'Email',

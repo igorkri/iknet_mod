@@ -41,9 +41,7 @@ use yii\widgets\ActiveForm;
 
 <!----- contact_us ----->
 <section class="contact_us">
-    <?php $form = ActiveForm::begin([
-//            'action' => '/form-callback/index'
-    ]); ?>
+    <?php $form = ActiveForm::begin(); ?>
 <!--    <form action="">-->
         <div class="left">
             <h3><?=$model->getLabel()['title']?></h3>

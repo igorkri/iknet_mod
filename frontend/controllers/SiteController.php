@@ -2,9 +2,12 @@
 
 namespace frontend\controllers;
 
+use common\models\Contacts;
+use common\models\FormCallback;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
+use yii\base\BaseObject;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -75,6 +78,20 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $model = new FormCallback();
+        $contact = Contacts::find()->one();
+        $post = \Yii::$app->request->post('FormCallback');
+        if (Yii::$app->request->isPost) {
+            $model->sendEmail($post, null, ' головної сторінки');
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['index',
+                    'contact' => $contact,
+                    'model' => $model
+                ]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
         return $this->render('index');
     }
 

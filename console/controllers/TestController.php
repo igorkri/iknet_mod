@@ -4,6 +4,7 @@ namespace console\controllers;
 
 
 use common\models\Category;
+use common\models\FormCallback;
 use common\models\Menu;
 use common\models\News;
 use common\models\NewsCategory;
@@ -22,28 +23,16 @@ use yii\db\Query;
 class TestController extends Controller
 {
     public function actionEmail(){
-        $send_email = \Yii::$app
-            ->mailer
-            ->compose()
-            ->setFrom([Yii::$app->params['senderEmail']])
-            ->setTo('igorkri26@gmail.com')
-            ->setSubject('test email iknet')
-            ->setTextBody("Test message");
 
-        if($send_email->send()){
+        $model = new FormCallback();
+        $send_email = $model->sendEmail(true);
+
+        if($send_email){
             echo "\n Send message \n";
         }else{
            print_r($send_email);
 
         }
 
-
-//        Yii::$app->mailer->compose()
-//            ->setTo("igorkri26@gmail.gom") // кому
-//            ->setFrom([Yii::$app->params['senderEmail']]) // від кого
-////            ->setReplyTo([$this->email => $this->name])
-//            ->setSubject('test email')
-//            ->setTextBody("Test message")
-//            ->send();
     }
 }
