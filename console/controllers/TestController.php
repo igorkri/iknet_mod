@@ -25,8 +25,8 @@ class TestController extends Controller
         $send_email = \Yii::$app
             ->mailer
             ->compose()
-            ->setFrom('igorkri26@gmail.com')
-            ->setTo('service@masterok.pl.ua')
+            ->setFrom([Yii::$app->params['senderEmail']])
+            ->setTo('igorkri26@gmail.com')
             ->setSubject('test email iknet')
             ->setTextBody("Test message");
 

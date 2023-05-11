@@ -1,5 +1,5 @@
 <?php
 return [
-    'adminEmail' => 'iknet@ukr.net',
+//    'adminEmail' => 'iknet@ukr.net',
 //    'bsVersion' => '4.x',
 ];
