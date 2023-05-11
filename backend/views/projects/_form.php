@@ -45,7 +45,6 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?= $form->field($model, 'slug')->hiddenInput(['maxlength' => true])->label(false) ?>
 
-
     <div class="row">
         <div class="col-6">
             <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(ProjectCategory::find()->with(['parent', 'parents'])
