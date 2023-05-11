@@ -15,9 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container home-section-index">
 
-    <p>
-        <?= Html::a('+ Створення секції', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+<!--    <p>-->
+<!--        --><?php //= Html::a('+ Створення секції', ['create'], ['class' => 'btn btn-success']) ?>
+<!--    </p>-->
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
