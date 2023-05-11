@@ -23,11 +23,13 @@ class CareerController extends Controller
         $post = \Yii::$app->request->post('FormCallback');
 
         if (Yii::$app->request->isPost) {
-            $dir = Yii::getAlias('@frontendWeb/career');
-            $file = UploadedFile::getInstance($model, 'file');
-            $imageName = uniqid();
-            $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-            $model->file = '/career/' . $imageName . '.' . $file->extension;
+            if($_FILES['FormCallback']['size']['file'] > 0){
+                $dir = Yii::getAlias('@frontendWeb/career');
+                $file = UploadedFile::getInstance($model, 'file');
+                $imageName = uniqid();
+                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                $model->file = '/career/' . $imageName . '.' . $file->extension;
+            }
 
             $model->sendEmail($post, $model->file, 'Кар\'єра');
             if ($model->load($this->request->post()) && $model->save()) {
