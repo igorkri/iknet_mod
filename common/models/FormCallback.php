@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-//use manchenkov\yii\recaptcha\ReCaptchaValidator;
+use manchenkov\yii\recaptcha\ReCaptchaValidator;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\VarDumper;
@@ -58,7 +58,7 @@ class FormCallback extends ActiveRecord
             [['email'], 'email'],
 //            [['fio', 'email', 'phone', 'email'], 'required'],
             [['page', 'fio', 'email', 'phone', 'vacancies', 'code', 'file'], 'string', 'max' => 255],
-//            ['captcha', ReCaptchaValidator::class, 'score' => 0.8, 'action' => 'index'],
+            ['captcha', ReCaptchaValidator::class, 'score' => 0.8, 'action' => 'index'],
         ];
     }
 

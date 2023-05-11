@@ -48,8 +48,7 @@ use yii\widgets\ActiveForm;
             <input name="FormCallback[fio]" type="text" placeholder="<?=$model->getLabel()['fio']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['fio']?>')" oninput="this.setCustomValidity('')" required>
             <input name="FormCallback[email]" type="text" placeholder="<?=$model->getLabel()['email']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['email']?>')" oninput="this.setCustomValidity('')" required>
             <input name="FormCallback[phone]" type="text" placeholder="<?=$model->getLabel()['phone']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['phone']?>')" oninput="this.setCustomValidity('')" required>
-            <?php //\xstreamka\recaptcha\ReCaptcha::widget(); // added hidden input ?>
-            <?php // \xstreamka\recaptcha\ReCaptcha::validate(); ?>
+            <?=$form->field($model, 'captcha')->widget(ReCaptchaWidget::class);?>
         </div>
         <div class="right">
             <textarea name="FormCallback[message]" id="message" cols="30" rows="9" placeholder="<?=$model->getLabel()['message']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['message']?>')" oninput="this.setCustomValidity('')" required></textarea>

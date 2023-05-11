@@ -1,5 +1,6 @@
 <?php
 
+use manchenkov\yii\recaptcha\ReCaptchaWidget;
 use yii\widgets\ActiveForm;
 
 $lang = \Yii::$app->session->get('_language');
@@ -64,9 +65,7 @@ if($lang == 'ru'){
             <input name="FormCallback[email]" type="text" placeholder="<?=$model->getLabelGifts()['email']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['email']?>')" oninput="this.setCustomValidity('')" required>
             <input name="FormCallback[phone]" type="text" placeholder="<?=$model->getLabelGifts()['phone']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['phone']?>')" oninput="this.setCustomValidity('')" required>
             <input name="FormCallback[vacancies]" type="text" placeholder="<?=$model->getLabelGifts()['vacancies']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['vacancies']?>')" oninput="this.setCustomValidity('')" required>
-            <?php //\xstreamka\recaptcha\ReCaptcha::widget(); // added hidden input ?>
-            <?php // \xstreamka\recaptcha\ReCaptcha::validate(); ?>
-
+            <?=$form->field($model, 'captcha')->widget(ReCaptchaWidget::class);?>
         </div>
         <div class="right">
             <textarea name="FormCallback[message]" id="message" cols="30" rows="9" placeholder="<?=$model->getLabel()['message']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['message']?>')" oninput="this.setCustomValidity('')" required></textarea>
