@@ -58,7 +58,7 @@ class FormCallback extends ActiveRecord
             [['email'], 'email'],
 //            [['fio', 'email', 'phone', 'email'], 'required'],
             [['page', 'fio', 'email', 'phone', 'vacancies', 'code', 'file'], 'string', 'max' => 255],
-            ['captcha', ReCaptchaValidator::class, 'score' => 0.8, 'action' => 'index'],
+            ['captcha', ReCaptchaValidator::class, 'score' => 0.5, 'action' => ''],
         ];
     }
 
