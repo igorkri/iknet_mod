@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use manchenkov\yii\recaptcha\ReCaptchaValidator;
+//use manchenkov\yii\recaptcha\ReCaptchaValidator;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\VarDumper;
@@ -84,14 +84,21 @@ class FormCallback extends ActiveRecord
     public function sendEmail($post)
     {
 
-        return Yii::$app->mailer->compose()
-            ->setTo($post['email']) // кому
-            ->setFrom([Yii::$app->params['senderEmail']]) // від кого
-//            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']]) // від кого
-//            ->setReplyTo([$this->email => $this->name])
-            ->setSubject('Повідомлення зі сторінки контакти | IKNET ')
-            ->setTextBody($post['message'])
+        return \Yii::$app->mailer->compose()
+            ->setFrom([Yii::$app->params['senderEmail']])
+            ->setTo('igorkri26@gmail.com')
+            ->setSubject('Повідомлення зі сторінки контакти | IKNET')
+            ->setTextBody("Test message 'Повідомлення зі сторінки контакти | IKNET'")
             ->send();
+
+//        return Yii::$app->mailer->compose()
+//            ->setTo($post['email']) // кому
+//            ->setFrom([Yii::$app->params['senderEmail']]) // від кого
+////            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']]) // від кого
+////            ->setReplyTo([$this->email => $this->name])
+//            ->setSubject('Повідомлення зі сторінки контакти | IKNET')
+//            ->setTextBody($post['message'])
+//            ->send();
     }
 
     public function getLabel(){
