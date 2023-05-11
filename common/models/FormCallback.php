@@ -86,7 +86,8 @@ class FormCallback extends ActiveRecord
 
         return Yii::$app->mailer->compose()
             ->setTo($post['email']) // кому
-            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']]) // від кого
+            ->setFrom([Yii::$app->params['senderEmail']]) // від кого
+//            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']]) // від кого
 //            ->setReplyTo([$this->email => $this->name])
             ->setSubject('Повідомлення зі сторінки контакти | IKNET ')
             ->setTextBody($post['message'])
