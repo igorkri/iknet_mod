@@ -41,7 +41,7 @@ $page = $get['page'] ?? 1;
                     <h4><?= $new->getTitle($new->id) ?></h4>
                     <p><?= date('d.m.Y', $new->created_at) ?></p>
                     <div class="short_descr">
-                        <p><?= strip_tags($new->getText($new->id)) ?></p>
+                        <p><?= strip_tags($new->getTextShort($new->id)) ?><?= strlen($new->getTextShort($new->id))  > 600 ? "..." : ''?></p>
                     </div>
                 </div>
             </a>

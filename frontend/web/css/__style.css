@@ -409,6 +409,7 @@ form.your_contact .right input[type=submit]:hover {
   z-index: 2;
 }
 
+
 .new_header .cont .search #search-input {
   display: block;
   width: 100%;
@@ -1697,6 +1698,7 @@ form.your_contact .right input[type=submit]:hover {
 }
 
 .news .item .text {
+
   width: calc(100% - 377px);
   padding-top: 15px;
   display: -webkit-box;
@@ -1707,6 +1709,28 @@ form.your_contact .right input[type=submit]:hover {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 20px;
+}
+
+.short_descr {
+  width: 100%;
+  margin-top: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+}
+
+.review_short_descr {
+  width: 100%;
+  margin-top: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
 }
 
 .news .item .text h4 {
@@ -1812,7 +1836,7 @@ form.your_contact .right input[type=submit]:hover {
   text-align: center;
   margin-bottom: 35px;
 }
-/*  
+
 .project .cont {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1839,7 +1863,7 @@ form.your_contact .right input[type=submit]:hover {
 .project .cont .img img {
   width: 100%;
 }
-*/
+
 /***** Футер *****/
 
 footer {
@@ -2674,7 +2698,7 @@ footer .copyright p {
     font-size: 32px;
     line-height: 40px;
   }
-  /*  
+
   .project .block .cont {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -2692,7 +2716,6 @@ footer .copyright p {
   .project .block .cont .img img {
     width: 100%;
   }
-  */
 }
 
 @media (max-width: 767px) {

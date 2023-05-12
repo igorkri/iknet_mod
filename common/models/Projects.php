@@ -138,7 +138,21 @@ class Projects extends \yii\db\ActiveRecord
 
    public function getText($id, $lang = null){
        $lang = \Yii::$app->session->get('_language');
-        $post = Projects::find()->where(['id' => $id])->one();
+        $post = Projects::find()
+            ->where(['id' => $id])->one();
+        if($lang == 'en'){
+            return $post->text_en;
+        }elseif($lang == 'ru'){
+           return $post->text_ru;
+       }else{
+           return $post->text_uk;
+       }
+   }
+   public function getTextShort($id, $lang = null){
+       $lang = \Yii::$app->session->get('_language');
+        $post = Projects::find()
+            ->select(['id, slug, created_at, image, SUBSTRING(text_ru, 1, 600) as text_ru, SUBSTRING(text_uk, 1, 600) as text_uk, SUBSTRING(text_en, 1, 600) as text_en'])
+            ->where(['id' => $id])->one();
         if($lang == 'en'){
             return $post->text_en;
         }elseif($lang == 'ru'){

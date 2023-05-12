@@ -68,6 +68,8 @@ class NewsController extends Controller
             ->orderBy('created_at DESC')
             ->limit($count)
             ->all();
+//        VarDumper::dump($news, 10, true);
+//        die;
         if (Yii::$app->request->isAjax) {
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             return $this->renderAjax('view', [
