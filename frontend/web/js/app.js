@@ -1,3 +1,4 @@
+(function ($) {
 // Меню Бургер
 $('#new_header .cont .burger').click(function () {
   $('#new_header .cont .links_drop').slideToggle(300);
@@ -128,8 +129,23 @@ $('#career .text .info .vacancy .head').click(function () {
 
 // career 
 $('#file').change(function () {
-  if ($(this).val() != '') $(this).next().text('Обрано файлів: ' + $(this)[0].files.length);
-  else $(this).next().text('Не вибрано жодного файлу');
+
+  var lang = $('#career').data('lang');
+  if(lang === 'en'){
+    var sessLang = 'Files selected: ';
+    var noFile = 'No file selected';
+  }
+  if(lang === 'ru'){
+    var sessLang = 'Выбрано файлов: ';
+    var noFile = 'Файл не выбран';
+  }
+
+  if(lang === 'uk'){
+    var sessLang = 'Обрано файлів: ';
+    var noFile = 'Не вибрано жодного файлу';
+  }
+  if ($(this).val() != '') $(this).next().text(sessLang + $(this)[0].files.length);
+  else $(this).next().text(noFile);
 });
 
 // gifts
@@ -138,7 +154,7 @@ $('#gifts .block .item').click(function () {
   var id = $(this).data('id');
 
   $.ajax({
-    url: "/ru/gifts/img-gifts",
+    url: "/gifts/img-gifts",
     type: 'get',
     data: {
       'id': id,
@@ -171,3 +187,4 @@ $('#bookmarks a').click(function () {
   $('#bookmarks a').removeClass('active');
   $(this).addClass('active');
 });
+})(jQuery);

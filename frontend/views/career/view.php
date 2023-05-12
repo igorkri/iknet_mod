@@ -1,6 +1,9 @@
 <?php
 
+//use kartik\form\ActiveForm;
 use manchenkov\yii\recaptcha\ReCaptchaWidget;
+//use yii\bootstrap5\ActiveForm;
+
 use yii\widgets\ActiveForm;
 
 $lang = \Yii::$app->session->get('_language');
@@ -8,18 +11,36 @@ $lang = \Yii::$app->session->get('_language');
 if($lang == 'ru'){
     $h2 =  'Карьера';
     $h4 =  'Вакансии:';
+    $textUpload = 'Загрузить резюме (в формате PDF)';
+    $buttonFile = 'Выбрать файл';
+    $isFile = 'Выбрано файлов';
+    $sendForm = 'Отправить';
+    $noFile = 'Файл не выбран';
+    $noVacansies = 'К сожалению, на данный момент вакансий нет.';
 }elseif($lang == 'en'){
     $h2 =  'Career';
     $h4 =  'Vacancies:';
+    $textUpload = 'Download resume (in PDF format)';
+    $buttonFile = 'Select a file';
+    $isFile = 'Files selected';
+    $sendForm = 'Send';
+    $noFile = 'No file selected';
+    $noVacansies = 'Unfortunately, at the moment, there are no vacancies.';
 }else{
     $h2 =  'Кар\'єра';
     $h4 =  'Вакансії:';
+    $textUpload = 'Завантажити резюме (у форматі PDF)';
+    $buttonFile = 'Вибрати файл';
+    $isFile = 'Обрано файлів';
+    $sendForm = 'Надіслати';
+    $noFile = 'Не вибрано жодного файлу';
+    $noVacansies = 'Нажаль, на даний момент, вакансій немає.';
 }
 
 ?>
 
 <!----- career ----->
-<section class="career" id="career">
+<section class="career" id="career" data-lang="<?=$lang?>">
     <div class="block">
         <h2><?= $h2 ?></h2>
         <div class="text">
@@ -46,7 +67,7 @@ if($lang == 'ru'){
                         <?php endif; ?>
                     <?php endforeach; ?>
                 <?php } else { ?>
-                    <p>Нажаль, на даний момент, вакансій немає.</p>
+                    <p><?=$noVacansies?></p>
                 <?php } ?>
                 <p><?= $text->getDownText($text->id) ?></p>
             </div>
@@ -68,17 +89,20 @@ if($lang == 'ru'){
             <?=$form->field($model, 'captcha')->widget(ReCaptchaWidget::class);?>
         </div>
         <div class="right">
+<!--
+
+    $isFile = 'Выбрано файлов';-->
             <textarea name="FormCallback[message]" id="message" cols="30" rows="9" placeholder="<?=$model->getLabel()['message']?>" oninvalid="this.setCustomValidity('<?=$model->getMessError()['message']?>')" oninput="this.setCustomValidity('')" required></textarea>
-            <p>Завантажити резюме (у форматі PDF)</p>
+            <p><?=$textUpload?></p>
             <div class="file_wrapper">
                 <label for="file">
-                    Вибрати файл
+                    <?=$buttonFile?>
                 </label>
                 <?php $form->field($model, 'file')->fileInput() ?>
                 <input name="FormCallback[file]" type="file" accept=".pdf" id="file">
-                <span>Не вибрано жодного файлу</span>
+                <span><?=$noFile?></span>
             </div>
-            <input type="submit" value="Надіслати">
+            <input type="submit" value="<?=$sendForm?>">
         </div>
         <?php ActiveForm::end(); ?>
     </div>
