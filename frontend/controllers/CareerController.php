@@ -24,7 +24,7 @@ class CareerController extends Controller
         $post = \Yii::$app->request->post('FormCallback');
         $post2 = \Yii::$app->request->post();
         if (Yii::$app->request->isPost) {
-        VarDumper::dump($post2, 10, true); die;
+//        VarDumper::dump($post2, 10, true); die;
             if($_FILES['FormCallback']['size']['file'] > 0){
                 $dir = Yii::getAlias('@frontendWeb/career');
                 $file = UploadedFile::getInstance($model, 'file');
