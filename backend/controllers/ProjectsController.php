@@ -6,6 +6,7 @@ use common\models\Projects;
 use common\models\search\ProjectsSearch;
 use Yii;
 use yii\base\BaseObject;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -43,6 +44,9 @@ class ProjectsController extends Controller
     {
         $searchModel = new ProjectsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+
+//        VarDumper::dump($dataProvider->models, 10, true);
+//        die;
 
         return $this->render('index', [
             'searchModel' => $searchModel,

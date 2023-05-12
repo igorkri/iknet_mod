@@ -13,13 +13,13 @@ use yii\grid\ActionColumn;
 /** @var common\models\search\ProjectsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Проєкти');
+$this->title = 'Проєкти';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container projects-index">
 
     <p>
-        <?= Html::a(Yii::t('app', '+ Створити'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('+ Створити', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
