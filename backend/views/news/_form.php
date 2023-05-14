@@ -4,14 +4,18 @@ use common\models\NewsCategory;
 use kartik\file\FileInput;
 use mihaildev\ckeditor\CKEditor;
 use mihaildev\elfinder\InputFile;
+use stkevich\ckeditor5\EditorClassic;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\JsExpression;
 use yii\widgets\ActiveForm;
 
 use mihaildev\elfinder\ElFinder;
 
+
+$dir = Yii::getAlias('@frontendWeb');
 //mihaildev\elfinder\Assets::noConflict($this);
 
 /** @var yii\web\View $this */
@@ -102,7 +106,6 @@ use mihaildev\elfinder\ElFinder;
 
             <?= $form->field($model, 'text_en')->widget(CKEditor::class, [
                 'editorOptions' => ElFinder::ckeditorOptions('elfinder',[
-//                        'path' => 'fsdfasdfasdfasdfasdf',
                     'language' => 'uk',
                     //                    'width' => '500',
                     'height' => '35em'
@@ -151,16 +154,16 @@ use mihaildev\elfinder\ElFinder;
                     ])->label('Головне зображення');?>
 
                 <?php else: ?>
-
                     <?= $form->field($model, 'image')->widget(FileInput::class, [
                         'language' => 'uk',
                         'options' => ['accept' => 'image/*'],
                         'pluginOptions' => [
+                            'deleteUrl' => Url::to(['/upload-ajax/remove-img', 'page' => 'news', 'file' => $model->image ? $model->image : 'no', 'field' => 'image']),
                             'maxFileCount' => 1,
                             'showRemove' => false,
                             'showUpload' => false,
                             'initialPreview' => [
-                                Yii::$app->request->hostInfo . $model->image
+                                file_exists($dir . $model->image) ? Yii::$app->request->hostInfo . $model->image : null
                             ],
                             'initialPreviewAsData' => true,
                         ],
@@ -187,6 +190,7 @@ use mihaildev\elfinder\ElFinder;
                         'language' => 'uk',
                         'options' => ['accept' => 'image/*'],
                         'pluginOptions' => [
+                            'deleteUrl' => Url::to(['/upload-ajax/remove-img', 'page' => 'news', 'file' => $model->image_og ? $model->image_og : 'no', 'field' => 'image_og']),
                             'maxFileCount' => 1,
                             'showRemove' => false,
                             'showUpload' => false,
@@ -212,8 +216,6 @@ $js = <<<JS
 $( document ).ready(function() {
     //set image path to dialog  
     // var input = $('input#cke_316_textInput').val();
-    var input = $('input#cke_316_textInput').val('45646546546546546');
-  console.log('454545', input);
 
 });
 

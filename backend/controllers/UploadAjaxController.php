@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use backend\models\UploadFile;
+use common\models\News;
 use common\models\Pages;
 use common\models\search\PagesSearch;
 use Yii;
@@ -37,6 +38,25 @@ class UploadAjaxController extends Controller
 //            $imageName . '.' . $file->extension;
 
 //        }
+    }
+
+    public function actionRemoveImg($page, $file, $field){
+        $file = str_replace('%2F', '/', $file);
+        $dir = Yii::getAlias('@frontendWeb');
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if(file_exists($dir . $file)){
+            if($page == 'news'){
+                $new = News::find()->where([$field => $file])->one();
+                $new->$field = null;
+                if($new->save()){
+                    unlink($dir . $file);
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
     }
 
 }

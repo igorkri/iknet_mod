@@ -30,7 +30,7 @@ $lang = \Yii::$app->session->get('_language');
                     <h4><?= $new->getTitle($new['id']) ?></h4>
                     <p><?= date('d.m.Y', $new['created_at']) ?></p>
                     <div class="short_descr">
-                        <p><?= strip_tags($new->getText($new['id'])) ?></p>
+                        <p><?= strip_tags($new->getTextShort($new['id'])) ?>...</p>
                     </div>
                 </div>
             </a>
