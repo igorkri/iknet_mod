@@ -15,6 +15,13 @@ mihaildev\elfinder\Assets::noConflict($this);
 /** @var yii\web\View $this */
 /** @var common\models\Projects $model */
 /** @var yii\widgets\ActiveForm $form */
+
+
+
+
+//\yii\helpers\VarDumper::dump($cats, 10, true);
+//
+//die;
 ?>
 
 <div class="container projects-form">
@@ -48,9 +55,7 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <div class="row">
         <div class="col-6">
-            <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(ProjectCategory::find()->with(['parent', 'parents'])
-                ->where(['parent_id' => [12, 13]])
-                ->asArray()->all(),
+            <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map($model->getCategoryList(),
                 'id', 'title_uk', 'parent.title_uk'),
                 ['prompt'=>'Виберіть...']
             )->label('Категорія')?>

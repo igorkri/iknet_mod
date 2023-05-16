@@ -173,4 +173,17 @@ class Projects extends \yii\db\ActiveRecord
         return $res;
    }
 
+    public function getCategoryList(){
+        $category_projects = ProjectCategory::find()->with(['parent', 'parents'])
+            ->where(['parent_id' => [12, 13]])
+            ->asArray()->all();
+        $cats = [];
+        foreach ($category_projects as $category_project) {
+            if($category_project['id'] != 35 && $category_project['id'] != 28){
+                $cats[] = $category_project;
+            }
+        }
+        return $cats;
+    }
+
 }
