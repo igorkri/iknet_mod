@@ -23,13 +23,23 @@ class ClientsBrand extends \yii\db\ActiveRecord
         return 'clients_brand';
     }
 
+    public function behaviors()
+    {
+        return [
+            'sortable' => [
+                'class' => \kotchuprik\sortable\behaviors\Sortable::class,
+                'query' => self::find(),
+            ]
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['published'], 'integer'],
+            [['order', 'published'], 'integer'],
             [['name', 'slug', 'file'], 'string', 'max' => 255],
         ];
     }

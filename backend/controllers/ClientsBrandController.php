@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\PresentsEnergyList;
 use common\models\search\ClientsBrandSearch;
 use common\models\ClientsBrand;
 use Yii;
@@ -161,5 +162,24 @@ class ClientsBrandController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionSorting(){
+        Yii::$app->cache->flush();
+        $post_sort_arrs = Yii::$app->request->post('sorting');
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        if($post_sort_arrs){
+            foreach ($post_sort_arrs as $key_sort => $id){
+                $sort = ClientsBrand::find()->where(['id' => $id])->one();
+                $sort->order = $key_sort;
+                if($sort->save()){
+
+                }else{
+                    print_r($sort->errors);
+                    die;
+                }
+            }
+        }
+        return true;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Menu;
 use common\models\search\PresentsEnergyListSearch;
 use common\models\PresentsEnergyList;
 use common\models\PresentsEnergyListImg;
@@ -49,6 +50,7 @@ class PresentsEnergyListController extends Controller
         Yii::$app->cache->flush();
         $searchModel = new PresentsEnergyListSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -195,6 +197,25 @@ class PresentsEnergyListController extends Controller
         return $this->render('create-img', [
             'model' => $model
         ]);
+    }
+
+    public function actionSorting(){
+        Yii::$app->cache->flush();
+        $post_sort_arrs = Yii::$app->request->post('sorting');
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        if($post_sort_arrs){
+        foreach ($post_sort_arrs as $key_sort => $id){
+            $sort = PresentsEnergyList::find()->where(['id' => $id])->one();
+            $sort->order = $key_sort;
+            if($sort->save()){
+
+            }else{
+                print_r($sort->errors);
+                die;
+            }
+        }
+        }
+        return true;
     }
 
 }

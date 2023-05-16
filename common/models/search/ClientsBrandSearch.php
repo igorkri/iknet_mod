@@ -19,7 +19,7 @@ class ClientsBrandSearch extends ClientsBrand
     {
         return [
             [['id', 'published'], 'integer'],
-            [['name', 'slug', 'file'], 'safe'],
+            [['order', 'name', 'slug', 'file'], 'safe'],
         ];
     }
 
@@ -47,6 +47,8 @@ class ClientsBrandSearch extends ClientsBrand
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => false,
+            'sort'=> ['defaultOrder' => ['order' => SORT_ASC]],
         ]);
 
         $this->load($params);

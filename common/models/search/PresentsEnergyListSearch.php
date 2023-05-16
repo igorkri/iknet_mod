@@ -18,7 +18,7 @@ class PresentsEnergyListSearch extends PresentsEnergyList
     {
         return [
             [['id'], 'integer'],
-            [['title_uk', 'description_uk', 'sku_uk', 'title_en', 'description_en', 'sku_en', 'title_ru', 'description_ru', 'sku_ru'], 'safe'],
+            [['order', 'title_uk', 'description_uk', 'sku_uk', 'title_en', 'description_en', 'sku_en', 'title_ru', 'description_ru', 'sku_ru'], 'safe'],
             [['price_uk', 'price_en', 'price_ru'], 'number'],
         ];
     }
@@ -47,6 +47,8 @@ class PresentsEnergyListSearch extends PresentsEnergyList
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => false,
+            'sort'=> ['defaultOrder' => ['order' => SORT_ASC]],
         ]);
 
         $this->load($params);

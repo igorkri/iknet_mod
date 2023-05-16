@@ -3,11 +3,13 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the model class for table "presents_energy_list".
  *
  * @property int $id
+ * @property int $order
  * @property string|null $title
  * @property string|null $description
  * @property float|null $price
@@ -23,6 +25,16 @@ class PresentsEnergyList extends \yii\db\ActiveRecord
         return 'presents_energy_list';
     }
 
+    public function behaviors()
+    {
+        return [
+            'sortable' => [
+                'class' => \kotchuprik\sortable\behaviors\Sortable::class,
+                'query' => self::find(),
+            ]
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -30,7 +42,7 @@ class PresentsEnergyList extends \yii\db\ActiveRecord
     {
         return [
             [['id'], 'integer'],
-            [['title_uk', 'description_uk', 'sku_uk', 'title_en', 'description_en', 'sku_en', 'title_ru', 'description_ru', 'sku_ru'], 'safe'],
+            [['order', 'title_uk', 'description_uk', 'sku_uk', 'title_en', 'description_en', 'sku_en', 'title_ru', 'description_ru', 'sku_ru'], 'safe'],
             [['price_uk', 'price_en', 'price_ru'], 'number'],
         ];
     }

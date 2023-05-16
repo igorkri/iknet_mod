@@ -25,7 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions' => function ($model, $key, $index, $grid) {
+            return ['data-sortable-id' => $model->id];
+        },
         'columns' => [
+            [
+                'class' => \kotchuprik\sortable\grid\Column::class,
+            ],
+//            'id',
             ['class' => 'yii\grid\SerialColumn'],
             [
                 'attribute' => 'id',
@@ -58,6 +65,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
 
+        ],
+        'options' => [
+            'data' => [
+                'sortable-widget' => 1,
+                'sortable-url' => Url::to(['sorting']),
+            ]
         ],
     ]); ?>
 
