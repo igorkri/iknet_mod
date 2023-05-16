@@ -1,4 +1,3 @@
-(function ($) {
 // Меню Бургер
 $('#new_header .cont .burger').click(function () {
   $('#new_header .cont .links_drop').slideToggle(300);
@@ -32,7 +31,7 @@ $(document).ready(function () {
     //Если скролл до начала елемента
     var offset = $element.offset().top
 
-    if (scroll > offset && counter == 0) {
+    if (scroll > offset && counter === 0) {
       $('#reclame .counter .item h3 span').each(function () {
         $(this).prop('Counter', 0).animate({
           Counter: $(this).text()
@@ -187,4 +186,4 @@ $('#bookmarks a').click(function () {
   $('#bookmarks a').removeClass('active');
   $(this).addClass('active');
 });
-})(jQuery);
+
