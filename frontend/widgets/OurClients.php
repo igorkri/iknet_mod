@@ -28,7 +28,7 @@ class OurClients extends Widget
             $img = '/img/our_clients(UA).svg';
         }
 
-        $cliennts = ClientsBrand::find()->where(['published' => 1])->all();
+        $cliennts = ClientsBrand::find()->where(['published' => 1])->orderBy('order ASC')->all();
 
         return $this->render('our-clients', [
             'cliennts' => $cliennts,

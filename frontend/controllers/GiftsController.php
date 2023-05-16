@@ -21,7 +21,7 @@ class GiftsController extends Controller
 
         $model = new FormCallback();
         $item = PresentsEnergy::find()->one();
-        $presents = PresentsEnergyList::find()->with('img')->all();
+        $presents = PresentsEnergyList::find()->with('img')->orderBy('order ASC')->all();
         $post = \Yii::$app->request->post('FormCallback');
 
         if (Yii::$app->request->isPost) {
