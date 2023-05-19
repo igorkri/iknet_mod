@@ -148,7 +148,7 @@ mihaildev\elfinder\Assets::noConflict($this);
                         'language' => 'uk',
                         'options' => ['accept' => 'image/*'],
                         'pluginOptions' => [
-                            'deleteUrl' => Url::to(['/upload-ajax/remove-img', 'page' => 'news', 'file' => $model->image ? $model->image : 'no', 'field' => 'image']),
+                            'deleteUrl' => Url::to(['/upload-ajax/remove-img', 'page' => 'projects', 'file' => $model->image ? $model->image : 'no', 'field' => 'image']),
                             'maxFileCount' => 1,
                             'showRemove' => false,
                             'showUpload' => false,
@@ -180,7 +180,7 @@ mihaildev\elfinder\Assets::noConflict($this);
                         'language' => 'uk',
                         'options' => ['accept' => 'image/*'],
                         'pluginOptions' => [
-                            'deleteUrl' => Url::to(['/upload-ajax/remove-img', 'page' => 'news', 'file' => $model->image_og ? $model->image_og : 'no', 'field' => 'image_og']),
+                            'deleteUrl' => Url::to(['/upload-ajax/remove-img', 'page' => 'projects', 'file' => $model->image_og ? $model->image_og : 'no', 'field' => 'image_og']),
                             'maxFileCount' => 1,
                             'showRemove' => false,
                             'showUpload' => false,

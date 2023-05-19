@@ -149,8 +149,15 @@ class PageController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $dir = Yii::getAlias('@frontendWeb');
+        $model = $this->findModel($id);
+        if (file_exists($dir . $model->image)) {
+            unlink($dir . $model->image);
+        }
+        if (file_exists($dir . $model->image_og)) {
+            unlink($dir . $model->image_og);
+        }
+        $model->delete();
         return $this->redirect(['index']);
     }
 

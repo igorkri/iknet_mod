@@ -25,6 +25,7 @@ $this->title = Yii::t('app', 'Додавання картинок');
                 'multiple' => true,
             ],
             'pluginOptions' => [
+                'deleteUrl' => Url::to(['/upload-ajax/remove-img', 'page' => 'presents-list', 'file' => $model->file ? $model->file : 'no', 'field' => 'file']),
                 'maxFileCount' => 10,
                 'showRemove' => false,
                 'showUpload' => false,

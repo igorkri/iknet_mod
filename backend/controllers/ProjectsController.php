@@ -77,14 +77,14 @@ class ProjectsController extends Controller
         $model = new Projects();
         $dir = Yii::getAlias('@frontendWeb/img/projects');
         if ($model->load($this->request->post())) {
-            if($_FILES and $_FILES['Projects']['size']['image'] > 0) {
+            if ($_FILES and $_FILES['Projects']['size']['image'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image');
                 $imageName = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
                 $model->image = '/img/projects/' . $imageName . '.' . $file->extension;
             }
 
-            if($_FILES and $_FILES['Projects']['size']['image_og'] > 0) {
+            if ($_FILES and $_FILES['Projects']['size']['image_og'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image_og');
                 $imageName = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
@@ -116,21 +116,21 @@ class ProjectsController extends Controller
 
         if ($model->load($this->request->post())) {
             $old_model = $this->findModel($id);
-            if($_FILES and $_FILES['Projects']['size']['image'] > 0) {
+            if ($_FILES and $_FILES['Projects']['size']['image'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image');
                 $imageName = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
                 $model->image = '/img/projects/' . $imageName . '.' . $file->extension;
-            }else{
+            } else {
                 $model->image = $old_model->image;
             }
 
-            if($_FILES and $_FILES['Projects']['size']['image_og'] > 0) {
+            if ($_FILES and $_FILES['Projects']['size']['image_og'] > 0) {
                 $file = UploadedFile::getInstance($model, 'image_og');
                 $imageName = uniqid();
                 $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
                 $model->image_og = '/img/projects/' . $imageName . '.' . $file->extension;
-            }else{
+            } else {
                 $model->image_og = $old_model->image_og;
             }
         }
@@ -152,8 +152,15 @@ class ProjectsController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $dir = Yii::getAlias('@frontendWeb');
+        $model = $this->findModel($id);
+        if (file_exists($dir . $model->image)) {
+            unlink($dir . $model->image);
+        }
+        if (file_exists($dir . $model->image_og)) {
+            unlink($dir . $model->image_og);
+        }
+        $model->delete();
         return $this->redirect(['index']);
     }
 
