@@ -181,9 +181,9 @@ class News extends \yii\db\ActiveRecord
             ->asArray()->all();
         $categories = [];
         foreach ($category_news as $category_new) {
-            if($category_new['id'] != 35){
+//            if($category_new['id'] != 35){
                 $categories[] = $category_new;
-            }
+//            }
         }
         return $categories;
     }
