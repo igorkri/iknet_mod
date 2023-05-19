@@ -175,4 +175,16 @@ class News extends \yii\db\ActiveRecord
         return $res;
     }
 
+    public function getCategoryParentList(){
+        $category_news = NewsCategory::find()->with(['parent', 'parents'])
+            ->where(['parent_id' => 1])
+            ->asArray()->all();
+        $categories = [];
+        foreach ($category_news as $category_new) {
+            if($category_new['id'] != 35){
+                $categories[] = $category_new;
+            }
+        }
+        return $categories;
+    }
 }

@@ -136,5 +136,4 @@ class ProjectCategory extends \yii\db\ActiveRecord
         }
         return $cat_1;
     }
-
 }
