@@ -37,7 +37,7 @@ body {
   margin: 0;
   border: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
@@ -151,8 +151,8 @@ ol {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   gap: 5px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -189,8 +189,8 @@ form.your_contact {
   display: flex;
   gap: 20px;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   margin-top: 25px;
 }
 
@@ -247,11 +247,11 @@ form.your_contact .right .file_wrapper {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 20px;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 form.your_contact .right label {
@@ -592,17 +592,17 @@ form.your_contact .right input[type=submit]:hover {
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   -webkit-transform: scale(0);
-      -ms-transform: scale(0);
-          transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
   -webkit-transform-origin: 15% 0%;
-      -ms-transform-origin: 15% 0%;
-          transform-origin: 15% 0%;
+  -ms-transform-origin: 15% 0%;
+  transform-origin: 15% 0%;
 }
 
 .new_header .cont .links .developable:hover .drop {
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
-          transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
 }
 
 .new_header .cont .links .developable .drop a {
@@ -764,11 +764,11 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .reclame .counter .item:nth-child(even) {
@@ -832,8 +832,8 @@ form.your_contact .right input[type=submit]:hover {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -867,22 +867,24 @@ form.your_contact .right input[type=submit]:hover {
   width: calc(50% - 22.5px);
 }
 
+.possibilities .item .info .part2 .left h3 {
+  margin: 20px 0;
+}
+
 .possibilities .item .info .part2 .left h6 {
-  font-size: 20px;
+  line-height: 20px;
+  font-size: 16px;
   margin: 15px 0;
 }
 
 .possibilities .item .info .part2 .left ul {
-  margin: 0 0 20px 35px;
+  margin: 0 0 20px 25px;
 }
 
 .possibilities .item .info .part2 .left ul li {
-  line-height: 26px;
+  line-height: 20px;
+  font-size: 16px;
   margin-bottom: 5px;
-}
-
-.possibilities .item .info .part2 .left ul li::marker {
-  color: #47AE34;
 }
 
 .possibilities .item .info .part2 .left p {
@@ -896,8 +898,8 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 7px;
 }
 
@@ -912,11 +914,11 @@ form.your_contact .right input[type=submit]:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   gap: 10px;
   cursor: pointer;
   padding: 6px 18px;
@@ -929,8 +931,8 @@ form.your_contact .right input[type=submit]:hover {
 
 .possibilities .item .info .part2 .right .drop .head svg.spin {
   -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .possibilities .item .info .part2 .right .drop .head:hover {
@@ -992,9 +994,9 @@ form.your_contact .right input[type=submit]:hover {
 .projects .projects_container a h3 {
   width: 100%;
   border-radius: 0px 0px 3px 3px;
-  font-size: 30px;
+  font-size: 24px;
   line-height: 30px;
-  padding: 30px 20px 15px 50px;
+  padding: 18px 15px 14px;
   color: #000;
   -webkit-transition: all 0.25s ease;
   -o-transition: all 0.25s ease;
@@ -1003,8 +1005,8 @@ form.your_contact .right input[type=submit]:hover {
 
 .projects .projects_container a:hover img {
   -webkit-transform: scale(1.1);
-      -ms-transform: scale(1.1);
-          transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .projects .projects_container a:hover h3 {
@@ -1047,8 +1049,8 @@ form.your_contact .right input[type=submit]:hover {
 .main_news .news_slider .slick-next.slick-arrow:hover,
 .main_news .news_slider .slick-prev.slick-arrow:hover {
   -webkit-transform: scale(1.1);
-      -ms-transform: scale(1.1);
-          transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .main_news .news_slider .slick-next.slick-arrow {
@@ -1086,8 +1088,8 @@ form.your_contact .right input[type=submit]:hover {
 
 .main_news .news_slider .item:hover div img {
   -webkit-transform: scale(1.1);
-      -ms-transform: scale(1.1);
-          transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .main_news .news_slider .item:hover h3 {
@@ -1133,8 +1135,8 @@ form.your_contact .right input[type=submit]:hover {
 .our_clients .our_clients_slider .slick-next.slick-arrow:hover,
 .our_clients .our_clients_slider .slick-prev.slick-arrow:hover {
   -webkit-transform: scale(1.1);
-      -ms-transform: scale(1.1);
-          transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .our_clients .our_clients_slider .slick-next.slick-arrow {
@@ -1280,19 +1282,19 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   gap: 10px;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding: 6px 18px;
   cursor: pointer;
 }
 
 .career .block .text .info .vacancy .head svg.spin {
   -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .career .block .text .info .vacancy .head p {
@@ -1382,11 +1384,11 @@ form.your_contact .right input[type=submit]:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .gifts .item .info .title h4 {
@@ -1416,8 +1418,8 @@ form.your_contact .right input[type=submit]:hover {
 
 .gifts .item:hover .img img {
   -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-          transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .gifts .gift_slider {
@@ -1470,8 +1472,8 @@ form.your_contact .right input[type=submit]:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .about .company .text {
@@ -1502,8 +1504,8 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 7px;
 }
 
@@ -1540,8 +1542,8 @@ form.your_contact .right input[type=submit]:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .audit .top_item .img {
@@ -1559,8 +1561,8 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -1569,11 +1571,11 @@ form.your_contact .right input[type=submit]:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   margin-top: 40px;
 }
 
@@ -1584,8 +1586,8 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -1632,8 +1634,8 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   gap: 10px;
   -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
   border-bottom: 3px solid #47AE34;
   font-weight: 400;
   font-size: 40px;
@@ -1672,8 +1674,8 @@ form.your_contact .right input[type=submit]:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding-bottom: 25px;
   margin-top: 30px;
   border-bottom: 3px solid #EFF0F2;
@@ -1688,11 +1690,11 @@ form.your_contact .right input[type=submit]:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   background: #E4E5E8;
   overflow: hidden;
   border-radius: 3px;
@@ -1700,7 +1702,7 @@ form.your_contact .right input[type=submit]:hover {
 
 .news .item .img img {
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .news .item .text {
@@ -1711,8 +1713,8 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -1727,8 +1729,8 @@ form.your_contact .right input[type=submit]:hover {
 
 .news .item:hover .img img {
   -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-          transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .news .item:hover .text h4 {
@@ -1761,8 +1763,8 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   gap: 8%;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .contacts .cont .text {
@@ -1772,8 +1774,8 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -1783,8 +1785,8 @@ form.your_contact .right input[type=submit]:hover {
   display: flex;
   gap: 10px;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   font-style: normal;
 }
 
@@ -1819,7 +1821,7 @@ form.your_contact .right input[type=submit]:hover {
   text-align: center;
   margin-bottom: 35px;
 }
-/*  
+/*
 .project .cont {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1886,19 +1888,19 @@ footer .animation .footer_city .propeller {
 footer .animation .footer_city .propeller:nth-child(2) {
   right: 14.8%;
   -webkit-animation: propeller linear 3s infinite;
-          animation: propeller linear 3s infinite;
+  animation: propeller linear 3s infinite;
 }
 
 footer .animation .footer_city .propeller:nth-child(3) {
   right: 7.4%;
   -webkit-animation: propeller linear 2s infinite;
-          animation: propeller linear 2s infinite;
+  animation: propeller linear 2s infinite;
 }
 
 footer .animation .footer_city .propeller:nth-child(4) {
   right: 0;
   -webkit-animation: propeller linear 1s infinite;
-          animation: propeller linear 1s infinite;
+  animation: propeller linear 1s infinite;
 }
 
 footer .animation .footer_city .light {
@@ -1907,7 +1909,7 @@ footer .animation .footer_city .light {
   top: 20%;
   right: 15.9%;
   -webkit-animation: light linear 6s infinite;
-          animation: light linear 6s infinite;
+  animation: light linear 6s infinite;
 }
 
 footer .animation .footer_city .light_window {
@@ -1924,14 +1926,14 @@ footer .animation .footer_city .light_window.n1 {
   width: 0.7%;
   height: 7%;
   -webkit-animation: light_window 6s linear 8s infinite;
-          animation: light_window 6s linear 8s infinite;
+  animation: light_window 6s linear 8s infinite;
 }
 
 footer .animation .footer_city .light_window.n2 {
   top: 38%;
   left: 11.45%;
   -webkit-animation: light_window 6s linear 7.5s infinite;
-          animation: light_window 6s linear 7.5s infinite;
+  animation: light_window 6s linear 7.5s infinite;
 }
 
 footer .animation .footer_city .light_window.n3 {
@@ -1940,14 +1942,14 @@ footer .animation .footer_city .light_window.n3 {
   top: 62.8%;
   left: 16.9%;
   -webkit-animation: light_window 6s linear 7s infinite;
-          animation: light_window 6s linear 7s infinite;
+  animation: light_window 6s linear 7s infinite;
 }
 
 footer .animation .footer_city .light_window.n4 {
   top: 38%;
   left: 28.75%;
   -webkit-animation: light_window 6s linear 6.5s infinite;
-          animation: light_window 6s linear 6.5s infinite;
+  animation: light_window 6s linear 6.5s infinite;
 }
 
 footer .info {
@@ -1961,11 +1963,11 @@ footer .info .to_top {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   gap: 5px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1990,11 +1992,11 @@ footer .info .to_top h3 {
 }
 
 footer .info .to_top:hover svg {
-  fill: #f0e930;
+  fill: #fff;
 }
 
 footer .info .to_top:hover h3 {
-  color: #f0e930;
+  color: #fff;
 }
 
 footer .info .footer_block {
@@ -2041,7 +2043,7 @@ footer .info .footer_block .part p a {
 }
 
 footer .info .footer_block .part p a:hover {
-  color: #f0e930;
+  color: #fff;
 }
 
 footer .info .footer_block .part p.address {
@@ -2066,24 +2068,24 @@ footer .copyright p {
 @-webkit-keyframes propeller {
   0% {
     -webkit-transform: rotate(0);
-            transform: rotate(0);
+    transform: rotate(0);
   }
 
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes propeller {
   0% {
     -webkit-transform: rotate(0);
-            transform: rotate(0);
+    transform: rotate(0);
   }
 
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -2269,7 +2271,7 @@ footer .copyright p {
 
   .reclame .counter {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 
   .reclame .counter .item:nth-child(even) {
@@ -2282,15 +2284,15 @@ footer .copyright p {
 
   .reclame .counter .item:nth-child(3) {
     -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
+    -ms-flex-order: 1;
+    order: 1;
   }
 
   .possibilities .item .info .part2 {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     gap: 20px;
   }
 
@@ -2320,7 +2322,7 @@ footer .copyright p {
 
   .new_header .cont {
     -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
+    flex-wrap: nowrap;
   }
 
   .new_header .cont .social_networks,
@@ -2530,7 +2532,7 @@ footer .copyright p {
 
   .career .block .text {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 
   .career .block .text .info {
@@ -2567,10 +2569,10 @@ footer .copyright p {
 
   .gifts .item .info .title {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
+    -ms-flex-pack: start;
+    justify-content: start;
     gap: 15px;
   }
 
@@ -2591,7 +2593,7 @@ footer .copyright p {
 
   .about .company {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 25px;
   }
 
@@ -2620,15 +2622,15 @@ footer .copyright p {
 
   .audit .top_item {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 25px;
   }
 
   .audit .top_item .img {
     width: 100%;
     -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
+    -ms-flex-order: 1;
+    order: 1;
   }
 
   .audit .top_item .img img {
@@ -2642,7 +2644,7 @@ footer .copyright p {
 
   .audit .item {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 25px;
   }
 
@@ -2710,7 +2712,7 @@ footer .copyright p {
 @media (max-width: 767px) {
   footer .info .footer_block {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 
   footer .info .footer_block .part {
@@ -2727,8 +2729,8 @@ footer .copyright p {
   .possibilities .item .info {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     gap: 20px;
   }
 
@@ -2740,7 +2742,7 @@ footer .copyright p {
   .possibilities .item .info .part1 img {
     height: 260px;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
 
   .possibilities .item .info .part1 .links {
@@ -2765,7 +2767,7 @@ footer .copyright p {
   .contact_us form {
     gap: 30px;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 
   .contact_us form h3 {
@@ -2799,7 +2801,7 @@ footer .copyright p {
 
   .contacts .cont {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 20px;
   }
 
@@ -2819,7 +2821,7 @@ footer .copyright p {
 
   .news .item {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 
   .news .item .img {
@@ -2834,7 +2836,7 @@ footer .copyright p {
 @media (max-width: 600px) {
   form.your_contact {
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 
   form.your_contact .left {
@@ -2859,7 +2861,7 @@ footer .copyright p {
   .projects .projects_container {
     gap: 18px;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 
   .projects .projects_container a {
@@ -2889,7 +2891,7 @@ footer .copyright p {
   .gifts .item {
     gap: 15px;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     margin-top: 40px;
   }
 
@@ -2911,8 +2913,8 @@ footer .copyright p {
 @media (max-width: 525px) {
 
   body {
-      padding-top: 40px;
-    }
+    padding-top: 40px;
+  }
 
   .new_header .block {
     padding: 13px 15px 9px;

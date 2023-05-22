@@ -68,7 +68,7 @@ if($lang == 'ru'){
         </div>
     </div>
     <div class="info">
-        <a href="#new_header" class="to_top">
+        <a href="#" class="to_top">
             <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M7.82306 1.6775C8.62178 0.736767 10.0735 0.736766 10.8723 1.6775L17.3758 9.33739C18.4789 10.6366 17.5555 12.6318 15.8512 12.6318L2.84407 12.6318C1.13977 12.6318 0.216406 10.6366 1.31947 9.33739L7.82306 1.6775Z"
