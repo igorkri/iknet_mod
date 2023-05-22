@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
                     </div>
                 </address>
                 <address>
-                    <img src="/img/phones.svg" alt="">
+                    <img src="/img/phones.png" alt="">
                     <div>
                         <a href="tel:<?=str_replace([' ', '(', ')', '-'], '', $contact->tel1)?>"><?= $contact->tel1 ?></a>
                         <a href="tel:<?=str_replace([' ', '(', ')', '-'], '', $contact->tel2)?>"><?= $contact->tel2 ?></a>
