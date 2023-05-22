@@ -28,7 +28,7 @@ if($lang == 'ru'){
         <p><?= $item->getDescription($item->id) ?>
         </p>
         <?php $i = 1; foreach ($presents as $present): ?>
-        <div class="item" data-filter="gift_<?=$i?>" data-id="<?=$present->id?>">
+        <div class="item" data-filter="gift_<?=$i?>" data-id="<?=$present->id?>" data-lang="<?=$lang?>">
             <div class="img">
                 <?php if(isset($present->img)): ?>
                 <img src="/images/presents-list/<?=$present->img->file?>" alt="">

@@ -151,9 +151,13 @@ $('#file').change(function () {
 $('#gifts .block .item').click(function () {
   var filter = $(this).data('filter');
   var id = $(this).data('id');
+  var lang = $(this).data('lang');
+
+// console.log(filter);
+// console.log(id);
 
   $.ajax({
-    url: "/gifts/img-gifts",
+    url: "/"+lang+"/gifts/img-gifts",
     type: 'get',
     data: {
       'id': id,
