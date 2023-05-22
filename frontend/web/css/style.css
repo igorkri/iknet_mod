@@ -331,7 +331,7 @@ form.your_contact .right input[type=submit]:hover {
 
 .dark_bcg .close {
   position: absolute;
-  top: 20px;
+  top: 150px;
   right: 20px;
   cursor: pointer;
 }
