@@ -151,10 +151,10 @@ class PageController extends Controller
     {
         $dir = Yii::getAlias('@frontendWeb');
         $model = $this->findModel($id);
-        if (file_exists($dir . $model->image)) {
+        if (file_exists($dir . $model->image) and !empty($model->image)) {
             unlink($dir . $model->image);
         }
-        if (file_exists($dir . $model->image_og)) {
+        if (file_exists($dir . $model->image_og) and !empty($model->image_og)) {
             unlink($dir . $model->image_og);
         }
         $model->delete();

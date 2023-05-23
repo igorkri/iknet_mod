@@ -76,10 +76,11 @@ class ClientsBrandController extends Controller
             if ($model->load($this->request->post())) {
                 $dir = Yii::getAlias('@frontendWeb/images/client-brand');
                 $file = UploadedFile::getInstance($model, 'file');
-                $imageName = uniqid();
-                $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
-                $model->file = $imageName . '.' . $file->extension;
-
+                if (isset($file)) {
+                    $imageName = uniqid();
+                    $file->saveAs($dir . '/' . $imageName . '.' . $file->extension);
+                    $model->file = $imageName . '.' . $file->extension;
+                }
                 if ($model->save()) {
                     return $this->redirect('index');
                 } else {
@@ -142,9 +143,10 @@ class ClientsBrandController extends Controller
     {
         $model = $this->findModel($id);
         $dir = Yii::getAlias('@app/web/images/client-brand');
-        unlink($dir . "/" . $model->file);
-        $model->delete();
-
+        if (file_exists($dir . $model->file) and !empty($model->file)) {
+            unlink($dir . "/" . $model->file);
+        }
+            $model->delete();
         return $this->redirect(['index']);
     }
 
